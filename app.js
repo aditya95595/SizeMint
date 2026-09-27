@@ -113,7 +113,7 @@ function renderResults(){
 async function waitForResultGate(){
  if(!e.resultGate||!e.viewResultBtn)return;
  e.resultGate.hidden=false;e.results.hidden=true;e.viewResultBtn.disabled=true;
- let remaining=10;e.gateCountdown.textContent='10';e.gateMessage.innerHTML='Preparing your result for download — <strong><span id="gateCountdown">10</span>s</strong> remaining.';
+ let remaining=10;e.gateCountdown.textContent='10';e.gateMessage.firstChild.textContent='Preparing your result for download — ';
  const started=performance.now();
  await new Promise(resolve=>{
   const tick=()=>{
