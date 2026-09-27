@@ -162,44 +162,53 @@ function checkAdBlocker(){
  e.accessGate.hidden=false;
  document.body.classList.add('access-checking');
  e.accessRetry.hidden=true;e.accessHelp.hidden=true;
+ e.accessIcon.textContent='◌';
  e.accessTitle.textContent='Checking your browser…';
- e.accessText.textContent='Testing several independent advertising signals before opening the compressor.';
- const status=e.accessStatus.querySelector('span');if(status)status.textContent='Running check';
- setTimeout(()=>{
-  const isHidden=x=>{
-   if(!x)return true;
-   const q=getComputedStyle(x),r=x.getBoundingClientRect();
-   return q.display==='none'||q.visibility==='hidden'||q.contentVisibility==='hidden'||r.width===0||r.height===0||x.getClientRects().length===0;
-  };
-  const signalHidden=isHidden(e.adProbe);
+ e.accessText.textContent='Checking advertising access and browser protection before opening SizeMint.';
+ const status=e.accessStatus.querySelector('span');if(status)status.textContent='Running browser check';
+
+ const isHidden=x=>{
+  if(!x)return true;
+  const q=getComputedStyle(x),r=x.getBoundingClientRect();
+  return q.display==='none'||q.visibility==='hidden'||q.contentVisibility==='hidden'||r.width===0||r.height===0||x.getClientRects().length===0;
+ };
+
+ const testResource=(path,timeout=1800)=>new Promise(resolve=>{
+  let settled=false;
+  const done=ok=>{if(settled)return;settled=true;clearTimeout(timer);resolve(ok)};
+  const timer=setTimeout(()=>done(false),timeout);
+  const script=document.createElement('script');
+  script.async=true;script.src=path+'?check='+Date.now();
+  script.onload=()=>{script.remove();done(true)};
+  script.onerror=()=>{script.remove();done(false)};
+  document.head.appendChild(script);
+ });
+
+ const run=async()=>{
   const holder=document.createElement('div');
   holder.setAttribute('aria-hidden','true');
-  holder.style.cssText='position:fixed;left:-10000px;top:-10000px;width:10px;height:10px;overflow:hidden;pointer-events:none;z-index:-1;';
-  const baitNames=[
-   'adsbox','ad-banner','ad-unit','advertisement','advertisement-slot',
-   'adsbygoogle','text-ad','banner-ad','pub_300x250','sponsored-content'
-  ];
+  holder.style.cssText='position:fixed;left:-10000px;top:-10000px;width:20px;height:20px;overflow:hidden;pointer-events:none;z-index:-1;';
+  const baitNames=['adsbox','ad-banner','ad-unit','advertisement','advertisement-slot','adsbygoogle','text-ad','banner-ad','pub_300x250','sponsored-content'];
   const baits=baitNames.map(name=>{
    const node=document.createElement('div');
-   node.className=name;
-   node.id=name+'-probe';
-   node.setAttribute('data-ad-slot','1');
-   node.setAttribute('aria-hidden','true');
+   node.className=name;node.id=name+'-probe';node.setAttribute('data-ad-slot','1');node.setAttribute('aria-hidden','true');
    node.style.cssText='display:block!important;width:8px!important;height:8px!important;position:absolute!important;left:0!important;top:0!important;visibility:visible!important;opacity:1!important;';
    holder.appendChild(node);return node;
   });
   document.body.appendChild(holder);
-  const checkBaits=()=>baits.filter(isHidden).length;
-  const firstHidden=checkBaits();
-  setTimeout(()=>{
-   const hiddenBaits=checkBaits();
-   holder.remove();
-   const blocked=signalHidden||(hiddenBaits>=2)||(firstHidden>=2);
-   setAccess(blocked);
-  },700);
- },700);
-}
+  await new Promise(r=>setTimeout(r,250));
+  const hiddenBaits=baits.filter(isHidden).length;
+  holder.remove();
 
+  if(status)status.textContent='Checking advertising resources…';
+  const resources=await Promise.all([testResource('ads.js'),testResource('advertising.js')]);
+  const failedResources=resources.filter(x=>!x).length;
+  const signalHidden=isHidden(e.adProbe);
+  const blocked=signalHidden||(hiddenBaits>=2)||(failedResources>=2)||(hiddenBaits>=1&&failedResources>=1);
+  setAccess(blocked);
+ };
+ run();
+}
 function startLoadingAnimation(){
  const stages=['Reading image locally…','Analyzing dimensions…','Finding a target-size match…','Trying compression quality…','Reducing dimensions if needed…','Checking the result…','Preparing the download…','Almost there…','Final verification…','Finishing…'];
  const started=performance.now();let timer;
