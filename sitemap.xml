@@ -1,1 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>/</loc></url><url><loc>/about.html</loc></url><url><loc>/privacy.html</loc></url><url><loc>/terms.html</loc></url></urlset>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url><loc>https://sizemint.pages.dev/</loc></url>
+<url><loc>https://sizemint.pages.dev/about.html</loc></url>
+<url><loc>https://sizemint.pages.dev/privacy.html</loc></url>
+<url><loc>https://sizemint.pages.dev/terms.html</loc></url>
+</urlset>
