@@ -20,7 +20,8 @@ function applyTheme(theme) {
 }
 
 if (toggle) {
-  const current = root.dataset.theme === 'dark' ? 'dark' : 'light';
+  let current = 'dark';
+  try { current = localStorage.getItem('sizemint-theme') === 'light' ? 'light' : 'dark'; } catch (e) {}
   applyTheme(current);
   toggle.addEventListener('click', () => {
     applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark');
