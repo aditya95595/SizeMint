@@ -75,3 +75,35 @@ body{padding-bottom:108px}
  body{padding-bottom:88px}
  .ad-band-section{padding-bottom:18px}
 }
+
+
+/* Final desktop workspace alignment */
+.workspace-shell{width:100%;overflow:visible}
+.workspace-grid{grid-template-columns:minmax(0,1fr) 300px;gap:28px;align-items:start}
+.workspace-grid>.tool-card{min-width:0}
+.desktop-rail{width:300px;min-width:300px}
+.rail-sticky{position:sticky;top:92px}
+.sponsor-card{max-width:300px}
+.rail-ad{max-width:300px;min-height:250px}
+
+/* Processing/result flow: the upload panel disappears when processing begins. */
+.drop-zone[hidden]{display:none!important}
+.controls{min-width:0}
+.results{margin-top:24px}
+.results .result-row{background:#fff}
+.result-gate + .results{margin-top:24px}
+
+/* Keep the persistent bottom element as a sponsor/contact banner, not a Google-served ad overlay. */
+.bottom-ad-banner{z-index:20}
+.bottom-ad-inner{min-height:72px}
+.bottom-ad-inner>span{display:none}
+.bottom-ad-inner a{font-size:.8rem}
+
+/* Desktop only: preserve the right-side sponsor rail. */
+@media(min-width:901px){
+  .workspace-grid{width:min(1400px,calc(100% - 32px))}
+}
+@media(max-width:900px){
+  .workspace-grid{grid-template-columns:1fr}
+  .desktop-rail{display:none}
+}
