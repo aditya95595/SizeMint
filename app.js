@@ -1,7 +1,7 @@
 (() => {
 'use strict';
 const $=id=>document.getElementById(id);
-const e={dropZone:$('dropZone'),fileInput:$('fileInput'),chooseBtn:$('chooseBtn'),controls:$('controls'),targetPreset:$('targetPreset'),customTargetWrap:$('customTargetWrap'),customTarget:$('customTarget'),format:$('format'),maxWidth:$('maxWidth'),quality:$('quality'),qualityValue:$('qualityValue'),settingsNotice:$('settingsNotice'),fileList:$('fileList'),fileCount:$('fileCount'),clearBtn:$('clearBtn'),compressBtn:$('compressBtn'),downloadAllBtn:$('downloadAllBtn'),progressWrap:$('progressWrap'),progressText:$('progressText'),progressPercent:$('progressPercent'),progressBar:$('progressBar'),progressRing:$('progressRing'),progressStage:$('progressStage'),resultGate:$('resultGate'),gateCountdown:$('gateCountdown'),gateMessage:$('gateMessage'),viewResultBtn:$('viewResultBtn'),results:$('results'),adNotice:$('adNotice'),adProbe:$('adProbe'),resultList:$('resultList'),startOverBtn:$('startOverBtn'),year:$('year')};
+const e={accessGate:$('accessGate'),accessIcon:$('accessIcon'),accessTitle:$('accessTitle'),accessText:$('accessText'),accessStatus:$('accessStatus'),accessHelp:$('accessHelp'),accessRetry:$('accessRetry'),dropZone:$('dropZone'),fileInput:$('fileInput'),chooseBtn:$('chooseBtn'),controls:$('controls'),targetPreset:$('targetPreset'),customTargetWrap:$('customTargetWrap'),customTarget:$('customTarget'),format:$('format'),maxWidth:$('maxWidth'),quality:$('quality'),qualityValue:$('qualityValue'),settingsNotice:$('settingsNotice'),fileList:$('fileList'),fileCount:$('fileCount'),clearBtn:$('clearBtn'),compressBtn:$('compressBtn'),downloadAllBtn:$('downloadAllBtn'),progressWrap:$('progressWrap'),progressText:$('progressText'),progressPercent:$('progressPercent'),progressBar:$('progressBar'),progressRing:$('progressRing'),progressStage:$('progressStage'),resultGate:$('resultGate'),gateCountdown:$('gateCountdown'),gateMessage:$('gateMessage'),viewResultBtn:$('viewResultBtn'),results:$('results'),adNotice:$('adNotice'),adProbe:$('adProbe'),resultList:$('resultList'),startOverBtn:$('startOverBtn'),year:$('year')};
 const state={files:[],results:[],processing:false};
 const MAX_DIMENSION=16384,MIN_DIMENSION=16;
 const fmt=n=>n<1024?Math.round(n)+' B':n<1048576?(n/1024).toFixed(1)+' KB':(n/1048576).toFixed(2)+' MB';
@@ -139,12 +139,41 @@ function safeName(name){
 function download(r){if(!r.blob)return;const a=document.createElement('a');a.href=r.url;a.download=safeName(r.name);document.body.appendChild(a);a.click();a.remove()}
 const crcTable=(()=>{const t=[];for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xedb88320^(c>>>1):c>>>1;t[n]=c>>>0}return t})();function crc32(a){let c=0xffffffff;for(const b of a)c=crcTable[(c^b)&255]^(c>>>8);return(c^0xffffffff)>>>0}const u16=n=>[n&255,n>>>8&255],u32=n=>[n&255,n>>>8&255,n>>>16&255,n>>>24&255];
 async function downloadAll(){const enc=new TextEncoder(),entries=[];const used=new Set();for(const r of state.results.filter(x=>x.blob)){let name=safeName(r.name),base=name,extn='';const dot=name.lastIndexOf('.');if(dot>0){base=name.slice(0,dot);extn=name.slice(dot)}let n=2;while(used.has(name)){name=base+'-'+n+extn;n++}used.add(name);entries.push({name,data:new Uint8Array(await r.blob.arrayBuffer())});}const chunks=[],central=[];let off=0;for(const z of entries){const name=enc.encode(z.name),c=crc32(z.data),local=new Uint8Array([...u32(0x04034b50),...u16(20),...u16(0),...u16(0),...u16(0),...u16(0),...u32(c),...u32(z.data.length),...u32(z.data.length),...u16(name.length),...u16(0),...name,...z.data]);chunks.push(local);central.push({name,c,size:z.data.length,off});off+=local.length}const start=off;for(const z of central){const c=new Uint8Array([...u32(0x02014b50),...u16(20),...u16(20),...u16(0),...u16(0),...u16(0),...u16(0),...u32(z.c),...u32(z.size),...u32(z.size),...u16(z.name.length),...u16(0),...u16(0),...u16(0),...u16(0),...u32(0),...u32(z.off),...z.name]);chunks.push(c);off+=c.length}chunks.push(new Uint8Array([...u32(0x06054b50),...u16(0),...u16(0),...u16(entries.length),...u16(entries.length),...u32(off-start),...u32(start),...u16(0)]));const url=URL.createObjectURL(new Blob(chunks,{type:'application/zip'})),a=document.createElement('a');a.href=url;a.download='sizemint-compressed-images.zip';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+function setAccess(blocked){
+ document.body.classList.toggle('access-blocked',blocked);
+ if(!e.accessGate)return;
+ e.accessGate.classList.toggle('blocked',blocked);
+ if(blocked){
+  e.accessIcon.textContent='!';
+  e.accessTitle.textContent='Ad blocker detected';
+  e.accessText.textContent='Please allow advertising for SizeMint before using the compressor.';
+  e.accessStatus.replaceChildren();
+  const dot=document.createElement('i'),label=document.createElement('span');label.textContent='Access blocked';e.accessStatus.append(dot,label);
+  e.accessHelp.hidden=false;e.accessRetry.hidden=false;
+ }else{
+  e.accessIcon.textContent='✓';
+  e.accessTitle.textContent='You’re good to go';
+  e.accessText.textContent='Advertising check passed. Welcome to SizeMint.';
+  e.accessStatus.replaceChildren();
+  const dot=document.createElement('i'),label=document.createElement('span');label.textContent='Access granted';e.accessStatus.append(dot,label);
+  e.accessHelp.hidden=true;e.accessRetry.hidden=true;
+  setTimeout(()=>{e.accessGate.hidden=true;document.body.classList.remove('access-checking')},500);
+ }
+}
 function checkAdBlocker(){
- if(!e.adProbe||!e.adNotice)return;
- const s=getComputedStyle(e.adProbe);
- const blocked=s.display==='none'||s.visibility==='hidden'||e.adProbe.offsetHeight===0;
- if(blocked)e.adNotice.hidden=false;
+ if(!e.accessGate||!e.adProbe){setAccess(false);return}
+ e.accessGate.hidden=false;e.accessRetry.hidden=true;e.accessHelp.hidden=true;
+ e.accessTitle.textContent='Checking your browser…';
+ e.accessText.textContent='Testing the advertising area and blocker signals before opening the compressor.';
+ const status=e.accessStatus.querySelector('span');if(status)status.textContent='Running check';
+ setTimeout(()=>{
+  const s=getComputedStyle(e.adProbe);
+  const blocked=s.display==='none'||s.visibility==='hidden'||e.adProbe.offsetHeight===0||e.adProbe.offsetWidth===0;
+  const bait=document.querySelectorAll('.ad-probe,.adsbox,.ad-container');
+  const hidden=[...bait].filter(x=>{const q=getComputedStyle(x);return q.display==='none'||q.visibility==='hidden'||x.offsetHeight===0}).length;
+  setAccess(blocked||hidden>=2);
+ },650);
 }
 e.chooseBtn.onclick=()=>e.fileInput.click();e.dropZone.onclick=x=>{if(!x.target.closest('button'))e.fileInput.click()};e.dropZone.onkeydown=x=>{if(x.key==='Enter'||x.key===' '){x.preventDefault();e.fileInput.click()}};e.fileInput.onchange=x=>addFiles(x.target.files);['dragenter','dragover'].forEach(x=>e.dropZone.addEventListener(x,y=>{y.preventDefault();e.dropZone.classList.add('dragover')}));['dragleave','drop'].forEach(x=>e.dropZone.addEventListener(x,y=>{y.preventDefault();e.dropZone.classList.remove('dragover')}));e.dropZone.ondrop=x=>addFiles(x.dataTransfer.files);e.targetPreset.onchange=()=>e.customTargetWrap.hidden=e.targetPreset.value!=='custom';e.quality.oninput=()=>e.qualityValue.textContent=e.quality.value+'%';e.fileList.onclick=x=>{const b=x.target.closest('[data-remove]');if(!b)return;const i=+b.dataset.remove;URL.revokeObjectURL(state.files[i].url);state.files.splice(i,1);renderFiles()};e.clearBtn.onclick=clearAll;e.compressBtn.onclick=compressAll;e.downloadAllBtn.onclick=downloadAll;e.resultList.onclick=x=>{const b=x.target.closest('[data-download]');if(b)download(state.results[+b.dataset.download])};e.startOverBtn.onclick=clearAll;e.viewResultBtn.onclick=()=>{e.resultGate.hidden=true;e.results.hidden=false;e.results.scrollIntoView({behavior:'smooth',block:'start'})};renderFiles();
-setTimeout(checkAdBlocker,1400);
+e.accessRetry.onclick=checkAdBlocker;checkAdBlocker();
 })();
