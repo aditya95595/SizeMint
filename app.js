@@ -1,7 +1,7 @@
 (() => {
 'use strict';
 const $=id=>document.getElementById(id);
-const e={dropZone:$('dropZone'),fileInput:$('fileInput'),chooseBtn:$('chooseBtn'),controls:$('controls'),targetPreset:$('targetPreset'),customTargetWrap:$('customTargetWrap'),customTarget:$('customTarget'),format:$('format'),maxWidth:$('maxWidth'),quality:$('quality'),qualityValue:$('qualityValue'),settingsNotice:$('settingsNotice'),fileList:$('fileList'),fileCount:$('fileCount'),clearBtn:$('clearBtn'),compressBtn:$('compressBtn'),downloadAllBtn:$('downloadAllBtn'),progressWrap:$('progressWrap'),progressText:$('progressText'),progressPercent:$('progressPercent'),progressBar:$('progressBar'),progressRing:$('progressRing'),progressStage:$('progressStage'),resultGate:$('resultGate'),gateCountdown:$('gateCountdown'),gateMessage:$('gateMessage'),gateProgress:$('gateProgress'),viewResultBtn:$('viewResultBtn'),results:$('results'),resultList:$('resultList'),startOverBtn:$('startOverBtn'),year:$('year')};
+const e={dropZone:$('dropZone'),fileInput:$('fileInput'),chooseBtn:$('chooseBtn'),controls:$('controls'),targetPreset:$('targetPreset'),customTargetWrap:$('customTargetWrap'),customTarget:$('customTarget'),format:$('format'),maxWidth:$('maxWidth'),quality:$('quality'),qualityValue:$('qualityValue'),settingsNotice:$('settingsNotice'),fileList:$('fileList'),fileCount:$('fileCount'),clearBtn:$('clearBtn'),compressBtn:$('compressBtn'),downloadAllBtn:$('downloadAllBtn'),progressWrap:$('progressWrap'),progressText:$('progressText'),progressPercent:$('progressPercent'),progressBar:$('progressBar'),progressRing:$('progressRing'),progressStage:$('progressStage'),resultGate:$('resultGate'),gateEyebrow:$('gateEyebrow'),gateTitle:$('gateTitle'),gateCountdown:$('gateCountdown'),gateMessage:$('gateMessage'),gateProgress:$('gateProgress'),viewResultBtn:$('viewResultBtn'),results:$('results'),resultList:$('resultList'),startOverBtn:$('startOverBtn'),year:$('year')};
 const state={files:[],results:[],processing:false};
 const MAX_DIMENSION=16384,MIN_DIMENSION=16;
 const fmt=n=>n<1024?Math.round(n)+' B':n<1048576?(n/1024).toFixed(1)+' KB':(n/1048576).toFixed(2)+' MB';
@@ -33,7 +33,7 @@ function addFiles(list){
  renderFiles();
 }
 function clearResults(){state.results.forEach(x=>x.url&&URL.revokeObjectURL(x.url));state.results=[];e.results.hidden=true;e.resultList.replaceChildren();e.downloadAllBtn.disabled=true}
-function clearAll(){state.files.forEach(x=>URL.revokeObjectURL(x.url));state.files=[];clearResults();if(e.resultGate)e.resultGate.hidden=true;if(e.viewResultBtn){e.viewResultBtn.disabled=true;e.viewResultBtn.hidden=false}if(e.gateProgress)e.gateProgress.style.width='0%';if(e.gateMessage){e.gateMessage.innerHTML='Preparing your result for download — <strong><span id="gateCountdown">15</span>s</strong> remaining.';e.gateCountdown=$('gateCountdown');}e.fileInput.value='';e.progressWrap.hidden=true;e.dropZone.hidden=false;e.clearBtn.disabled=false;renderFiles()}
+function clearAll(){state.files.forEach(x=>URL.revokeObjectURL(x.url));state.files=[];clearResults();if(e.resultGate)e.resultGate.hidden=true;if(e.gateEyebrow)e.gateEyebrow.textContent='FINALIZING RESULT';if(e.gateTitle)e.gateTitle.textContent='Preparing your compressed image';if(e.viewResultBtn){e.viewResultBtn.disabled=true;e.viewResultBtn.hidden=false}if(e.gateProgress)e.gateProgress.style.width='0%';if(e.gateMessage){e.gateMessage.innerHTML='Preparing your result for download — <strong><span id="gateCountdown">15</span>s</strong> remaining.';e.gateCountdown=$('gateCountdown');}e.fileInput.value='';e.progressWrap.hidden=true;e.dropZone.hidden=false;e.clearBtn.disabled=false;renderFiles()}
 async function loadImage(file){
  const u=URL.createObjectURL(file);
  try{return await new Promise((res,rej)=>{
@@ -113,6 +113,8 @@ function renderResults(){
 async function waitForResultGate(){
  if(!e.resultGate)return;
  e.resultGate.hidden=false;e.results.hidden=true;
+ if(e.gateEyebrow)e.gateEyebrow.textContent='FINALIZING RESULT';
+ if(e.gateTitle)e.gateTitle.textContent='Preparing your compressed image';
  if(e.viewResultBtn){e.viewResultBtn.disabled=true;e.viewResultBtn.hidden=true}
  let remaining=15;
  if(e.gateMessage){e.gateMessage.innerHTML='Preparing your result for download — <strong><span id="gateCountdown">15</span>s</strong> remaining.';e.gateCountdown=$('gateCountdown');}
@@ -132,6 +134,8 @@ async function waitForResultGate(){
  if(e.gateProgress)e.gateProgress.style.width='100%';
  e.results.hidden=false;
  e.downloadAllBtn.disabled=!state.results.some(x=>x.blob);
+ if(e.gateEyebrow)e.gateEyebrow.textContent='RESULT READY';
+ if(e.gateTitle)e.gateTitle.textContent='Your compressed image is ready';
  if(e.gateMessage)e.gateMessage.textContent='Your result is ready. Download it below.';
  if(e.viewResultBtn){e.viewResultBtn.disabled=false;e.viewResultBtn.hidden=false;}
 }
@@ -146,7 +150,9 @@ async function compressAll(){
  state.processing=true;clearResults();e.compressBtn.disabled=true;e.clearBtn.disabled=true;e.dropZone.hidden=true;e.controls.hidden=false;e.progressWrap.hidden=false;e.resultGate.hidden=true;e.results.hidden=true;
  const stopAnimation=startLoadingAnimation();
  for(let i=0;i<state.files.length;i++){const item=state.files[i];progress(i,state.files.length,'Compressing '+item.file.name+'…');try{const r=await compressOne(item);r.url=URL.createObjectURL(r.blob);state.results.push(r)}catch(err){state.results.push({error:err.message,name:item.file.name})}renderResults();progress(i+1,state.files.length,'Finished '+(i+1)+' of '+state.files.length);await new Promise(r=>setTimeout(r,0))}
- state.processing=false;stopAnimation();e.compressBtn.disabled=!state.files.length;e.clearBtn.disabled=false;e.downloadAllBtn.disabled=true;e.progressWrap.hidden=true;await waitForResultGate();
+ state.processing=false;stopAnimation();e.compressBtn.disabled=!state.files.length;e.clearBtn.disabled=false;e.downloadAllBtn.disabled=true;e.progressWrap.hidden=true;
+ if(!state.results.some(x=>x.blob)){if(e.gateEyebrow)e.gateEyebrow.textContent='PROCESSING ISSUE';if(e.gateTitle)e.gateTitle.textContent='No downloadable result was created';if(e.gateMessage)e.gateMessage.textContent='None of the selected images could be compressed. Check the messages above and try again.';e.resultGate.hidden=false;return;}
+ await waitForResultGate();
 }
 
 function safeName(name){
