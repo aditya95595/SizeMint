@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Free Image Compressor - Compress JPG, PNG & WebP Online | SizeMint</title>
+  <meta name="description" content="Compress images online to a target size such as 50KB, 100KB, 200KB, 500KB or 1MB. Resize and convert JPG, PNG and WebP images directly in your browser.">
+  <link rel="canonical" href="/">
+  <meta property="og:title" content="Free Image Compressor | SizeMint">
+  <meta property="og:description" content="Compress, resize and convert images to a target file size directly in your browser.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0b1020">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"SizeMint","applicationCategory":"MultimediaApplication","operatingSystem":"Any","description":"Browser-based image compressor, resizer and converter."}
+  </script>
+</head>
+<body>
+<header class="site-header"><div class="container nav"><a class="brand" href="/">SizeMint</a><nav aria-label="Main navigation"><a href="#compressor">Compressor</a><a href="#how-it-works">How it works</a><a href="#faq">FAQ</a></nav></div></header>
+<main>
+<section class="hero"><div class="container"><p class="eyebrow">FREE • PRIVATE • BROWSER-BASED</p><h1>Compress images to any size</h1><p class="hero-copy">Reduce JPG, PNG and WebP images to 20KB, 50KB, 100KB, 200KB, 500KB, 1MB or a custom target — without uploading your images to a server.</p></div></section>
+<section id="compressor" class="container app-card">
+<div id="dropzone" class="dropzone" tabindex="0"><input id="fileInput" type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple hidden><div class="upload-icon">↑</div><h2>Drop images here</h2><p>or click to choose JPG, PNG, WebP or AVIF files</p><button id="browseBtn" class="primary" type="button">Choose images</button><small>Processing happens locally in your browser.</small></div>
+<div class="controls">
+<div class="control"><label for="targetSize">Target file size</label><div class="inline"><select id="targetPreset"><option value="20480">20 KB</option><option value="51200">50 KB</option><option value="76800">75 KB</option><option value="102400" selected>100 KB</option><option value="153600">150 KB</option><option value="204800">200 KB</option><option value="256000">250 KB</option><option value="307200">300 KB</option><option value="409600">400 KB</option><option value="512000">500 KB</option><option value="768000">750 KB</option><option value="1048576">1 MB</option><option value="1572864">1.5 MB</option><option value="2097152">2 MB</option><option value="3145728">3 MB</option><option value="5242880">5 MB</option><option value="custom">Custom</option></select><input id="targetCustom" type="number" min="1" step="1" placeholder="e.g. 350" disabled><select id="targetUnit" disabled><option>KB</option><option>MB</option></select></div></div>
+<div class="control"><label for="format">Output format</label><select id="format"><option value="auto">Automatic</option><option value="image/jpeg">JPG</option><option value="image/webp">WebP</option><option value="image/png">PNG</option></select></div>
+<div class="control"><label for="maxWidth">Maximum width <span class="muted">(optional)</span></label><input id="maxWidth" type="number" min="1" placeholder="Keep original"></div>
+<div class="control"><label for="quality">Quality <span id="qualityValue">80</span>%</label><input id="quality" type="range" min="20" max="100" value="80"></div>
+</div>
+<div class="actions"><button id="compressBtn" class="primary" type="button" disabled>Compress images</button><button id="clearBtn" class="secondary" type="button" disabled>Clear</button></div>
+<div id="status" class="status" role="status" aria-live="polite"></div><div id="results" class="results"></div>
+</section>
+<section id="how-it-works" class="container content"><h2>How to compress an image</h2><ol><li>Select one or more JPG, PNG or WebP images.</li><li>Choose a target such as 100KB, 200KB, 500KB or 1MB.</li><li>Optionally set an output format or maximum width.</li><li>Click <strong>Compress images</strong> and download the results.</li></ol><p>Images are processed in your browser. The site does not need to upload your photos to a processing server.</p></section>
+<section id="faq" class="container content faq"><h2>Frequently asked questions</h2><details><summary>Can I compress an image to exactly 100KB?</summary><p>The compressor aims for the selected target and gets as close as practical. Exact byte-for-byte sizes are not always possible because image encoders work in discrete quality and dimension settings.</p></details><details><summary>What target sizes are supported?</summary><p>Presets range from 20KB to 5MB, including 50KB, 75KB, 100KB, 150KB, 200KB, 250KB, 300KB, 400KB, 500KB, 750KB, 1MB, 1.5MB, 2MB and 3MB. You can also enter a custom target.</p></details><details><summary>Are my images uploaded?</summary><p>No. Compression is performed locally in your browser by JavaScript. Your selected files are not sent to this website's server by the compressor.</p></details></section>
+</main>
+<footer class="site-footer"><div class="container"><p>© <span id="year"></span> SizeMint</p><div><a href="privacy.html">Privacy</a> <a href="terms.html">Terms</a> <a href="about.html">About</a></div></div></footer>
+<script src="app.js"></script>
+</body>
+</html>
