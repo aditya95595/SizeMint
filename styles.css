@@ -33,7 +33,9 @@
 @media(max-width:520px){.gate-card{padding:24px 18px}.gate-card .btn{width:100%}}
 
 /* Desktop workspace + sponsor rail */
-.workspace-grid{width:min(1320px,calc(100% - 32px));display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:28px;align-items:start}
+.workspace-grid{width:min(1400px,calc(100% - 32px));display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:32px;align-items:start;grid-template-areas:"main rail"}
+.workspace-grid>.tool-card{grid-area:main}
+.workspace-grid>.desktop-rail{grid-area:rail}
 .desktop-rail{min-width:0}
 .rail-sticky{position:sticky;top:96px;display:grid;gap:14px}
 .rail-label{font-size:.66rem;font-weight:850;letter-spacing:.14em;color:#87948e;text-align:center}
@@ -47,10 +49,10 @@
 .sponsor-link span{font-size:1.05rem;transition:transform .18s ease}
 .sponsor-link:hover span{transform:translateX(3px)}
 .rail-ad{min-height:280px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.62);display:flex;align-items:center;justify-content:center;color:#9aa49f;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase}
-@media(max-width:1050px){
- .workspace-grid{width:min(100% - 22px,1120px);grid-template-columns:1fr}
+@media(max-width:900px){
+ .workspace-grid{width:min(100% - 22px,1120px);grid-template-columns:1fr;grid-template-areas:"main"}
  .desktop-rail{display:none}
 }
-@media(min-width:1051px){
+@media(min-width:901px){
  .tool-card{min-width:0}
 }
