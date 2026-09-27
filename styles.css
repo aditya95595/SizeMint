@@ -24,7 +24,7 @@
 .result-badge.warning{background:#fff6df;color:#8a5b00}
 .result-badge.error{background:#fff0f0;color:#a63a3a}
 .ad-slot{position:relative}
-.ad-probe{position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden}
+.sm-access-signal{position:absolute;left:-10000px;top:-10000px;width:8px;height:8px;display:block;overflow:hidden;opacity:.01;pointer-events:none}
 .ad-notice{display:flex;gap:10px;align-items:flex-start;margin:10px 0 0;padding:12px 14px;border:1px solid #e7d8aa;border-radius:12px;background:#fffaf0;color:#6f5b2b;font-size:.82rem;line-height:1.5}
 .ad-notice strong{color:#5c481b;white-space:nowrap}
 @media(max-width:520px){.ad-notice{display:block}.ad-notice strong{display:block;margin-bottom:3px}}
@@ -34,6 +34,8 @@
 
 /* Access gate */
 body.access-checking>main,body.access-checking>footer,body.access-checking>.site-header{visibility:hidden}
+.access-gate{overflow-y:auto;overflow-x:hidden;align-items:start;min-height:100dvh;-webkit-overflow-scrolling:touch}
+.access-card{margin:auto}
 .access-gate{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:24px;background:#07130f;overflow:hidden}
 .access-gate-bg{position:absolute;inset:0}.access-gate-bg span{position:absolute;border-radius:50%;filter:blur(2px);opacity:.18}
 .access-gate-bg span:nth-child(1){width:520px;height:520px;background:#1f8f62;left:-180px;top:-180px}
