@@ -169,24 +169,34 @@ function checkAdBlocker(){
   const isHidden=x=>{
    if(!x)return true;
    const q=getComputedStyle(x),r=x.getBoundingClientRect();
-   return q.display==='none'||q.visibility==='hidden'||q.contentVisibility==='hidden'||r.width===0||r.height===0;
+   return q.display==='none'||q.visibility==='hidden'||q.contentVisibility==='hidden'||r.width===0||r.height===0||x.getClientRects().length===0;
   };
   const signalHidden=isHidden(e.adProbe);
   const holder=document.createElement('div');
   holder.setAttribute('aria-hidden','true');
-  holder.style.cssText='position:absolute;left:-10000px;top:-10000px;width:1px;height:1px;overflow:hidden;pointer-events:none;';
-  const baitNames=['adsbox','ad-banner','ad-unit','advertisement-slot'];
+  holder.style.cssText='position:fixed;left:-10000px;top:-10000px;width:10px;height:10px;overflow:hidden;pointer-events:none;z-index:-1;';
+  const baitNames=[
+   'adsbox','ad-banner','ad-unit','advertisement','advertisement-slot',
+   'adsbygoogle','text-ad','banner-ad','pub_300x250','sponsored-content'
+  ];
   const baits=baitNames.map(name=>{
    const node=document.createElement('div');
    node.className=name;
-   node.style.cssText='display:block;width:8px;height:8px;position:absolute;left:0;top:0;';
+   node.id=name+'-probe';
+   node.setAttribute('data-ad-slot','1');
+   node.setAttribute('aria-hidden','true');
+   node.style.cssText='display:block!important;width:8px!important;height:8px!important;position:absolute!important;left:0!important;top:0!important;visibility:visible!important;opacity:1!important;';
    holder.appendChild(node);return node;
   });
   document.body.appendChild(holder);
-  const hiddenBaits=baits.filter(isHidden).length;
-  holder.remove();
-  const blocked=(hiddenBaits>=2)||(signalHidden&&hiddenBaits>=1);
-  setAccess(blocked);
+  const checkBaits=()=>baits.filter(isHidden).length;
+  const firstHidden=checkBaits();
+  setTimeout(()=>{
+   const hiddenBaits=checkBaits();
+   holder.remove();
+   const blocked=signalHidden||(hiddenBaits>=2)||(firstHidden>=2);
+   setAccess(blocked);
+  },700);
  },700);
 }
 
