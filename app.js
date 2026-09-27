@@ -1,7 +1,7 @@
 (() => {
 'use strict';
 const $=id=>document.getElementById(id);
-const e={dropZone:$('dropZone'),fileInput:$('fileInput'),chooseBtn:$('chooseBtn'),controls:$('controls'),targetPreset:$('targetPreset'),customTargetWrap:$('customTargetWrap'),customTarget:$('customTarget'),format:$('format'),maxWidth:$('maxWidth'),quality:$('quality'),qualityValue:$('qualityValue'),settingsNotice:$('settingsNotice'),fileList:$('fileList'),fileCount:$('fileCount'),clearBtn:$('clearBtn'),compressBtn:$('compressBtn'),downloadAllBtn:$('downloadAllBtn'),progressWrap:$('progressWrap'),progressText:$('progressText'),progressPercent:$('progressPercent'),progressBar:$('progressBar'),progressRing:$('progressRing'),progressStage:$('progressStage'),results:$('results'),adNotice:$('adNotice'),adProbe:$('adProbe'),resultList:$('resultList'),startOverBtn:$('startOverBtn'),year:$('year')};
+const e={dropZone:$('dropZone'),fileInput:$('fileInput'),chooseBtn:$('chooseBtn'),controls:$('controls'),targetPreset:$('targetPreset'),customTargetWrap:$('customTargetWrap'),customTarget:$('customTarget'),format:$('format'),maxWidth:$('maxWidth'),quality:$('quality'),qualityValue:$('qualityValue'),settingsNotice:$('settingsNotice'),fileList:$('fileList'),fileCount:$('fileCount'),clearBtn:$('clearBtn'),compressBtn:$('compressBtn'),downloadAllBtn:$('downloadAllBtn'),progressWrap:$('progressWrap'),progressText:$('progressText'),progressPercent:$('progressPercent'),progressBar:$('progressBar'),progressRing:$('progressRing'),progressStage:$('progressStage'),resultGate:$('resultGate'),gateCountdown:$('gateCountdown'),gateMessage:$('gateMessage'),viewResultBtn:$('viewResultBtn'),results:$('results'),adNotice:$('adNotice'),adProbe:$('adProbe'),resultList:$('resultList'),startOverBtn:$('startOverBtn'),year:$('year')};
 const state={files:[],results:[],processing:false};
 const MAX_DIMENSION=16384,MIN_DIMENSION=16;
 const fmt=n=>n<1024?Math.round(n)+' B':n<1048576?(n/1024).toFixed(1)+' KB':(n/1048576).toFixed(2)+' MB';
@@ -33,7 +33,7 @@ function addFiles(list){
  renderFiles();
 }
 function clearResults(){state.results.forEach(x=>x.url&&URL.revokeObjectURL(x.url));state.results=[];e.results.hidden=true;e.resultList.replaceChildren();e.downloadAllBtn.disabled=true}
-function clearAll(){state.files.forEach(x=>URL.revokeObjectURL(x.url));state.files=[];clearResults();e.fileInput.value='';e.progressWrap.hidden=true;renderFiles()}
+function clearAll(){state.files.forEach(x=>URL.revokeObjectURL(x.url));state.files=[];clearResults();if(e.resultGate)e.resultGate.hidden=true;if(e.viewResultBtn)e.viewResultBtn.disabled=true;e.fileInput.value='';e.progressWrap.hidden=true;renderFiles()}
 async function loadImage(file){
  const u=URL.createObjectURL(file);
  try{return await new Promise((res,rej)=>{
@@ -116,12 +116,22 @@ function startLoadingAnimation(){
  const tick=()=>{const s=Math.min(9.99,(performance.now()-started)/1000);if(e.progressStage)e.progressStage.textContent=stages[Math.min(9,Math.floor(s))];if(e.progressRing)e.progressRing.style.setProperty('--loading',Math.min(100,s*10)+'%');if(state.processing)timer=setTimeout(tick,120)};tick();
  return()=>{clearTimeout(timer);if(e.progressRing)e.progressRing.style.setProperty('--loading','100%')}
 }
+async function waitForResultGate(){
+ if(!e.resultGate||!e.viewResultBtn)return;
+ e.resultGate.hidden=false;e.results.hidden=true;e.viewResultBtn.disabled=true;
+ let remaining=10;e.gateCountdown.textContent=String(remaining);
+ await new Promise(resolve=>{const id=setInterval(()=>{remaining-=1;e.gateCountdown.textContent=String(Math.max(0,remaining));if(remaining<=0){clearInterval(id);resolve()}},1000)});
+ e.viewResultBtn.disabled=false;e.gateMessage.textContent='Your result is ready. Click below to view and download it.';
+}
 async function compressAll(){
  if(state.processing||!state.files.length)return;
- state.processing=true;clearResults();e.compressBtn.disabled=true;e.progressWrap.hidden=false;const stopAnimation=startLoadingAnimation();
- for(let i=0;i<state.files.length;i++){const item=state.files[i];progress(i,state.files.length,'Compressing '+item.file.name+'…','Working locally in your browser');try{const r=await compressOne(item);r.url=URL.createObjectURL(r.blob);state.results.push(r)}catch(err){state.results.push({error:err.message,name:item.file.name})}renderResults();progress(i+1,state.files.length,'Finished '+(i+1)+' of '+state.files.length,'Your original files were not uploaded');await new Promise(r=>setTimeout(r,0))}
- state.processing=false;stopAnimation();e.compressBtn.disabled=!state.files.length;e.clearBtn.disabled=false;e.downloadAllBtn.disabled=!state.results.some(x=>x.blob);if(e.progressStage)e.progressStage.textContent='Done — ready to download'
+ state.processing=true;clearResults();e.compressBtn.disabled=true;e.progressWrap.hidden=false;
+ const stopAnimation=startLoadingAnimation();
+ for(let i=0;i<state.files.length;i++){const item=state.files[i];progress(i,state.files.length,'Compressing '+item.file.name+'…');try{const r=await compressOne(item);r.url=URL.createObjectURL(r.blob);state.results.push(r)}catch(err){state.results.push({error:err.message,name:item.file.name})}renderResults();progress(i+1,state.files.length,'Finished '+(i+1)+' of '+state.files.length);await new Promise(r=>setTimeout(r,0))}
+ state.processing=false;stopAnimation();e.compressBtn.disabled=!state.files.length;e.clearBtn.disabled=false;e.downloadAllBtn.disabled=!state.results.some(x=>x.blob);if(e.progressStage)e.progressStage.textContent='Compression complete — your result is ready';
+ await waitForResultGate();
 }
+
 function safeName(name){
  const base=String(name||'image').normalize('NFKC').replace(/[\\/<>:"|?*\x00-\x1F\x7F]/g,'_').replace(/\s+/g,' ').trim().replace(/^\.+|\.+$/g,'').slice(0,120);
  return base||'image';
@@ -135,6 +145,6 @@ function checkAdBlocker(){
  const blocked=s.display==='none'||s.visibility==='hidden'||e.adProbe.offsetHeight===0;
  if(blocked)e.adNotice.hidden=false;
 }
-e.chooseBtn.onclick=()=>e.fileInput.click();e.dropZone.onclick=x=>{if(!x.target.closest('button'))e.fileInput.click()};e.dropZone.onkeydown=x=>{if(x.key==='Enter'||x.key===' '){x.preventDefault();e.fileInput.click()}};e.fileInput.onchange=x=>addFiles(x.target.files);['dragenter','dragover'].forEach(x=>e.dropZone.addEventListener(x,y=>{y.preventDefault();e.dropZone.classList.add('dragover')}));['dragleave','drop'].forEach(x=>e.dropZone.addEventListener(x,y=>{y.preventDefault();e.dropZone.classList.remove('dragover')}));e.dropZone.ondrop=x=>addFiles(x.dataTransfer.files);e.targetPreset.onchange=()=>e.customTargetWrap.hidden=e.targetPreset.value!=='custom';e.quality.oninput=()=>e.qualityValue.textContent=e.quality.value+'%';e.fileList.onclick=x=>{const b=x.target.closest('[data-remove]');if(!b)return;const i=+b.dataset.remove;URL.revokeObjectURL(state.files[i].url);state.files.splice(i,1);renderFiles()};e.clearBtn.onclick=clearAll;e.compressBtn.onclick=compressAll;e.downloadAllBtn.onclick=downloadAll;e.resultList.onclick=x=>{const b=x.target.closest('[data-download]');if(b)download(state.results[+b.dataset.download])};e.startOverBtn.onclick=clearAll;renderFiles();
+e.chooseBtn.onclick=()=>e.fileInput.click();e.dropZone.onclick=x=>{if(!x.target.closest('button'))e.fileInput.click()};e.dropZone.onkeydown=x=>{if(x.key==='Enter'||x.key===' '){x.preventDefault();e.fileInput.click()}};e.fileInput.onchange=x=>addFiles(x.target.files);['dragenter','dragover'].forEach(x=>e.dropZone.addEventListener(x,y=>{y.preventDefault();e.dropZone.classList.add('dragover')}));['dragleave','drop'].forEach(x=>e.dropZone.addEventListener(x,y=>{y.preventDefault();e.dropZone.classList.remove('dragover')}));e.dropZone.ondrop=x=>addFiles(x.dataTransfer.files);e.targetPreset.onchange=()=>e.customTargetWrap.hidden=e.targetPreset.value!=='custom';e.quality.oninput=()=>e.qualityValue.textContent=e.quality.value+'%';e.fileList.onclick=x=>{const b=x.target.closest('[data-remove]');if(!b)return;const i=+b.dataset.remove;URL.revokeObjectURL(state.files[i].url);state.files.splice(i,1);renderFiles()};e.clearBtn.onclick=clearAll;e.compressBtn.onclick=compressAll;e.downloadAllBtn.onclick=downloadAll;e.resultList.onclick=x=>{const b=x.target.closest('[data-download]');if(b)download(state.results[+b.dataset.download])};e.startOverBtn.onclick=clearAll;e.viewResultBtn.onclick=()=>{e.resultGate.hidden=true;e.results.hidden=false;e.results.scrollIntoView({behavior:'smooth',block:'start'})};renderFiles();
 setTimeout(checkAdBlocker,1400);
 })();
