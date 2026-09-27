@@ -107,3 +107,46 @@ body{padding-bottom:108px}
   .workspace-grid{grid-template-columns:1fr}
   .desktop-rail{display:none}
 }
+
+/* Temporary house/mock creatives for empty ad inventory.
+   Clearly labeled so they cannot be mistaken for live third-party ads. */
+.mock-ad{position:relative;overflow:hidden;min-height:110px!important;padding:20px 28px!important;justify-content:space-between!important;gap:20px;background:linear-gradient(120deg,#ffffff 0%,#eef8f2 100%)!important;color:var(--ink)!important;text-transform:none!important;letter-spacing:0!important}
+.mock-ad-copy{display:flex;flex-direction:column;align-items:flex-start;text-align:left;position:relative;z-index:2;max-width:72%}
+.mock-ad-copy small,.bottom-ad-inner small{font-size:.58rem;font-weight:900;letter-spacing:.13em;color:#87948e;margin-bottom:5px}
+.mock-ad-copy strong{font-size:1rem;line-height:1.2;letter-spacing:-.02em}
+.mock-ad-copy span{font-size:.74rem;color:var(--muted);margin-top:5px}
+.mock-ad-copy b{font-size:.72rem;color:var(--accent-dark);margin-top:7px}
+.mock-ad-art{position:relative;width:120px;height:74px;flex:0 0 120px}
+.mock-ad-art i{position:absolute;display:block;border-radius:14px;transform:rotate(-8deg);border:1px solid rgba(18,32,26,.08)}
+.mock-ad-art i:nth-child(1){width:58px;height:58px;right:28px;top:8px;background:#dff2e7}
+.mock-ad-art i:nth-child(2){width:42px;height:42px;right:2px;top:25px;background:#bfe5d0;transform:rotate(12deg)}
+.mock-ad-art i:nth-child(3){width:34px;height:34px;right:64px;top:0;background:#f4d9a7;transform:rotate(18deg)}
+.mock-ad-rail{min-height:250px!important;padding:22px!important;position:relative;overflow:hidden;display:flex!important;align-items:flex-start!important;justify-content:flex-end!important;background:linear-gradient(155deg,#ffffff,#eef8f2)!important;text-transform:none!important;letter-spacing:0!important}
+.mock-ad-rail .mock-ad-copy{max-width:100%;width:100%}
+.mock-ad-rail .mock-ad-copy strong{font-size:1.05rem}
+.mock-ad-rail .mock-ad-art{position:absolute;right:-4px;bottom:8px;opacity:.9}
+.mock-ad-mid,.mock-ad-bottom{min-height:110px!important}
+.bottom-ad-banner{padding:8px 12px!important}
+.bottom-ad-inner{min-height:76px!important;justify-content:flex-start!important;text-align:left!important;text-transform:none!important;letter-spacing:0!important}
+.bottom-ad-inner>div:last-child{display:flex;flex-direction:column;align-items:flex-start;min-width:0}
+.bottom-ad-inner strong{font-size:.82rem;line-height:1.25}
+.bottom-ad-inner a{font-size:.72rem;margin-top:3px}
+.bottom-ad-art{position:relative;width:70px;height:52px;flex:0 0 70px;margin-left:4px}
+.bottom-ad-art i{position:absolute;width:34px;height:34px;border-radius:9px;background:#dff2e7;border:1px solid rgba(18,32,26,.08);transform:rotate(-9deg)}
+.bottom-ad-art i:nth-child(2){left:18px;top:8px;background:#bfe5d0;transform:rotate(12deg)}
+.bottom-ad-art i:nth-child(3){left:34px;top:2px;background:#f4d9a7;transform:rotate(20deg)}
+/* Make the actual result visually prominent after the preparation gate. */
+.results .result-row{grid-template-columns:150px minmax(0,1fr) auto;gap:18px;padding:14px}
+.results .result-row .thumb{width:150px;height:110px;border-radius:12px;object-fit:contain;background:#f1f5f2;border:1px solid var(--line)}
+.results .result-meta strong{font-size:.96rem}
+.results .result-meta span{display:block;margin-top:4px}
+@media(max-width:700px){
+ .mock-ad{padding:16px!important}
+ .mock-ad-art{width:80px;flex-basis:80px;transform:scale(.8);transform-origin:right center}
+ .mock-ad-copy{max-width:75%}
+ .results .result-row{grid-template-columns:96px 1fr}
+ .results .result-row .thumb{width:96px;height:90px}
+ .results .result-actions{grid-column:2}
+ .bottom-ad-inner{min-height:68px!important}
+ .bottom-ad-art{display:none}
+}
