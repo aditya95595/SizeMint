@@ -9,20 +9,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="manifest" href="site.webmanifest"><link rel="stylesheet" href="styles.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"SizeMint","url":"https://sizemint.pages.dev/","applicationCategory":"MultimediaApplication","operatingSystem":"Any","description":"Browser-based image compressor for targeting practical image file sizes without uploading files."}</script>
 </head>
-<body class="access-checking"><div class="access-gate" id="accessGate" aria-modal="true" role="dialog">
-<div class="access-gate-bg" aria-hidden="true"><span></span><span></span><span></span></div>
-<div class="access-card">
-<div class="access-logo"><img src="logo.svg" alt="SizeMint"></div>
-<div class="access-icon" id="accessIcon">✓</div>
-<p class="eyebrow">SITE ACCESS CHECK</p>
-<h2 id="accessTitle">Checking your browser…</h2>
-<p id="accessText">SizeMint is checking that advertising isn't being blocked before opening the compressor.</p>
-<div class="access-status" id="accessStatus"><i></i><span>Running check</span></div>
-<div class="access-help" id="accessHelp" hidden><strong>How to continue</strong><ol><li>Open your ad-blocker extension or browser protection settings.</li><li>Allow ads for SizeMint, or disable the blocking rule for this site.</li><li>If you use DNS filtering, allow the advertising domains required by your ad provider.</li><li>Return here and press <b>Check again</b>.</li></ol><p>SizeMint cannot change browser extensions or DNS settings for you.</p></div>
-<button class="btn primary large access-retry" id="accessRetry" type="button" hidden>Check again</button>
-<small class="access-note">This check only controls access to the site. SizeMint does not modify your browser, extensions, or DNS settings.</small>
-</div></div>
-<header class="site-header"><div class="container nav-wrap"><a class="brand" href="index.html" aria-label="SizeMint home"><img class="wordmark" src="logo.svg" alt="SizeMint"></a><nav aria-label="Main navigation"><a class="active" href="index.html">Compressor</a><a href="guides.html">Guides</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav></div></header>
+<body><header class="site-header"><div class="container nav-wrap"><a class="brand" href="index.html" aria-label="SizeMint home"><img class="wordmark" src="logo.svg" alt="SizeMint"></a><nav aria-label="Main navigation"><a class="active" href="index.html">Compressor</a><a href="guides.html">Guides</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav></div></header>
 <main>
 <section class="hero"><div class="container hero-grid"><div><p class="eyebrow">BROWSER-BASED IMAGE COMPRESSOR</p><h1>Compress images to <span>any size.</span></h1><p class="hero-copy">Set a target such as 100KB, 200KB or 1MB. SizeMint processes your images in your browser, so your image files do not need to be uploaded to a SizeMint server.</p><div class="trust-row"><span>✓ No image upload</span><span>✓ JPG · PNG · WebP · AVIF</span><span>✓ Desktop & mobile</span></div></div><div class="hero-card"><p class="eyebrow">A practical workflow</p><div class="mini-stat"><strong>1 · Pick a limit</strong><span>100 KB</span></div><div class="mini-stat"><strong>2 · Compress locally</strong><span>In your browser</span></div><div class="mini-stat"><strong>3 · Download</strong><span>Your result</span></div><p class="hero-note">No account or image-upload service is needed for the core tool.</p></div></div></section>
 <section class="tool-section"><div class="container"><div class="tool-card">
@@ -38,10 +25,10 @@
 <div class="action-row"><button class="btn primary large" id="compressBtn" type="button" disabled>Compress images</button><button class="btn secondary large" id="downloadAllBtn" type="button" disabled>Download all</button></div>
 <div class="progress-wrap" id="progressWrap" hidden><div class="progress-meta"><span id="progressText">Preparing…</span><span id="progressPercent">0%</span></div><div class="progress"><i id="progressBar"></i></div><div class="processing-card"><div class="progress-ring" id="progressRing" aria-hidden="true"><span>10s</span></div><div><strong>Working locally</strong><p id="progressStage">Your image stays in this browser while SizeMint searches for a result under your target.</p></div></div></div>
 </div>
-<div class="result-gate" id="resultGate" hidden aria-live="polite"><div class="gate-card"><p class="eyebrow">RESULT READY</p><h3>Your compressed image is ready</h3><p id="gateMessage">Your result is ready. Please wait <strong id="gateCountdown">10</strong> seconds before viewing it.</p><div class="gate-ad" aria-label="Advertisement"><span>Advertisement</span></div><button class="btn primary large" id="viewResultBtn" type="button" disabled>View my result</button></div></div><div class="results" id="results" hidden><div class="results-head"><div><p class="eyebrow">DONE</p><h2>Compressed images</h2></div><button class="text-btn" id="startOverBtn" type="button">Start over</button></div><div id="resultList"></div></div>
+<div class="results" id="results" hidden><div class="results-head"><div><p class="eyebrow">DONE</p><h2>Compressed images</h2></div><button class="text-btn" id="startOverBtn" type="button">Start over</button></div><div id="resultList"></div></div>
 </div></div></section>
 
-<section class="ad-section"><div class="container"><div class="ad-slot" aria-label="Advertisement"><span>Advertisement</span><i id="adProbe" class="sm-access-signal" aria-hidden="true"></i></div><div class="ad-notice" id="adNotice" hidden><strong>Ads appear to be blocked in this browser.</strong><span>That is okay — SizeMint remains usable. If you want to support the site, allow ads for this site in your blocker and refresh. Never click an ad just to support us.</span></div></div></section>
+<section class="ad-section"><div class="container"><div class="ad-slot" aria-label="Advertisement"><span>Advertisement</span><i id="adProbe" class="sm-access-signal" aria-hidden="true"></i></div></div></section>
 
 <section class="info-section"><div class="container info-grid"><article><span class="info-icon">1</span><h3>Choose a target</h3><p>Pick a preset from 20KB to 5MB, or enter your own target in KB.</p></article><article><span class="info-icon">2</span><h3>Adjust if needed</h3><p>Choose output format, quality and an optional maximum width.</p></article><article><span class="info-icon">3</span><h3>Download locally</h3><p>Your browser creates the result locally. The compressor does not need an image-upload service.</p></article></div></section>
 
