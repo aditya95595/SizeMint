@@ -6,7 +6,6 @@ const state={files:[],results:[]};
 const fmt=n=>n<1024?Math.round(n)+' B':n<1048576?(n/1024).toFixed(1)+' KB':(n/1048576).toFixed(2)+' MB';
 const ext=t=>t==='image/png'?'png':t==='image/jpeg'?'jpg':t==='image/avif'?'avif':'webp';
 const target=()=>e.targetPreset.value==='custom'?Math.max(1024,Number(e.customTarget.value||1)*1024):Number(e.targetPreset.value);
-const esc=s=>String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
 function progress(done,total,text){const p=total?Math.round(done/total*100):0;e.progressText.textContent=text;e.progressPercent.textContent=p+'%';e.progressBar.style.width=p+'%'}
 function renderFiles(){
  e.fileCount.textContent=state.files.length+' image'+(state.files.length===1?'':'s');
@@ -79,7 +78,7 @@ function renderResults(){
   actions.append(badge,btn);row.append(img,meta,actions);e.resultList.appendChild(row);
  });
 }
-async function compressAll(){clearResults();e.compressBtn.disabled=true;e.progressWrap.hidden=false;const started=performance.now();for(let i=0;i<state.files.length;i++){const item=state.files[i];progress(i,state.files.length,'Compressing '+item.file.name+'…');try{const r=await compressOne(item);r.url=URL.createObjectURL(r.blob);state.results.push(r)}catch(err){state.results.push({error:err.message,name:item.file.name})}renderResults();progress(i+1,state.files.length,'Finished '+(i+1)+' of '+state.files.length);await new Promise(r=>setTimeout(r,0))}const minDisplayMs=1800;const remaining=minDisplayMs-(performance.now()-started);if(remaining>0){progress(state.files.length,state.files.length,'Finishing…');await new Promise(r=>setTimeout(r,remaining))}e.compressBtn.disabled=false;e.downloadAllBtn.disabled=!state.results.some(x=>x.blob)}
+async function compressAll(){clearResults();e.compressBtn.disabled=true;e.progressWrap.hidden=false;for(let i=0;i<state.files.length;i++){const item=state.files[i];progress(i,state.files.length,'Compressing '+item.file.name+'…');try{const r=await compressOne(item);r.url=URL.createObjectURL(r.blob);state.results.push(r)}catch(err){state.results.push({error:err.message,name:item.file.name})}renderResults();progress(i+1,state.files.length,'Finished '+(i+1)+' of '+state.files.length);await new Promise(r=>setTimeout(r,0))}e.compressBtn.disabled=false;e.downloadAllBtn.disabled=!state.results.some(x=>x.blob)}
 function safeName(name){
  const base=String(name||'image').normalize('NFKC').replace(/[\\/<>:"|?*\x00-\x1F\x7F]/g,'_').replace(/\s+/g,' ').trim().replace(/^\.+|\.+$/g,'').slice(0,120);
  return base||'image';
