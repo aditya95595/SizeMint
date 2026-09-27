@@ -103,8 +103,8 @@ body{padding-bottom:108px}
 @media(min-width:901px){
   .workspace-grid{
     width:min(1400px,calc(100% - 32px));
-    grid-template-columns:minmax(0,1fr) 300px;
-    grid-template-areas:"main rail";
+    grid-template-columns:300px minmax(0,1fr);
+    grid-template-areas:"rail main";
     gap:28px;
     align-items:start;
   }
