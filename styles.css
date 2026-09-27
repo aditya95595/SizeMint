@@ -32,13 +32,12 @@
 .result-gate{margin-top:18px;animation:popIn .3s ease both}.gate-card{padding:28px;text-align:center;border:1px solid var(--line);border-radius:18px;background:linear-gradient(135deg,#fff,#f4faf6);box-shadow:0 16px 40px rgba(18,32,26,.07)}.gate-card h3{font-size:1.55rem;margin:4px 0 8px}.gate-card p{color:var(--muted);margin:0 auto 16px}.gate-progress{height:8px;max-width:560px;margin:16px auto 18px;background:#e8f0eb;border-radius:999px;overflow:hidden}.gate-progress i{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--accent),#64c39b,var(--accent));background-size:220% 100%;animation:shimmer 2s linear infinite;transition:width .1s linear}.gate-card .btn{min-width:190px}.gate-card .btn:disabled{opacity:.5}.gate-note{display:block;max-width:620px;margin:14px auto 0;color:#7b8882;font-size:.78rem;line-height:1.5}
 @media(max-width:520px){.gate-card{padding:24px 18px}.gate-card .btn{width:100%}}
 
-/* Desktop workspace + sponsor rail */
-.workspace-grid{width:min(1400px,calc(100% - 32px));display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:32px;align-items:start;grid-template-areas:"main rail"}
-.workspace-grid>.tool-card{grid-area:main}
-.workspace-grid>.desktop-rail{grid-area:rail}
-.desktop-rail{min-width:0}
-.rail-sticky{position:sticky;top:96px;display:grid;gap:14px}
-.rail-label{font-size:.66rem;font-weight:850;letter-spacing:.14em;color:#87948e;text-align:center}
+/* Separate sponsor section */
+.sponsor-section{padding:0 0 70px;background:var(--bg)}
+.sponsor-section-inner{display:flex;justify-content:flex-end}
+.sponsor-section-card{width:min(360px,100%);display:grid;gap:14px}
+.sponsor-section-card .sponsor-card{width:100%;max-width:none}
+.sponsor-section-card .rail-ad{width:100%;max-width:none}
 .sponsor-card{position:relative;overflow:hidden;padding:24px;border:1px solid #cfe4d8;border-radius:20px;background:linear-gradient(155deg,#ffffff 0%,#f0f9f4 100%);box-shadow:0 16px 42px rgba(18,32,26,.07)}
 .sponsor-card:before{content:"";position:absolute;width:160px;height:160px;border-radius:50%;right:-76px;top:-76px;background:rgba(31,143,98,.10)}
 .sponsor-mark{position:relative;width:44px;height:44px;display:grid;place-items:center;margin-bottom:20px;border-radius:13px;background:var(--ink);color:#fff;font-size:.76rem;font-weight:900;letter-spacing:-.03em}
@@ -48,15 +47,12 @@
 .sponsor-link{position:relative;display:flex;align-items:center;justify-content:space-between;gap:10px;text-decoration:none;color:var(--accent-dark);font-size:.82rem;font-weight:800;padding-top:14px;border-top:1px solid #dbe9e1}
 .sponsor-link span{font-size:1.05rem;transition:transform .18s ease}
 .sponsor-link:hover span{transform:translateX(3px)}
-.rail-ad{min-height:280px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.62);display:flex;align-items:center;justify-content:center;color:#9aa49f;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase}
-@media(max-width:900px){
- .workspace-grid{width:min(100% - 22px,1120px);grid-template-columns:1fr;grid-template-areas:"main"}
- .desktop-rail{display:none}
+.rail-ad{min-height:250px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.62);display:flex;align-items:center;justify-content:center;color:#9aa49f;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase}
+@media(max-width:600px){
+ .sponsor-section{padding-bottom:40px}
+ .sponsor-section-inner{justify-content:stretch}
+ .sponsor-section-card{width:100%}
 }
-@media(min-width:901px){
- .tool-card{min-width:0}
-}
-
 /* Sponsorship page */
 .sponsor-page .sponsor-lead{font-size:1.08rem;max-width:680px;margin:0 0 34px}.sponsor-panel{display:grid;grid-template-columns:64px 1fr;gap:22px;align-items:start;margin:34px 0;padding:28px;border:1px solid #cfe4d8;border-radius:20px;background:linear-gradient(155deg,#fff,#f0f9f4);box-shadow:0 16px 42px rgba(18,32,26,.07)}.sponsor-panel-mark{width:56px;height:56px;display:grid;place-items:center;border-radius:16px;background:var(--ink);color:#fff;font-weight:900}.sponsor-panel h2{margin:0 0 10px}.sponsor-panel p{margin:0 0 18px}.sponsor-page ul{padding-left:20px}.sponsor-contact{margin-top:44px;padding:26px;border:1px solid var(--line);border-radius:18px;background:#fff}.sponsor-contact h2{margin-top:0}.sponsor-contact .sponsor-note{font-size:.85rem;color:#7b8882;margin:16px 0 0}@media(max-width:520px){.sponsor-panel{grid-template-columns:1fr;padding:22px}.sponsor-panel-mark{margin-bottom:2px}}
 
@@ -98,32 +94,6 @@ body{padding-bottom:108px}
 .bottom-ad-inner{min-height:72px}
 .bottom-ad-inner>span{display:none}
 .bottom-ad-inner a{font-size:.8rem}
-
-/* Desktop only: preserve the right-side sponsor rail. */
-@media(min-width:901px){
-  .workspace-grid{
-    width:min(1400px,calc(100% - 32px));
-    grid-template-columns:300px minmax(0,1fr);
-    grid-template-areas:"rail main";
-    gap:28px;
-    align-items:start;
-  }
-  .workspace-grid>.tool-card{
-    grid-area:main;
-    min-width:0;
-  }
-  .workspace-grid>.desktop-rail{
-    grid-area:rail;
-    display:block;
-    width:300px;
-    min-width:300px;
-    justify-self:end;
-  }
-}
-@media(max-width:900px){
-  .workspace-grid{grid-template-columns:1fr}
-  .desktop-rail{display:none}
-}
 
 /* Temporary house/mock creatives for empty ad inventory.
    Clearly labeled so they cannot be mistaken for live third-party ads. */
