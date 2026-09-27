@@ -78,7 +78,7 @@ async function fitTarget(img,type,targetBytes,maxWidth,quality){
 async function compressOne(item){
  const file=item.file,t=target(),mw=Math.min(12000,Math.max(0,Number(e.maxWidth.value)||0)),q=Number(e.quality.value)/100;
  const img=await loadImage(file);
- if(e.format.value==='auto'&&!mw&&file.size<=t&&/^image\\/(jpeg|png|webp)$/.test(file.type))return {blob:file,type:file.type,original:file.size,target:t,targetReached:true,width:img.naturalWidth,height:img.naturalHeight,name:file.name};
+ if(e.format.value==='auto'&&!mw&&file.size<=t&&/^image\/(jpeg|png|webp)$/.test(file.type))return {blob:file,type:file.type,original:file.size,target:t,targetReached:true,width:img.naturalWidth,height:img.naturalHeight,name:file.name};
  const types=e.format.value==='auto'?['image/webp','image/jpeg']:[e.format.value];
  let last=null;
  for(const type of types){
