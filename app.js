@@ -121,8 +121,7 @@ async function compressAll(){
  state.processing=true;clearResults();e.compressBtn.disabled=true;e.progressWrap.hidden=false;
  const stopAnimation=startLoadingAnimation();
  for(let i=0;i<state.files.length;i++){const item=state.files[i];progress(i,state.files.length,'Compressing '+item.file.name+'…');try{const r=await compressOne(item);r.url=URL.createObjectURL(r.blob);state.results.push(r)}catch(err){state.results.push({error:err.message,name:item.file.name})}renderResults();progress(i+1,state.files.length,'Finished '+(i+1)+' of '+state.files.length);await new Promise(r=>setTimeout(r,0))}
- state.processing=false;stopAnimation();e.compressBtn.disabled=!state.files.length;e.clearBtn.disabled=false;e.downloadAllBtn.disabled=!state.results.some(x=>x.blob);if(e.progressStage)e.progressStage.textContent='Compression complete — your result is ready';
- await waitForResultGate();
+ state.processing=false;stopAnimation();e.compressBtn.disabled=!state.files.length;e.clearBtn.disabled=false;e.downloadAllBtn.disabled=!state.results.some(x=>x.blob);if(e.progressStage)e.progressStage.textContent='Compression complete — your result is ready';e.results.hidden=false;e.results.scrollIntoView({behavior:'smooth',block:'start'});
 }
 
 function safeName(name){
