@@ -2,60 +2,81 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Image Compression Guides — SizeMint</title>
-<meta name="description" content="Practical guides to compress images for upload limits, choose JPG or WebP, and reduce image size without unnecessary quality loss.">
-<meta name="robots" content="index,follow"><link rel="canonical" href="https://sizemint.pages.dev/guides.html">
+<title>Image Compression Guides — 100KB, JPG, WebP, PNG & More | SizeMint</title>
+<meta name="description" content="Practical, original guides for compressing images to 100KB and other limits, choosing JPG vs WebP vs PNG, resizing before compression, and diagnosing difficult image-size targets.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://sizemint.tool-web.workers.dev/guides.html">
 <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="site-header"><div class="container nav-wrap"><a class="brand" href="index.html" aria-label="SizeMint home"><img class="wordmark" src="logo.svg" alt="SizeMint"></a><nav aria-label="Main navigation"><a href="index.html">Compressor</a><a class="active" href="guides.html">Guides</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav></div></header>
-<main class="page"><div class="container narrow">
-<p class="eyebrow">SIZEMINT GUIDES</p><h1>Practical image-compression guides.</h1>
-<p>Image compression is not simply a matter of choosing the lowest quality setting. The best result depends on the original dimensions, the image format, where the image will be used and the file-size limit you need to meet. These guides explain the decisions in plain language.</p>
+<header class="site-header"><div class="container nav-wrap">
+<a class="brand" href="index.html" aria-label="SizeMint home"><img class="wordmark" src="logo.svg" alt="SizeMint"></a>
+<nav class="desktop-nav" aria-label="Main navigation"><a href="index.html">Compressor</a><a class="active" aria-current="page" href="guides.html">Guides</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
+<details class="mobile-nav"><summary>Menu</summary><div class="mobile-nav-panel"><a href="index.html">Compressor</a><a class="active" aria-current="page" href="guides.html">Guides</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></details>
+</div></header>
+<main class="page">
+<div class="container narrow">
+<p class="eyebrow">SIZEMINT GUIDES</p>
+<h1>Practical image compression, without the guesswork.</h1>
+<p class="page-lead">The right compression setting depends on the destination, the image and the file-size requirement. These guides focus on the decisions that actually change the result.</p>
 
 <div class="ad-slot" aria-label="Advertisement"><span>Advertisement</span></div>
 
-<article class="guide-article">
+<article class="guide-article" id="100kb">
 <h2>How to compress an image to 100KB</h2>
-<p>A 100KB limit is common for forms, profile pictures, document portals and other upload workflows. Start by checking the original image dimensions. A very large photograph may contain far more pixels than the destination actually needs, so reducing width can preserve better visual quality than aggressively lowering encoder quality.</p>
-<h3>Step 1: choose the 100KB target</h3>
-<p>Open the SizeMint compressor and select <strong>100KB</strong>. If the image is already below that limit and you do not need to change its format or dimensions, there may be nothing to gain from recompressing it.</p>
-<h3>Step 2: choose a suitable format</h3>
-<p>For photographs, WebP or JPG is usually more practical than PNG when a small file is the priority. PNG is lossless and can remain large for detailed photographs. If the image contains transparency or needs lossless storage, PNG may still be the right choice even when the target is harder to reach.</p>
-<h3>Step 3: reduce dimensions when necessary</h3>
-<p>If the image is several thousand pixels wide, try setting a maximum width appropriate for its final use. A profile image or form upload rarely needs the full resolution of a modern phone camera. Smaller dimensions can reduce both the number of pixels and the amount of detail the encoder has to store.</p>
-<h3>Step 4: inspect the result</h3>
-<p>Do not judge the result only by the byte count. Open the downloaded image at its intended display size and check faces, text, edges and fine details. If the result is visibly degraded, increase the target or use a larger maximum width and accept a somewhat larger file.</p>
+<p>A 100KB limit is a concrete constraint, so start with the constraint rather than a generic quality number. In SizeMint, select the 100KB target and let the compressor search for a suitable encoding.</p>
+<h3>1. Look at the source dimensions</h3>
+<p>A modern phone can produce an image thousands of pixels wide. If the destination displays the image at a much smaller size, preserving every source pixel may be wasteful. Setting a sensible maximum width can make a larger quality setting possible while still meeting the byte limit.</p>
+<h3>2. Pick the format that matches the image</h3>
+<p>Photographs usually benefit from JPG or WebP. Screenshots, simple graphics and transparent artwork may need PNG. If the destination accepts WebP, it can be a useful option when the goal is a small photographic file.</p>
+<h3>3. Inspect important details</h3>
+<p>After compression, check faces, text, thin lines and high-contrast edges. A file can meet 100KB while looking worse than necessary if the dimensions or quality were pushed too far.</p>
+<h3>4. If 100KB is impossible, change the trade-off</h3>
+<p>Some images simply contain too much information for a very small target. Reduce dimensions, accept a slightly larger target, or use a more efficient output format when the destination permits it.</p>
 </article>
 
-<article class="guide-article">
-<h2>JPG vs WebP vs PNG: which should you choose?</h2>
-<p><strong>JPG</strong> is a long-established choice for photographs. It is supported almost everywhere and handles continuous-tone images well, but repeated saves and strong compression can create visible artifacts around edges and fine detail.</p>
-<p><strong>WebP</strong> is a modern image format designed for efficient web delivery. It supports lossy and lossless compression and is often a useful default for photographs when the software receiving the file accepts it.</p>
-<p><strong>PNG</strong> is lossless and supports transparency. It is particularly useful for screenshots, diagrams, logos and graphics where crisp edges or exact pixel values matter. For ordinary photographs, however, PNG can be substantially larger than a lossy format.</p>
-<p>When you are unsure, start with automatic output for a photograph and compare the result. If the destination explicitly requires JPG or PNG, choose that format rather than relying on automatic conversion.</p>
+<article class="guide-article" id="formats">
+<h2>JPG vs WebP vs PNG: a practical choice</h2>
+<p><strong>JPG</strong> is a dependable choice for photographs and remains widely supported. It is lossy, so strong compression can produce visible artifacts.</p>
+<p><strong>WebP</strong> is a modern web-oriented format with lossy and lossless modes. It often offers a useful balance for photographs and general web images.</p>
+<p><strong>PNG</strong> preserves image data losslessly and supports transparency. It is excellent for logos, diagrams, screenshots and graphics, but a photographic PNG can be much larger than a JPG or WebP.</p>
+<p>When a destination explicitly requires one format, follow that requirement. Otherwise, compare the actual output at its intended display size rather than assuming one format is always best.</p>
 </article>
 
-<article class="guide-article">
+<article class="guide-article" id="dimensions">
+<h2>Why resizing can beat aggressive compression</h2>
+<p>File size is influenced by both the number of pixels and how those pixels are encoded. If an image is 6000 pixels wide but will be displayed at 900 pixels, keeping all 6000 pixels can make a small upload target unnecessarily difficult.</p>
+<p>Reducing width first can preserve a cleaner-looking image than forcing a very low quality setting. The right maximum width depends on the destination: an avatar, a document thumbnail and a full-width website image have different needs.</p>
+</article>
+
+<article class="guide-article" id="quality">
 <h2>How to reduce image size without making it look bad</h2>
-<p>There are three main levers: dimensions, format and compression quality. Changing all three aggressively at once makes it difficult to understand why an image became blurry or blocky.</p>
 <ul>
-<li><strong>Start with dimensions.</strong> Match the maximum width to the actual display or upload requirement.</li>
-<li><strong>Choose the right format.</strong> Use a lossy format for photographs when the destination permits it; use PNG when lossless output or transparency matters.</li>
-<li><strong>Use moderate quality.</strong> Lower quality gradually and inspect important details rather than choosing the lowest possible value.</li>
-<li><strong>Compare at real size.</strong> An image that looks soft when zoomed to 300% may look completely fine at the size visitors actually see.</li>
-<li><strong>Keep an original.</strong> Compression is usually a one-way operation. Keep the original file if you may need to edit or export it again later.</li>
+<li><strong>Start from the destination.</strong> Know the maximum bytes and approximate display dimensions.</li>
+<li><strong>Resize when appropriate.</strong> Remove pixels that the destination cannot display meaningfully.</li>
+<li><strong>Choose the format intentionally.</strong> Use JPG/WebP for many photographs and PNG where lossless data or transparency matters.</li>
+<li><strong>Use moderate quality.</strong> Extreme quality reductions can create halos, blockiness and smeared textures.</li>
+<li><strong>Check the result at real size.</strong> A zoomed-in artifact may be irrelevant—or a small artifact around text may be very noticeable.</li>
+<li><strong>Keep the original.</strong> Treat compressed output as a derivative, not a replacement for your source.</li>
 </ul>
 </article>
 
-<article class="guide-article">
-<h2>Why some images refuse to reach a small target</h2>
-<p>There is no universal relationship between dimensions and file size. A simple illustration with large flat areas can compress extremely well, while a noisy photograph with foliage, hair or texture may require more bytes to preserve similar detail. Browser encoders also have their own limits and behavior.</p>
-<p>For that reason, a responsible compressor should report when a target could not be reached instead of claiming an exact result. SizeMint may reduce dimensions when necessary, but it still reports the final size so you can decide whether the trade-off is acceptable.</p>
+<article class="guide-article" id="difficult-targets">
+<h2>Why some images refuse to reach a tiny target</h2>
+<p>There is no fixed “pixels = bytes” formula. A clean illustration with flat colors can compress very differently from a noisy photograph full of leaves, hair, grass or fine texture. Transparency can also affect how a format behaves.</p>
+<p>Browser encoders have their own limits, too. A responsible tool should report when a target cannot be reached instead of claiming an exact size that it did not actually produce.</p>
+</article>
+
+<article class="guide-article" id="website-images">
+<h2>Preparing images for a website</h2>
+<p>For website images, think about the rendered size first. Serving a 4000-pixel image into a 700-pixel container creates unnecessary work for visitors. Exporting a suitably sized derivative can reduce transfer size while keeping the image sharp at its actual display dimensions.</p>
+<p>Use modern formats when your publishing system and audience support them, and keep a fallback format when compatibility requires it. Compression should be paired with sensible dimensions rather than used as the only performance technique.</p>
 </article>
 
 <h2>Use the compressor</h2>
-<p>When you know the target you need, <a href="index.html">open the SizeMint compressor</a>. Your selected image can be processed in the browser without an image-upload endpoint.</p>
-</div></main>
-<footer><div class="container footer-wrap"><span>© <span id="year"></span> SizeMint</span><div><a href="index.html">Compressor</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></div></footer>
-<script src="site.js" defer></script></body></html>
+<p>Ready to test a target? <a href="index.html#compressor">Open the SizeMint compressor</a> and start with the actual limit you need to meet.</p>
+</div>
+</main>
+<footer><div class="container footer-wrap"><span>© <span id="year"></span> SizeMint</span><div><a href="index.html">Compressor</a><a href="about.html">About</a><a href="sponsor.html">Advertise</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></div></footer>
+<script src="site.js" defer></script>
+</body></html>
