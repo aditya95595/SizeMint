@@ -161,18 +161,43 @@ function setAccess(blocked){
  }
 }
 function checkAdBlocker(){
- if(!e.accessGate||!e.adProbe){setAccess(false);return}
+ if(!e.accessGate){return}
  e.accessGate.hidden=false;e.accessRetry.hidden=true;e.accessHelp.hidden=true;
  e.accessTitle.textContent='Checking your browser…';
- e.accessText.textContent='Testing the advertising area and blocker signals before opening the compressor.';
+ e.accessText.textContent='Testing several independent blocker signals before opening the compressor.';
  const status=e.accessStatus.querySelector('span');if(status)status.textContent='Running check';
  setTimeout(()=>{
-  const s=getComputedStyle(e.adProbe);
-  const blocked=s.display==='none'||s.visibility==='hidden'||e.adProbe.offsetHeight===0||e.adProbe.offsetWidth===0;
-  const bait=document.querySelectorAll('.ad-probe,.adsbox,.ad-container');
-  const hidden=[...bait].filter(x=>{const q=getComputedStyle(x);return q.display==='none'||q.visibility==='hidden'||x.offsetHeight===0}).length;
-  setAccess(blocked||hidden>=2);
- },650);
+  const isHidden=x=>{
+   if(!x)return true;
+   const q=getComputedStyle(x),r=x.getBoundingClientRect();
+   return q.display==='none'||q.visibility==='hidden'||q.contentVisibility==='hidden'||r.width===0||r.height===0;
+  };
+  const signalHidden=isHidden(e.adProbe);
+  const holder=document.createElement('div');
+  holder.setAttribute('aria-hidden','true');
+  holder.style.cssText='position:absolute;left:-10000px;top:-10000px;width:1px;height:1px;overflow:hidden;pointer-events:none;';
+  const baitNames=['adsbox','ad-banner','ad-unit','advertisement-slot'];
+  const baits=baitNames.map(name=>{
+   const node=document.createElement('div');
+   node.className=name;
+   node.style.cssText='display:block;width:8px;height:8px;position:absolute;left:0;top:0;';
+   holder.appendChild(node);
+   return node;
+  });
+  document.body.appendChild(holder);
+  const hiddenBaits=baits.filter(isHidden).length;
+  holder.remove();
+
+  /*
+   * The old implementation blocked on one element carrying several ad-like
+   * class names. Privacy tools can hide those class names even when the user
+   * has disabled their blocker, which caused the false positive seen in
+   * Chrome. Require two independent bait failures, or a neutral signal plus
+   * at least one bait failure.
+   */
+  const blocked=(hiddenBaits>=2)||(signalHidden&&hiddenBaits>=1);
+  setAccess(blocked);
+ },700);
 }
 e.chooseBtn.onclick=()=>e.fileInput.click();e.dropZone.onclick=x=>{if(!x.target.closest('button'))e.fileInput.click()};e.dropZone.onkeydown=x=>{if(x.key==='Enter'||x.key===' '){x.preventDefault();e.fileInput.click()}};e.fileInput.onchange=x=>addFiles(x.target.files);['dragenter','dragover'].forEach(x=>e.dropZone.addEventListener(x,y=>{y.preventDefault();e.dropZone.classList.add('dragover')}));['dragleave','drop'].forEach(x=>e.dropZone.addEventListener(x,y=>{y.preventDefault();e.dropZone.classList.remove('dragover')}));e.dropZone.ondrop=x=>addFiles(x.dataTransfer.files);e.targetPreset.onchange=()=>e.customTargetWrap.hidden=e.targetPreset.value!=='custom';e.quality.oninput=()=>e.qualityValue.textContent=e.quality.value+'%';e.fileList.onclick=x=>{const b=x.target.closest('[data-remove]');if(!b)return;const i=+b.dataset.remove;URL.revokeObjectURL(state.files[i].url);state.files.splice(i,1);renderFiles()};e.clearBtn.onclick=clearAll;e.compressBtn.onclick=compressAll;e.downloadAllBtn.onclick=downloadAll;e.resultList.onclick=x=>{const b=x.target.closest('[data-download]');if(b)download(state.results[+b.dataset.download])};e.startOverBtn.onclick=clearAll;e.viewResultBtn.onclick=()=>{e.resultGate.hidden=true;e.results.hidden=false;e.results.scrollIntoView({behavior:'smooth',block:'start'})};renderFiles();
 e.accessRetry.onclick=checkAdBlocker;checkAdBlocker();
