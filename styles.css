@@ -59,3 +59,19 @@
 
 /* Sponsorship page */
 .sponsor-page .sponsor-lead{font-size:1.08rem;max-width:680px;margin:0 0 34px}.sponsor-panel{display:grid;grid-template-columns:64px 1fr;gap:22px;align-items:start;margin:34px 0;padding:28px;border:1px solid #cfe4d8;border-radius:20px;background:linear-gradient(155deg,#fff,#f0f9f4);box-shadow:0 16px 42px rgba(18,32,26,.07)}.sponsor-panel-mark{width:56px;height:56px;display:grid;place-items:center;border-radius:16px;background:var(--ink);color:#fff;font-weight:900}.sponsor-panel h2{margin:0 0 10px}.sponsor-panel p{margin:0 0 18px}.sponsor-page ul{padding-left:20px}.sponsor-contact{margin-top:44px;padding:26px;border:1px solid var(--line);border-radius:18px;background:#fff}.sponsor-contact h2{margin-top:0}.sponsor-contact .sponsor-note{font-size:.85rem;color:#7b8882;margin:16px 0 0}@media(max-width:520px){.sponsor-panel{grid-template-columns:1fr;padding:22px}.sponsor-panel-mark{margin-bottom:2px}}
+
+/* Additional advertising placements */
+.ad-band-section{padding:0 0 28px;background:var(--bg)}
+.ad-band-soft{padding:28px 0;background:#fff}
+.ad-slot-wide{min-height:110px;margin:0}
+.bottom-ad-banner{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:8px 12px;background:rgba(255,255,255,.96);border-top:1px solid var(--line);box-shadow:0 -8px 30px rgba(18,32,26,.10);backdrop-filter:blur(10px)}
+.bottom-ad-inner{width:min(970px,100%);min-height:90px;margin:auto;border:1px solid var(--line);border-radius:12px;background:#fbfcfb;display:flex;align-items:center;justify-content:center;gap:18px;padding:12px 18px;color:#89958f;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase}
+.bottom-ad-inner a{color:var(--accent-dark);font-size:.76rem;font-weight:800;letter-spacing:0;text-transform:none;text-decoration:none}
+.bottom-ad-inner a:hover{text-decoration:underline}
+body{padding-bottom:108px}
+@media(max-width:600px){
+ .bottom-ad-inner{min-height:70px;flex-direction:column;gap:4px;padding:8px}
+ .bottom-ad-inner a{text-align:center}
+ body{padding-bottom:88px}
+ .ad-band-section{padding-bottom:18px}
+}
