@@ -56,3 +56,6 @@
 @media(min-width:901px){
  .tool-card{min-width:0}
 }
+
+/* Sponsorship page */
+.sponsor-page .sponsor-lead{font-size:1.08rem;max-width:680px;margin:0 0 34px}.sponsor-panel{display:grid;grid-template-columns:64px 1fr;gap:22px;align-items:start;margin:34px 0;padding:28px;border:1px solid #cfe4d8;border-radius:20px;background:linear-gradient(155deg,#fff,#f0f9f4);box-shadow:0 16px 42px rgba(18,32,26,.07)}.sponsor-panel-mark{width:56px;height:56px;display:grid;place-items:center;border-radius:16px;background:var(--ink);color:#fff;font-weight:900}.sponsor-panel h2{margin:0 0 10px}.sponsor-panel p{margin:0 0 18px}.sponsor-page ul{padding-left:20px}.sponsor-contact{margin-top:44px;padding:26px;border:1px solid var(--line);border-radius:18px;background:#fff}.sponsor-contact h2{margin-top:0}.sponsor-contact .sponsor-note{font-size:.85rem;color:#7b8882;margin:16px 0 0}@media(max-width:520px){.sponsor-panel{grid-template-columns:1fr;padding:22px}.sponsor-panel-mark{margin-bottom:2px}}
