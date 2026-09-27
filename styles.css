@@ -59,3 +59,6 @@ body.access-checking>main,body.access-checking>footer,body.access-checking>.site
 @media(min-width:1051px){
  .tool-card{min-width:0}
 }
+
+.access-gate:not(.blocked) .access-icon{animation:accessPulse 1.15s ease-in-out infinite}
+@keyframes accessPulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(99,221,164,.12)}50%{transform:scale(1.06);box-shadow:0 0 0 10px rgba(99,221,164,0)}}
