@@ -32,7 +32,7 @@ function addFiles(list){
  if(incoming.length<list.length)e.settingsNotice.textContent='Some files were skipped. Use JPG, PNG, WebP or AVIF images up to 25 MB each.';
  renderFiles();
 }
-function clearResults(){state.results.forEach(x=>x.url&&URL.revokeObjectURL(x.url));state.results=[];e.results.hidden=true;e.resultList.innerHTML='';e.downloadAllBtn.disabled=true}
+function clearResults(){state.results.forEach(x=>x.url&&URL.revokeObjectURL(x.url));state.results=[];e.results.hidden=true;e.resultList.replaceChildren();e.downloadAllBtn.disabled=true}
 function clearAll(){state.files.forEach(x=>URL.revokeObjectURL(x.url));state.files=[];clearResults();e.fileInput.value='';e.progressWrap.hidden=true;renderFiles()}
 async function loadImage(file){
  const u=URL.createObjectURL(file);
