@@ -33,7 +33,7 @@ function addFiles(list){
  renderFiles();
 }
 function clearResults(){state.results.forEach(x=>x.url&&URL.revokeObjectURL(x.url));state.results=[];e.results.hidden=true;e.resultList.replaceChildren();e.downloadAllBtn.disabled=true}
-function clearAll(){state.files.forEach(x=>URL.revokeObjectURL(x.url));state.files=[];clearResults();if(e.resultGate)e.resultGate.hidden=true;if(e.viewResultBtn){e.viewResultBtn.disabled=true;e.viewResultBtn.hidden=false}if(e.gateProgress)e.gateProgress.style.width='0%';if(e.gateCountdown)e.gateCountdown.textContent='15';if(e.gateMessage)e.gateMessage.innerHTML='Preparing your result for download — <strong><span id="gateCountdown">15</span>s</strong> remaining.';e.fileInput.value='';e.progressWrap.hidden=true;renderFiles()}
+function clearAll(){state.files.forEach(x=>URL.revokeObjectURL(x.url));state.files=[];clearResults();if(e.resultGate)e.resultGate.hidden=true;if(e.viewResultBtn){e.viewResultBtn.disabled=true;e.viewResultBtn.hidden=false}if(e.gateProgress)e.gateProgress.style.width='0%';if(e.gateMessage){e.gateMessage.innerHTML='Preparing your result for download — <strong><span id="gateCountdown">15</span>s</strong> remaining.';e.gateCountdown=$('gateCountdown');}e.fileInput.value='';e.progressWrap.hidden=true;renderFiles()}
 async function loadImage(file){
  const u=URL.createObjectURL(file);
  try{return await new Promise((res,rej)=>{
@@ -115,8 +115,7 @@ async function waitForResultGate(){
  e.resultGate.hidden=false;e.results.hidden=true;
  if(e.viewResultBtn){e.viewResultBtn.disabled=true;e.viewResultBtn.hidden=true}
  let remaining=15;
- if(e.gateCountdown)e.gateCountdown.textContent='15';
- if(e.gateMessage)e.gateMessage.innerHTML='Preparing your result for download — <strong><span id="gateCountdown">15</span>s</strong> remaining.';
+ if(e.gateMessage){e.gateMessage.innerHTML='Preparing your result for download — <strong><span id="gateCountdown">15</span>s</strong> remaining.';e.gateCountdown=$('gateCountdown');}
  const started=performance.now();
  await new Promise(resolve=>{
   const tick=()=>{
