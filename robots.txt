@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://sizemint.pages.dev/sitemap.xml
+
+Sitemap: https://sizemint.tool-web.workers.dev/sitemap.xml
