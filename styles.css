@@ -36,3 +36,26 @@
 
 /* Site access gate */
 body.access-checking>main,body.access-checking>footer,body.access-checking>.site-header{visibility:hidden}.access-gate{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:24px;background:#07130f;overflow:auto;-webkit-overflow-scrolling:touch}.access-gate[hidden]{display:none}.access-gate-bg{position:absolute;inset:0;overflow:hidden}.access-gate-bg span{position:absolute;border-radius:50%;filter:blur(2px);opacity:.18}.access-gate-bg span:nth-child(1){width:520px;height:520px;background:#1f8f62;left:-180px;top:-180px}.access-gate-bg span:nth-child(2){width:420px;height:420px;background:#66d6a4;right:-120px;bottom:-160px}.access-gate-bg span:nth-child(3){width:260px;height:260px;background:#2c6e58;left:55%;top:18%}.access-card{position:relative;width:min(560px,100%);margin:auto;padding:42px 42px 30px;text-align:center;color:#edf8f2;background:rgba(12,29,22,.92);border:1px solid rgba(171,230,201,.18);border-radius:30px;box-shadow:0 35px 100px rgba(0,0,0,.4);backdrop-filter:blur(22px)}.access-logo img{width:145px;filter:brightness(0) invert(1);margin-bottom:25px}.access-icon{width:62px;height:62px;margin:0 auto 18px;display:grid;place-items:center;border-radius:20px;background:rgba(79,204,145,.14);border:1px solid rgba(79,204,145,.3);color:#72e2ad;font-size:1.8rem;font-weight:900}.access-card .eyebrow{color:#78d9a9}.access-card h2{font-size:clamp(1.8rem,5vw,2.5rem);letter-spacing:-.04em;margin:0 0 10px}.access-card>p:not(.eyebrow),.access-help p{color:#aac0b5}.access-status{display:flex;align-items:center;justify-content:center;gap:8px;margin:22px auto;padding:10px 14px;border:1px solid rgba(171,230,201,.14);border-radius:999px;background:rgba(255,255,255,.045);font-size:.84rem;color:#cde5d9}.access-status i{width:8px;height:8px;border-radius:50%;background:#63dda4;box-shadow:0 0 14px #63dda4}.access-help{text-align:left;margin:20px 0;padding:18px;border-radius:16px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08);font-size:.86rem}.access-help ol{padding-left:22px;color:#c5d8cf}.access-help li{margin:7px 0}.access-retry{width:100%;margin-top:4px}.access-note{display:block;margin-top:18px;color:#718b80;line-height:1.5}.access-gate.blocked .access-icon{background:rgba(236,155,72,.13);border-color:rgba(236,155,72,.28);color:#ffc276}.access-gate.blocked .access-status i{background:#ffb45d;box-shadow:0 0 14px #ffb45d}body.access-blocked{overflow:hidden}@media(max-width:520px){.access-card{padding:32px 22px 26px}}
+
+/* Desktop workspace + sponsor rail */
+.workspace-grid{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:24px;align-items:start}
+.desktop-rail{min-width:0}
+.rail-sticky{position:sticky;top:96px;display:grid;gap:12px}
+.rail-label{font-size:.66rem;font-weight:850;letter-spacing:.14em;color:#87948e;text-align:center}
+.sponsor-card{position:relative;overflow:hidden;padding:22px;border:1px solid #cfe4d8;border-radius:20px;background:linear-gradient(155deg,#ffffff 0%,#f0f9f4 100%);box-shadow:0 16px 42px rgba(18,32,26,.07)}
+.sponsor-card:before{content:"";position:absolute;width:150px;height:150px;border-radius:50%;right:-70px;top:-70px;background:rgba(31,143,98,.10)}
+.sponsor-mark{position:relative;width:42px;height:42px;display:grid;place-items:center;margin-bottom:20px;border-radius:13px;background:var(--ink);color:#fff;font-size:.76rem;font-weight:900;letter-spacing:-.03em}
+.sponsor-card .eyebrow{position:relative;font-size:.65rem;margin-bottom:8px}
+.sponsor-card h2{position:relative;font-size:1.12rem;line-height:1.25;letter-spacing:-.025em;margin:0 0 10px}
+.sponsor-card p:not(.eyebrow){position:relative;color:var(--muted);font-size:.82rem;line-height:1.55;margin:0 0 18px}
+.sponsor-link{position:relative;display:flex;align-items:center;justify-content:space-between;gap:10px;text-decoration:none;color:var(--accent-dark);font-size:.82rem;font-weight:800;padding-top:14px;border-top:1px solid #dbe9e1}
+.sponsor-link span{font-size:1.05rem;transition:transform .18s ease}
+.sponsor-link:hover span{transform:translateX(3px)}
+.rail-ad{min-height:250px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.62);display:flex;align-items:center;justify-content:center;color:#9aa49f;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase}
+@media(max-width:1050px){
+ .workspace-grid{grid-template-columns:1fr}
+ .desktop-rail{display:none}
+}
+@media(min-width:1051px){
+ .tool-card{min-width:0}
+}
