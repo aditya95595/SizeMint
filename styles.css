@@ -34,10 +34,10 @@
 
 /* Separate sponsor section */
 .sponsor-section{padding:0 0 70px;background:var(--bg)}
-.sponsor-section-inner{display:flex;justify-content:flex-end}
-.sponsor-section-card{width:min(360px,100%);display:grid;gap:14px}
+.sponsor-section-inner{display:flex;justify-content:center}
+.sponsor-section-card{width:min(100%,900px);display:grid;gap:14px}
 .sponsor-section-card .sponsor-card{width:100%;max-width:none}
-.sponsor-section-card .rail-ad{width:100%;max-width:none}
+.sponsor-section-card .rail-ad{width:100%;max-width:none;min-height:220px}
 .sponsor-card{position:relative;overflow:hidden;padding:24px;border:1px solid #cfe4d8;border-radius:20px;background:linear-gradient(155deg,#ffffff 0%,#f0f9f4 100%);box-shadow:0 16px 42px rgba(18,32,26,.07)}
 .sponsor-card:before{content:"";position:absolute;width:160px;height:160px;border-radius:50%;right:-76px;top:-76px;background:rgba(31,143,98,.10)}
 .sponsor-mark{position:relative;width:44px;height:44px;display:grid;place-items:center;margin-bottom:20px;border-radius:13px;background:var(--ink);color:#fff;font-size:.76rem;font-weight:900;letter-spacing:-.03em}
@@ -108,7 +108,7 @@ body{padding-bottom:108px}
 .mock-ad-art i:nth-child(1){width:58px;height:58px;right:28px;top:8px;background:#dff2e7}
 .mock-ad-art i:nth-child(2){width:42px;height:42px;right:2px;top:25px;background:#bfe5d0;transform:rotate(12deg)}
 .mock-ad-art i:nth-child(3){width:34px;height:34px;right:64px;top:0;background:#f4d9a7;transform:rotate(18deg)}
-.mock-ad-rail{min-height:250px!important;padding:22px!important;position:relative;overflow:hidden;display:flex!important;align-items:flex-start!important;justify-content:flex-end!important;background:linear-gradient(155deg,#ffffff,#eef8f2)!important;text-transform:none!important;letter-spacing:0!important}
+.mock-ad-rail{min-height:220px!important;padding:22px!important;position:relative;overflow:hidden;display:flex!important;align-items:flex-start!important;justify-content:flex-end!important;background:linear-gradient(155deg,#ffffff,#eef8f2)!important;text-transform:none!important;letter-spacing:0!important}
 .mock-ad-rail .mock-ad-copy{max-width:100%;width:100%}
 .mock-ad-rail .mock-ad-copy strong{font-size:1.05rem}
 .mock-ad-rail .mock-ad-art{position:absolute;right:-4px;bottom:8px;opacity:.9}
