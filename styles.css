@@ -101,7 +101,24 @@ body{padding-bottom:108px}
 
 /* Desktop only: preserve the right-side sponsor rail. */
 @media(min-width:901px){
-  .workspace-grid{width:min(1400px,calc(100% - 32px))}
+  .workspace-grid{
+    width:min(1400px,calc(100% - 32px));
+    grid-template-columns:minmax(0,1fr) 300px;
+    grid-template-areas:"main rail";
+    gap:28px;
+    align-items:start;
+  }
+  .workspace-grid>.tool-card{
+    grid-area:main;
+    min-width:0;
+  }
+  .workspace-grid>.desktop-rail{
+    grid-area:rail;
+    display:block;
+    width:300px;
+    min-width:300px;
+    justify-self:end;
+  }
 }
 @media(max-width:900px){
   .workspace-grid{grid-template-columns:1fr}
