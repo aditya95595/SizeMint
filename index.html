@@ -34,7 +34,7 @@
 </div><header class="site-header"><div class="container nav-wrap"><a class="brand" href="index.html" aria-label="SizeMint home"><img class="wordmark" src="logo.svg" alt="SizeMint"></a><nav aria-label="Main navigation"><a class="active" href="index.html">Compressor</a><a href="guides.html">Guides</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav></div></header>
 <main>
 <section class="hero"><div class="container hero-grid"><div><p class="eyebrow">BROWSER-BASED IMAGE COMPRESSOR</p><h1>Compress images to <span>any size.</span></h1><p class="hero-copy">Set a target such as 100KB, 200KB or 1MB. SizeMint processes your images in your browser, so your image files do not need to be uploaded to a SizeMint server.</p><div class="trust-row"><span>✓ No image upload</span><span>✓ JPG · PNG · WebP · AVIF</span><span>✓ Desktop & mobile</span></div></div><div class="hero-card"><p class="eyebrow">A practical workflow</p><div class="mini-stat"><strong>1 · Pick a limit</strong><span>100 KB</span></div><div class="mini-stat"><strong>2 · Compress locally</strong><span>In your browser</span></div><div class="mini-stat"><strong>3 · Download</strong><span>Your result</span></div><p class="hero-note">No account or image-upload service is needed for the core tool.</p></div></div></section>
-<section class="tool-section"><div class="container"><div class="tool-card">
+<section class="tool-section"><div class="container workspace-grid"><div class="tool-card">
 <div class="drop-zone" id="dropZone" tabindex="0" role="button" aria-label="Choose images to compress"><input id="fileInput" type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple hidden><div class="upload-icon" aria-hidden="true">↥</div><h2>Drop images here</h2><p>or click to choose files</p><small>JPG, PNG, WebP or AVIF · multiple files supported · up to 25 MB each</small><button class="btn primary" id="chooseBtn" type="button">Choose images</button></div>
 <div class="controls" id="controls" hidden>
 <div class="control-grid"><label>Target size<select id="targetPreset"><option value="20480">20 KB</option><option value="51200">50 KB</option><option value="76800">75 KB</option><option value="102400" selected>100 KB</option><option value="153600">150 KB</option><option value="204800">200 KB</option><option value="256000">250 KB</option><option value="307200">300 KB</option><option value="409600">400 KB</option><option value="512000">500 KB</option><option value="768000">750 KB</option><option value="1048576">1 MB</option><option value="1572864">1.5 MB</option><option value="2097152">2 MB</option><option value="3145728">3 MB</option><option value="5242880">5 MB</option><option value="custom">Custom</option></select></label>
@@ -48,7 +48,21 @@
 <div class="progress-wrap" id="progressWrap" hidden><div class="progress-meta"><span id="progressText">Preparing…</span><span id="progressPercent">0%</span></div><div class="progress"><i id="progressBar"></i></div><div class="processing-card"><div class="progress-ring" id="progressRing" aria-hidden="true"><span>15s</span></div><div><strong>Working locally</strong><p id="progressStage">Your image stays in this browser while SizeMint searches for a result under your target.</p></div></div></div>
 <div class="result-gate" id="resultGate" hidden aria-live="polite"><div class="gate-card"><p class="eyebrow">RESULT READY</p><h3>Your compressed image is ready</h3><p id="gateMessage">Preparing your result for download — <strong><span id="gateCountdown">15</span>s</strong> remaining.</p><div class="gate-progress" aria-hidden="true"><i id="gateProgress"></i></div><button class="btn primary large" id="viewResultBtn" type="button" disabled>View my result</button><small class="gate-note">Your image was processed locally in this browser. This short preparation step does not upload or modify your file.</small></div></div>
 <div class="results" id="results" hidden><div class="results-head"><div><p class="eyebrow">DONE</p><h2>Compressed images</h2></div><button class="text-btn" id="startOverBtn" type="button">Start over</button></div><div id="resultList"></div></div>
-</div></div></section>
+</div><aside class="desktop-rail" aria-label="Sponsored space">
+  <div class="rail-sticky">
+   <div class="rail-label">SPONSORED SPACE</div>
+   <div class="sponsor-card">
+    <div class="sponsor-mark">SM</div>
+    <p class="eyebrow">YOUR BRAND HERE</p>
+    <h2>Put your product in front of people who work with images.</h2>
+    <p>Reach SizeMint users with a clean, non-intrusive sponsor placement beside the compressor.</p>
+    <a class="sponsor-link" href="about.html">Ask about sponsorship <span>→</span></a>
+   </div>
+   <div class="rail-ad">
+    <span>Advertisement</span>
+   </div>
+  </div>
+ </aside></div></section>
 
 <section class="ad-section"><div class="container"><div class="ad-slot" aria-label="Advertisement"><span>Advertisement</span><i id="adProbe" class="sm-access-signal adsbox ad-banner ad-unit advertisement adsbygoogle text-ad banner-ad" aria-hidden="true"></i></div><div class="ad-notice" id="adNotice" hidden><strong>Ads appear to be blocked.</strong><span>SizeMint remains usable. If you want to see site advertising, allow ads for this site in your browser or blocker settings.</span></div></div></section>
 
