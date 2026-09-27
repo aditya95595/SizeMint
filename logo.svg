@@ -1,1 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 44" role="img" aria-labelledby="title desc"><title id="title">SizeMint</title><desc id="desc">SizeMint wordmark</desc><text x="0" y="33" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="800" letter-spacing="-1.7">Size<tspan fill="#1f8f62">Mint</tspan></text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 286 64" role="img" aria-labelledby="title desc">
+  <title id="title">SizeMint</title>
+  <desc id="desc">SizeMint image compressor logo</desc>
+  <defs>
+    <linearGradient id="mint" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#62e8b7"/>
+      <stop offset="1" stop-color="#25c28a"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="18" fill="url(#mint)"/>
+  <path d="M22 22h18c5 0 9 4 9 9s-4 9-9 9H30c-2.8 0-5 1.8-5 4s2.2 4 5 4h17" fill="none" stroke="#0f1713" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M43 18l7-3-3 7" fill="none" stroke="#0f1713" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="76" y="43" fill="currentColor" font-family="Manrope, Inter, Arial, Helvetica, sans-serif" font-size="35" font-weight="800" letter-spacing="-1.7">SizeMint</text>
+</svg>
