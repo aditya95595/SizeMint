@@ -33,7 +33,7 @@ function addFiles(list){
  renderFiles();
 }
 function clearResults(){state.results.forEach(x=>x.url&&URL.revokeObjectURL(x.url));state.results=[];e.results.hidden=true;e.resultList.replaceChildren();e.downloadAllBtn.disabled=true}
-function clearAll(){state.files.forEach(x=>URL.revokeObjectURL(x.url));state.files=[];clearResults();if(e.resultGate)e.resultGate.hidden=true;if(e.gateEyebrow)e.gateEyebrow.textContent='FINALIZING RESULT';if(e.gateTitle)e.gateTitle.textContent='Preparing your compressed image';if(e.viewResultBtn){e.viewResultBtn.disabled=true;e.viewResultBtn.hidden=false}if(e.gateProgress)e.gateProgress.style.width='0%';if(e.gateMessage){e.gateMessage.innerHTML='Preparing your result for download — <strong><span id="gateCountdown">15</span>s</strong> remaining.';e.gateCountdown=$('gateCountdown');}e.fileInput.value='';e.progressWrap.hidden=true;e.dropZone.hidden=false;e.clearBtn.disabled=false;renderFiles()}
+function clearAll(){if(state.processing)return;state.files.forEach(x=>URL.revokeObjectURL(x.url));state.files=[];clearResults();if(e.resultGate)e.resultGate.hidden=true;if(e.gateEyebrow)e.gateEyebrow.textContent='FINALIZING RESULT';if(e.gateTitle)e.gateTitle.textContent='Preparing your compressed image';if(e.viewResultBtn){e.viewResultBtn.disabled=true;e.viewResultBtn.hidden=false}if(e.gateProgress)e.gateProgress.style.width='0%';if(e.gateMessage){e.gateMessage.innerHTML='Preparing your result for download — <strong><span id="gateCountdown">15</span>s</strong> remaining.';e.gateCountdown=$('gateCountdown');}e.fileInput.value='';e.progressWrap.hidden=true;e.dropZone.hidden=false;e.clearBtn.disabled=false;renderFiles()}
 async function loadImage(file){
  const u=URL.createObjectURL(file);
  try{return await new Promise((res,rej)=>{
