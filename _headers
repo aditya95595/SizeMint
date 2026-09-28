@@ -8,3 +8,6 @@
   Cross-Origin-Resource-Policy: same-origin
   X-Permitted-Cross-Domain-Policies: none
   Strict-Transport-Security: max-age=31536000
+
+https://sizemint.pages.dev/*
+  X-Robots-Tag: noindex
