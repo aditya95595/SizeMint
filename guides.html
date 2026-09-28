@@ -38,6 +38,21 @@
 <p>Some images simply contain too much information for a very small target. Reduce dimensions, accept a slightly larger target, or use a more efficient output format when the destination permits it.</p>
 </article>
 
+<article class="guide-article" id="target-sizes">
+<h2>Quick guides for common file-size limits</h2>
+<p>Different upload systems use different limits, so the useful question is usually “what limit do I need to meet?” rather than “what quality should I use?” Start with the target in SizeMint, then inspect the real output.</p>
+<h3>20KB</h3>
+<p>A 20KB target is very restrictive for photographs. Expect to reduce dimensions substantially and accept visible quality trade-offs. Simple graphics may reach it more easily than detailed photos.</p>
+<h3>50KB</h3>
+<p>For a small profile photo or document thumbnail, 50KB can be workable when the display dimensions are modest. Resize before pushing quality extremely low.</p>
+<h3>200KB</h3>
+<p>200KB gives photographs more room to retain detail. Start with a sensible display width, then compare JPG and WebP outputs when the destination accepts both.</p>
+<h3>500KB</h3>
+<p>500KB is often a practical middle ground for larger web or document images. Check the image at its actual display size before reducing quality further.</p>
+<h3>1MB</h3>
+<p>A 1MB target is substantially less restrictive than 100KB. For many ordinary photos, preserving useful dimensions and using a modern lossy format may be enough to stay below the limit.</p>
+</article>
+
 <article class="guide-article" id="formats">
 <h2>JPG vs WebP vs PNG: a practical choice</h2>
 <p><strong>JPG</strong> is a dependable choice for photographs and remains widely supported. It is lossy, so strong compression can produce visible artifacts.</p>
@@ -68,6 +83,12 @@
 <h2>Why some images refuse to reach a tiny target</h2>
 <p>There is no fixed “pixels = bytes” formula. A clean illustration with flat colors can compress very differently from a noisy photograph full of leaves, hair, grass or fine texture. Transparency can also affect how a format behaves.</p>
 <p>Browser encoders have their own limits, too. A responsible tool should report when a target cannot be reached instead of claiming an exact size that it did not actually produce.</p>
+</article>
+
+<article class="guide-article" id="more-formats">
+<h2>More image formats: what SizeMint can handle</h2>
+<p>SizeMint can import JPG/JPEG, PNG, WebP and AVIF, plus common GIF and BMP files when the browser can decode them. GIF input is treated as a still image, so animation is not preserved by the canvas-based compressor.</p>
+<p>For output, SizeMint offers JPG, PNG and WebP, with AVIF exposed when the current browser can encode AVIF through its canvas APIs. This feature detection matters because browsers can fall back to PNG when a requested canvas output type is unsupported.</p>
 </article>
 
 <article class="guide-article" id="website-images">
