@@ -26,11 +26,25 @@ function renderFiles(){
 }
 function addFiles(list){
  const maxBytes=25*1024*1024;
- const incoming=Array.from(list).filter(f=>/^image\/(jpeg|png|webp|avif)$/.test(f.type)&&f.size<=maxBytes);
+ const incoming=Array.from(list).filter(f=>/^image\/(jpeg|png|webp|avif|gif|bmp)$/.test(f.type)&&f.size<=maxBytes);
  const seen=new Set(state.files.map(x=>x.file.name+'|'+x.file.size+'|'+x.file.lastModified));
  incoming.forEach(file=>{const k=file.name+'|'+file.size+'|'+file.lastModified;if(!seen.has(k)){state.files.push({file,url:URL.createObjectURL(file)});seen.add(k)}});
- if(incoming.length<list.length)e.settingsNotice.textContent='Some files were skipped. Use JPG, PNG, WebP or AVIF images up to 25 MB each.';
+ if(incoming.length<list.length)e.settingsNotice.textContent='Some files were skipped. Use JPG, PNG, WebP, AVIF, GIF or BMP images up to 25 MB each.';
+ const hasGif=state.files.some(x=>x.file.type==='image/gif');
+ if(hasGif)e.settingsNotice.textContent='GIF files are imported as a still image (the first frame), then compressed to your chosen output format.';
  renderFiles();
+}
+function detectOptionalFormats(){
+ const avif=e.format?.querySelector('option[value="image/avif"]');
+ if(!avif)return;
+ try{
+  const c=document.createElement('canvas');
+  c.width=1;c.height=1;
+  const supported=c.toDataURL('image/avif').startsWith('data:image/avif');
+  avif.hidden=!supported;
+  if(!supported&&e.format.value==='image/avif')e.format.value='auto';
+  if(supported&&!e.settingsNotice.textContent.includes('AVIF'))e.settingsNotice.textContent='AVIF output is available in this browser. GIF/BMP inputs are converted from their decoded image into your chosen output format.';
+ }catch(err){avif.hidden=true;if(e.format.value==='image/avif')e.format.value='auto';}
 }
 function clearResults(){state.results.forEach(x=>x.url&&URL.revokeObjectURL(x.url));state.results=[];e.results.hidden=true;e.resultList.replaceChildren();e.downloadAllBtn.disabled=true}
 function clearAll(){if(state.processing)return;state.files.forEach(x=>URL.revokeObjectURL(x.url));state.files=[];clearResults();if(e.resultGate)e.resultGate.hidden=true;if(e.gateEyebrow)e.gateEyebrow.textContent='FINALIZING RESULT';if(e.gateTitle)e.gateTitle.textContent='Preparing your compressed image';if(e.viewResultBtn){e.viewResultBtn.disabled=true;e.viewResultBtn.hidden=false}if(e.gateProgress)e.gateProgress.style.width='0%';if(e.gateMessage){e.gateMessage.innerHTML='Preparing your result for download — <strong><span id="gateCountdown">15</span>s</strong> remaining.';e.gateCountdown=$('gateCountdown');}e.fileInput.value='';e.progressWrap.hidden=true;e.dropZone.hidden=false;e.clearBtn.disabled=false;renderFiles()}
@@ -165,4 +179,5 @@ async function downloadAll(){const enc=new TextEncoder(),entries=[];const used=n
 e.chooseBtn.onclick=()=>e.fileInput.click();e.dropZone.onclick=x=>{if(!x.target.closest('button'))e.fileInput.click()};e.dropZone.onkeydown=x=>{if(x.key==='Enter'||x.key===' '){x.preventDefault();e.fileInput.click()}};e.fileInput.onchange=x=>addFiles(x.target.files);['dragenter','dragover'].forEach(x=>e.dropZone.addEventListener(x,y=>{y.preventDefault();e.dropZone.classList.add('dragover')}));['dragleave','drop'].forEach(x=>e.dropZone.addEventListener(x,y=>{y.preventDefault();e.dropZone.classList.remove('dragover')}));e.dropZone.ondrop=x=>addFiles(x.dataTransfer.files);e.targetPreset.onchange=()=>e.customTargetWrap.hidden=e.targetPreset.value!=='custom';e.quality.oninput=()=>e.qualityValue.textContent=e.quality.value+'%';e.fileList.onclick=x=>{const b=x.target.closest('[data-remove]');if(!b)return;const i=+b.dataset.remove;URL.revokeObjectURL(state.files[i].url);state.files.splice(i,1);renderFiles()};e.clearBtn.onclick=clearAll;e.compressBtn.onclick=compressAll;e.downloadAllBtn.onclick=downloadAll;e.resultList.onclick=x=>{const b=x.target.closest('[data-download]');if(b)download(state.results[+b.dataset.download])};e.startOverBtn.onclick=clearAll;
 if(e.viewResultBtn)e.viewResultBtn.onclick=()=>{e.results.hidden=false;e.results.scrollIntoView({behavior:'smooth',block:'start'});};
 renderFiles();
+detectOptionalFormats();
 })();
