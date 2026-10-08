@@ -1,0 +1,35 @@
+# SizeMint
+
+> SizeMint is a free browser-based image compressor. Shrink JPG, PNG, WebP, and AVIF images down to a target file size — 20KB, 100KB, 1MB, or any custom size — entirely in your browser. Images are never uploaded to a server; all processing happens locally on the user's device.
+
+## How it works
+
+- The user selects an image file in the browser.
+- They pick a target file size (e.g. 20KB for exam forms, 100KB for uploads, 1MB for general use) and an output format (JPG, PNG, WebP, AVIF).
+- The tool encodes candidate versions locally and returns the best result under the target size as a download.
+- No accounts, no uploads, no server-side image storage. The site ships zero third-party analytics or tracking scripts.
+
+## Key pages
+
+- [SizeMint — Free Image Compressor](https://sizemint.tool-web.workers.dev/): the main compression tool.
+- [Image Compression Guides](https://sizemint.tool-web.workers.dev/guides.html): practical guides — compressing to 100KB and other limits, JPG vs WebP vs PNG, resizing before compression, diagnosing difficult size targets.
+- [About SizeMint](https://sizemint.tool-web.workers.dev/about.html): how the tool works and why it targets file size instead of a quality number.
+- [Privacy Policy](https://sizemint.tool-web.workers.dev/privacy.html): browser-local image processing, hosting information, cookies, advertising, and privacy choices.
+- [Terms of Use](https://sizemint.tool-web.workers.dev/terms.html): terms for the compressor, guides, and related website features.
+- [Advertise on SizeMint](https://sizemint.tool-web.workers.dev/sponsor.html): sponsor placements and how to request advertising space.
+
+## Formats and targets
+
+- Input/output formats: JPG, PNG, WebP, AVIF.
+- Common targets: 20KB (exam/government form photos), 100KB (portal uploads), 1MB (general sharing). Custom targets supported.
+- Compression is lossy where needed to hit the target; users should keep originals of important files.
+
+## Privacy
+
+- Images are processed locally in the browser and never sent to a SizeMint server.
+- No user accounts. No first-party cookies for the core tool.
+- Contact for privacy questions: idalinux08@gmail.com.
+
+## Contact
+
+- Email: idalinux08@gmail.com
