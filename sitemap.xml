@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://sizemint.tool-web.workers.dev/</loc></url>
-  <url><loc>https://sizemint.tool-web.workers.dev/guides.html</loc></url>
-  <url><loc>https://sizemint.tool-web.workers.dev/about.html</loc></url>
-  <url><loc>https://sizemint.tool-web.workers.dev/privacy.html</loc></url>
-  <url><loc>https://sizemint.tool-web.workers.dev/terms.html</loc></url>
-  <url><loc>https://sizemint.tool-web.workers.dev/sponsor.html</loc></url>
+  <url><loc>https://sizemint.tool-web.workers.dev/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://sizemint.tool-web.workers.dev/guides.html</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sizemint.tool-web.workers.dev/exam-photo-guide.html</loc><lastmod>2026-10-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sizemint.tool-web.workers.dev/compress-to-20kb.html</loc><lastmod>2026-10-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sizemint.tool-web.workers.dev/about.html</loc><lastmod>2026-10-10</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sizemint.tool-web.workers.dev/sponsor.html</loc><lastmod>2026-10-10</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://sizemint.tool-web.workers.dev/privacy.html</loc><lastmod>2026-10-10</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://sizemint.tool-web.workers.dev/terms.html</loc><lastmod>2026-10-10</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>

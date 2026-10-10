@@ -1,26 +1,51 @@
 <!doctype html>
 <html lang="en" data-theme="dark">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Image Compression Guides — 100KB, JPG, WebP, PNG & More | SizeMint</title>
 <meta name="description" content="Practical, original guides for compressing images to 100KB and other limits, choosing JPG vs WebP vs PNG, resizing before compression, and diagnosing difficult image-size targets.">
 <meta name="robots" content="index,follow">
-<link rel="canonical" href="https://sizemint.tool-web.workers.dev/guides.html"> <meta property="og:type" content="article"> <meta property="og:site_name" content="SizeMint"> <meta property="og:title" content="Image Compression Guides — 100KB, JPG, WebP, PNG & More | SizeMint"> <meta property="og:description" content="Practical guides for compressing images to 100KB and other limits, choosing JPG vs WebP vs PNG, resizing before compression, and diagnosing difficult size targets."> <meta property="og:url" content="https://sizemint.tool-web.workers.dev/guides.html"> <meta property="og:image" content="https://sizemint.tool-web.workers.dev/og-card.png"> <meta property="og:image:width" content="1200"> <meta property="og:image:height" content="630"> <meta property="og:image:alt" content="SizeMint — Free Image Compressor. Your images never leave your device."> <meta name="twitter:card" content="summary_large_image"> <meta name="twitter:title" content="Image Compression Guides — 100KB, JPG, WebP, PNG & More | SizeMint"> <meta name="twitter:description" content="Practical guides for compressing images to 100KB and other limits, choosing JPG vs WebP vs PNG, resizing before compression, and diagnosing difficult size targets."> <meta name="twitter:image" content="https://sizemint.tool-web.workers.dev/og-card.png">
-<link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css">
-<script>
-(function(){try{var t=localStorage.getItem('sizemint-theme');document.documentElement.dataset.theme=(t==='light'||t==='dark')?t:'dark'}catch(e){document.documentElement.dataset.theme='dark'}})();
-</script>
+<link rel="canonical" href="https://sizemint.tool-web.workers.dev/guides.html">
+<meta name="theme-color" content="#0b0b14" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f7f5ff" media="(prefers-color-scheme: light)">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SizeMint">
+<meta property="og:title" content="Image Compression Guides — 100KB, JPG, WebP, PNG & More | SizeMint">
+<meta property="og:description" content="Practical guides for compressing images to 100KB and other limits, choosing JPG vs WebP vs PNG, resizing before compression, and diagnosing difficult size targets.">
+<meta property="og:url" content="https://sizemint.tool-web.workers.dev/guides.html">
+<meta property="og:image" content="https://sizemint.tool-web.workers.dev/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SizeMint — Free Image Compressor. Your images never leave your device.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Image Compression Guides — 100KB, JPG, WebP, PNG & More | SizeMint">
+<meta name="twitter:description" content="Practical guides for compressing images to 100KB and other limits, choosing JPG vs WebP vs PNG, resizing before compression, and diagnosing difficult size targets.">
+<meta name="twitter:image" content="https://sizemint.tool-web.workers.dev/og-card.png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="site.webmanifest">
+<script src="theme-init.js"></script>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="site-header"><div class="container nav-wrap">
-<a class="brand" href="index.html" aria-label="SizeMint home"><img class="wordmark" src="logo.svg" alt="SizeMint"></a>
-<nav class="desktop-nav" aria-label="Main navigation"><a href="index.html">Compressor</a><a class="active" aria-current="page" href="guides.html">Guides</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
-<div class="header-actions"><button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" aria-pressed="true"><span class="theme-icon">☀</span><span class="theme-label">Light</span></button><details class="mobile-nav"><summary>Menu</summary><div class="mobile-nav-panel"><a href="index.html">Compressor</a><a class="active" aria-current="page" href="guides.html">Guides</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></details></div>
-</div></header>
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="index.html" aria-label="SizeMint home"><img class="logo-mark" src="logo.svg" alt=""><span class="brand-name">SizeMint</span></a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="index.html">Compressor</a><a class="active" aria-current="page" href="guides.html">Guides</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" aria-pressed="true"><span class="theme-icon">☀</span><span class="theme-label">Light</span></button>
+      <details class="mobile-nav"><summary>Menu</summary><div class="mobile-nav-panel"><a href="index.html">Compressor</a><a class="active" href="guides.html">Guides</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></details>
+    </div>
+  </div>
+</header>
 <main class="page">
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
 <div class="container narrow">
-<p class="eyebrow">SIZEMINT GUIDES</p>
-<h1>Practical image compression, without the guesswork.</h1>
+<p class="eyebrow">SizeMint guides</p>
+<h1>Practical image compression, <span class="grad-text">without the guesswork.</span></h1>
 <p class="page-lead">The right compression setting depends on the destination, the image and the file-size requirement. These guides focus on the decisions that actually change the result.</p>
 
 <div class="ad-slot sponsor-placeholder" aria-label="Sponsor space"><span>SPONSOR SPACE</span></div>
@@ -97,10 +122,14 @@
 <p>Use modern formats when your publishing system and audience support them, and keep a fallback format when compatibility requires it. Compression should be paired with sensible dimensions rather than used as the only performance technique.</p>
 </article>
 
-<article class="guide-article" id="exam-photo"><h2><a href="exam-photo-guide.html">Compress Photo for Exam Forms: SSC, UPSC, IBPS Size Guide</a></h2><p>Government exam portals reject photos that miss their exact size limits. This guide covers photo and signature limits for SSC, UPSC, IBPS and similar exams — and how to prepare a compliant image in your browser.</p></article><article class="guide-article" id="20kb"><h2><a href="compress-to-20kb.html">Compress Image to 20KB Online</a></h2><p>Some upload forms ask for "under 20KB", not "80% quality". This guide shows how to hit an exact 20KB target in your browser: entering the target, inspecting the result honestly, and what to do when an image can't reach it.</p></article><h2>Use the compressor</h2>
+<article class="guide-article" id="exam-photo"><h2><a href="exam-photo-guide.html">Compress Photo for Exam Forms: SSC, UPSC, IBPS Size Guide</a></h2><p>Government exam portals reject photos that miss their exact size limits. This guide covers photo and signature limits for SSC, UPSC, IBPS and similar exams — and how to prepare a compliant image in your browser.</p></article>
+<article class="guide-article" id="20kb"><h2><a href="compress-to-20kb.html">Compress Image to 20KB Online</a></h2><p>Some upload forms ask for "under 20KB", not "80% quality". This guide shows how to hit an exact 20KB target in your browser: entering the target, inspecting the result honestly, and what to do when an image can't reach it.</p></article>
+
+<h2>Use the compressor</h2>
 <p>Ready to test a target? <a href="index.html#compressor">Open the SizeMint compressor</a> and start with the actual limit you need to meet.</p>
 </div>
 </main>
 <footer><div class="container footer-wrap"><span>© <span id="year"></span> SizeMint</span><div><a href="index.html">Compressor</a><a href="about.html">About</a><a href="sponsor.html">Advertise</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></div></footer>
 <script src="site.js" defer></script>
-</body></html>
+</body>
+</html>

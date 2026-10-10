@@ -1,1 +1,12 @@
-{"name":"SizeMint","short_name":"SizeMint","start_url":"./","display":"standalone","background_color":"#101412","theme_color":"#35d79c","description":"Browser-based image compressor."}
+{
+  "name": "SizeMint — Free Image Compressor",
+  "short_name": "SizeMint",
+  "description": "Compress JPG, PNG, WebP and AVIF images to a target file size in your browser. Free, private, no uploads.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0b0b14",
+  "theme_color": "#7c3aed",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
