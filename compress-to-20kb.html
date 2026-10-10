@@ -26,6 +26,7 @@
 <link rel="manifest" href="site.webmanifest">
 <script src="theme-init.js"></script>
 <link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "Compress image to 20KB", "step": [{"@type": "HowToStep", "name": "1. Upload your image", "text": "Open the SizeMint compressor and drop in a JPG, PNG, WebP or AVIF file. Processing happens entirely in your browser — the image is never uploaded anywhere."}, {"@type": "HowToStep", "name": "2. Enter 20 as the target", "text": "Type 20 KB as the target size. The compressor searches encodings automatically to find the best quality that fits under 20KB, rather than applying one fixed quality setting and hoping."}, {"@type": "HowToStep", "name": "3. Inspect the result honestly", "text": "20KB is a very small budget for a photograph. Check faces, text and edges at full size. If the image looks unacceptably degraded, the honest fix is to reduce dimensions first and then compress — fewer pixels need fewer bytes."}, {"@type": "HowToStep", "name": "4. Download and verify", "text": "Download the result and confirm the file size in your file manager before uploading it to the form. Keep your original — a 20KB file is a submission copy, not an archive."}]}</script>
 </head>
 <body>
 <header class="site-header">
@@ -47,6 +48,14 @@
 <p class="eyebrow">SizeMint guides</p>
 <h1>Compress image to <span class="grad-text">20KB, exactly.</span></h1>
 <p class="page-lead">Forms ask for "under 20KB", not "80% quality". Here is how to hit an exact 20KB target without the guesswork.</p>
+
+<article class="guide-article" id="maker-notes">
+<h2>Worth knowing before you start</h2>
+<p>We made 20KB a one-click preset because it kept coming up: exam forms, government portals, job applications. The honest truth is that 20KB is a tight budget for a photograph, and this guide does not pretend otherwise — here is what actually helps.</p>
+<p><strong>Reducing dimensions beats lowering quality.</strong> A 1600-pixel photo squeezed to 20KB looks worse than an 800-pixel photo at the same 20KB. Fewer pixels means every byte carries more of the image, so shrink first and compress second.</p>
+<p><strong>Convert PNG screenshots to JPG for small targets.</strong> PNG is lossless, which makes it a poor fit for tiny file sizes. The same 20KB goes much further as a JPG — use SizeMint's format option rather than fighting the PNG.</p>
+<p><strong>Match the format the form asks for, not just the size.</strong> A 19KB file can still be rejected if the portal expects JPG and you hand it a PNG. Check the required format in the form's instructions before you compress.</p>
+</article>
 
 <div class="ad-slot sponsor-placeholder" aria-label="Sponsor space"><span>SPONSOR SPACE</span></div>
 
@@ -76,6 +85,18 @@
 <article class="guide-article" id="troubleshooting">
 <h2>If the target cannot be reached</h2>
 <p>Some images contain too much fine detail — foliage, hair, fabric texture — for any encoder to squeeze into 20KB at usable quality. A responsible tool reports this instead of silently handing back an oversized file. When that happens: shrink the dimensions, try again, and judge the result at the size it will actually be displayed.</p>
+</article>
+
+<article class="guide-article" id="qa">
+<h2>Questions, answered</h2>
+<h3>Is 20KB enough for a clear photo?</h3>
+<p>For a small passport-style photo, usually yes. For a detailed full-resolution photograph, 20KB means visible softness — that is physics, not the tool failing. Judge the result at the size it will actually be displayed, not zoomed in.</p>
+<h3>Why JPG and not WebP for a 20KB target?</h3>
+<p>WebP is technically the better format, but some older government and exam portals only accept JPG and reject anything else outright. When a form is involved, use the format it names. For general web use, WebP at 20KB will look better than JPG.</p>
+<h3>My file is 21KB — will the form accept it?</h3>
+<p>Usually not. These systems check the byte count mechanically, and 21KB fails a 20KB limit the same way 2MB does. Target slightly under — 19KB — so small differences in how sizes are measured do not push you over.</p>
+<h3>What if nothing I try reaches 20KB?</h3>
+<p>Reduce the image dimensions and try again. Fine detail is what costs bytes: foliage, hair, fabric texture. A smaller image at 20KB almost always looks better than a large one squeezed to the same size — and keep your original, since the 20KB file is a submission copy, not an archive.</p>
 </article>
 
 <article class="guide-article" id="related">

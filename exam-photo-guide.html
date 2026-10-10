@@ -26,6 +26,7 @@
 <link rel="manifest" href="site.webmanifest">
 <script src="theme-init.js"></script>
 <link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "Compress photo for exam forms (SSC, UPSC, IBPS)", "step": [{"@type": "HowToStep", "name": "1. Start from the required range", "text": "Read your notification and note the minimum, maximum, format and any pixel dimensions. Pick a target near the middle of the KB range — for a 20–50KB photo, target 35KB."}, {"@type": "HowToStep", "name": "2. Upload and set the target", "text": "Open the SizeMint compressor, drop in your photo, and enter the target size. The compressor searches for the highest quality that fits, so you do not have to guess a quality number."}, {"@type": "HowToStep", "name": "3. Check faces and ink lines", "text": "Zoom into the result. Faces should stay recognizable and signature strokes should stay dark. If lines look grey and thin, the source photo was probably taken in poor light — retake it in daylight rather than compressing harder."}, {"@type": "HowToStep", "name": "4. Confirm the file before uploading", "text": "Check the downloaded file's actual size in your file manager and confirm it sits inside the required range. Keep the original photo so you can re-export if a different form asks for a different limit."}]}</script>
 </head>
 <body>
 <header class="site-header">
@@ -47,6 +48,14 @@
 <p class="eyebrow">SizeMint guides</p>
 <h1>Compress photo for exam forms: <span class="grad-text">SSC, UPSC, IBPS and more.</span></h1>
 <p class="page-lead">Government exam portals reject photos that miss their exact size limits. Here are the limits that matter and how to hit them on the first try.</p>
+
+<article class="guide-article" id="maker-notes">
+<h2>Worth knowing before you start</h2>
+<p>We built the target-size workflow in SizeMint for exactly this situation: a phone photo, a portal with a hard KB limit, and a deadline. What follows is the short version of what we would tell a friend filling in the form the night before.</p>
+<p><strong>In practice, the photo fails more often than the signature.</strong> Signatures are simple black-on-white strokes and compress easily; photos carry faces, backgrounds and shadows. If you are short on time, get the photo right first.</p>
+<p><strong>Keep the compressed file until the application is fully submitted.</strong> If a later step asks you to re-upload, redoing the compression from scratch under time pressure is how mistakes happen.</p>
+<p><strong>Aim for the middle of the stated range.</strong> For a 20–50KB photo, a 35KB file passes the same check as a 49KB one — and it keeps noticeably better quality than a file squeezed down to the minimum.</p>
+</article>
 
 <div class="ad-slot sponsor-placeholder" aria-label="Sponsor space"><span>SPONSOR SPACE</span></div>
 
@@ -75,6 +84,18 @@
 <p>Zoom into the result. Faces should stay recognizable and signature strokes should stay dark. If lines look grey and thin, the source photo was probably taken in poor light — retake it in daylight rather than compressing harder.</p>
 <h3>4. Confirm the file before uploading</h3>
 <p>Check the downloaded file's actual size in your file manager and confirm it sits inside the required range. Keep the original photo so you can re-export if a different form asks for a different limit.</p>
+</article>
+
+<article class="guide-article" id="qa">
+<h2>Questions, answered</h2>
+<h3>Will 20KB be enough for my exam form?</h3>
+<p>Only if your notification says so. SSC asks for 20–50KB for photos, which makes 20KB the floor rather than the goal — target around 35KB instead. Limits change every cycle, so always read your own notification; portals reject files outside the stated range in either direction.</p>
+<h3>Why does my portal reject a photo that looks fine?</h3>
+<p>Because the portal checks numbers, not looks. It validates file size, format and sometimes dimensions before any human sees the image. A 2MB phone photo fails a 50KB limit no matter how good it looks — the fix is compression, not a better camera.</p>
+<h3>Should I compress my signature the same way as my photo?</h3>
+<p>The steps are the same but the target differs: signatures usually need 10–20KB. Crop the signature tightly first, because white margins waste bytes. Black ink on plain white paper compresses extremely well, so signatures rarely cause trouble.</p>
+<h3>Can I reuse one compressed photo for multiple forms?</h3>
+<p>Only if the limits match. Different exams publish different ranges, and a file made for one portal can fail another. Keep your original photo and export a fresh copy per form — it takes seconds in SizeMint.</p>
 </article>
 
 <article class="guide-article" id="privacy-note">
