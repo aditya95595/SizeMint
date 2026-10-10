@@ -229,13 +229,26 @@ p{margin:0 0 1em}
 .brand-tagline{font-family:"Space Grotesk",sans-serif;font-size:1.15rem;font-weight:500;color:var(--muted);margin-bottom:1rem}
 .brand-tagline strong{color:var(--ink)}
 .hero-copy{color:var(--muted);font-size:1.1rem;max-width:34rem}
-.trust-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.6rem}
-.trust-row span{
-  font-size:.85rem;font-weight:500;color:var(--muted);
-  border:1px solid var(--line);border-radius:999px;padding:.4rem .9rem;background:var(--card);
-  transition:transform .2s,border-color .2s;
+/* spec ledger — hairline-ruled strip with diamond ticks (no pills) */
+.trust-row{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  margin-top:1.8rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
 }
-.trust-row span:hover{transform:translateY(-2px);border-color:rgba(168,85,247,.5)}
+.trust-row span{
+  display:flex;align-items:center;gap:.6rem;
+  font-size:.83rem;font-weight:500;color:var(--muted);
+  padding:.9rem .9rem .9rem 0;font-variant-numeric:tabular-nums;
+}
+.trust-row span+span{border-left:1px solid var(--line);padding-left:1rem}
+.trust-row span::before{
+  content:"";width:.42rem;height:.42rem;flex:none;transform:rotate(45deg);
+  background:var(--grad);box-shadow:0 0 12px rgba(168,85,247,.55);
+}
+@media(max-width:700px){
+  .trust-row{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .trust-row span:nth-child(3){border-left:none;padding-left:0}
+  .trust-row span:nth-child(n+3){border-top:1px solid var(--line)}
+}
 /* glassy hero card */
 .hero-card{
   background:var(--card);border:1px solid var(--line);border-radius:24px;
@@ -247,15 +260,17 @@ p{margin:0 0 1em}
   content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--grad);
 }
 .mini-stat{
-  display:flex;align-items:center;justify-content:space-between;gap:1rem;
-  padding:.85rem 0;border-bottom:1px dashed var(--line);
+  display:flex;align-items:baseline;justify-content:space-between;gap:1rem;
+  padding:.8rem 0;border-bottom:1px dashed var(--line);
+  font-variant-numeric:tabular-nums;
 }
 .mini-stat:last-of-type{border-bottom:none}
 .mini-stat strong{font-family:"Space Grotesk",sans-serif;font-weight:500;font-size:1rem}
+.mini-stat strong::before{content:"\276F  ";color:var(--fuchsia);font-weight:700}
+/* terminal-style readout value: gradient tabular numeral, no pill */
 .mini-stat span{
-  font-size:.85rem;font-weight:600;color:var(--ink);
-  background:var(--grad-soft);border:1px solid var(--line);
-  padding:.3rem .8rem;border-radius:999px;white-space:nowrap;
+  font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:.95rem;white-space:nowrap;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
 }
 .hero-note{color:var(--faint);font-size:.88rem;margin:1rem 0 0}
 
@@ -305,11 +320,12 @@ p{margin:0 0 1em}
   right:-6rem;top:-6rem;background:radial-gradient(circle,rgba(168,85,247,.35),transparent 70%);
   filter:blur(40px);pointer-events:none;
 }
+/* ghost monogram watermark — replaces the boxed SM */
 .sponsor-mark{
-  width:3rem;height:3rem;border-radius:14px;background:var(--grad);color:#fff;
-  display:flex;align-items:center;justify-content:center;
-  font:700 1.05rem "Space Grotesk",sans-serif;margin-bottom:1rem;
-  box-shadow:var(--glow);
+  position:absolute;top:.5rem;right:1.2rem;pointer-events:none;user-select:none;
+  font:700 3.2rem/1 "Space Grotesk",sans-serif;letter-spacing:.04em;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+  opacity:.14;
 }
 .sponsor-card h2{margin-bottom:.5rem}
 .sponsor-card p{color:var(--muted)}
@@ -352,13 +368,18 @@ p{margin:0 0 1em}
   box-shadow:0 0 0 6px rgba(217,70,239,.18),var(--glow);
   transform:scale(1.01);
 }
+/* drop motif — gradient arrow flanked by dashed rules, integrated with the zone */
 .upload-icon{
-  width:3.6rem;height:3.6rem;margin:0 auto 1rem;border-radius:18px;
-  background:var(--grad);color:#fff;font-size:1.6rem;
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:var(--glow);transition:transform .3s cubic-bezier(.2,.7,.3,1.4);
+  display:flex;align-items:center;justify-content:center;gap:.9rem;
+  margin:0 auto 1.2rem;
+  font:700 1.9rem/1 "Space Grotesk",sans-serif;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+  transition:transform .3s cubic-bezier(.2,.7,.3,1.4);
 }
-.drop-zone:hover .upload-icon{transform:translateY(-4px) scale(1.05)}
+.upload-icon::before,.upload-icon::after{
+  content:"";width:3.4rem;flex:none;border-top:2px dashed var(--line);
+}
+.drop-zone:hover .upload-icon{transform:translateY(-4px)}
 .drop-zone h2{margin-bottom:.3rem}
 .drop-zone p{color:var(--muted);margin-bottom:.3rem}
 .drop-zone small{color:var(--faint);display:block;margin-bottom:1.2rem}
@@ -512,11 +533,15 @@ input[type="range"]::-moz-range-thumb{
   padding:1.8rem;transition:transform .25s,box-shadow .25s,border-color .25s;
 }
 .info-grid article:hover{transform:translateY(-5px);box-shadow:var(--glow);border-color:rgba(168,85,247,.4)}
+.info-grid article{position:relative;overflow:hidden}
+/* ghost numeral watermark — replaces the boxed number */
 .info-icon{
-  width:2.6rem;height:2.6rem;border-radius:14px;background:var(--grad);color:#fff;
-  display:flex;align-items:center;justify-content:center;
-  font:700 1.1rem "Space Grotesk",sans-serif;margin-bottom:1rem;box-shadow:var(--glow);
+  position:absolute;top:.2rem;right:1rem;pointer-events:none;user-select:none;
+  font:700 4.6rem/1 "Space Grotesk",sans-serif;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+  opacity:.15;
 }
+.info-grid h3{padding-right:3.4rem}
 .info-grid h3{margin-bottom:.4rem}
 .info-grid p{color:var(--muted);margin:0;font-size:.95rem}
 
@@ -600,16 +625,18 @@ input[type="range"]::-moz-range-thumb{
 
 /* ---------- Sponsor page ---------- */
 .sponsor-panel{
-  display:grid;grid-template-columns:auto 1fr;gap:1.6rem;align-items:start;
+  display:grid;grid-template-columns:1fr;gap:1.6rem;align-items:start;
   background:var(--card);border:1px solid var(--line);border-radius:24px;
   padding:2rem;box-shadow:var(--shadow);margin:1.8rem 0;
   position:relative;overflow:hidden;
 }
 .sponsor-panel::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--grad)}
+/* ghost monogram watermark — replaces the boxed SM */
 .sponsor-panel-mark{
-  width:4.2rem;height:4.2rem;border-radius:18px;background:var(--grad);color:#fff;
-  display:flex;align-items:center;justify-content:center;
-  font:700 1.4rem "Space Grotesk",sans-serif;box-shadow:var(--glow);flex:none;
+  position:absolute;right:1.2rem;bottom:-1.4rem;pointer-events:none;user-select:none;
+  font:700 6.5rem/1 "Space Grotesk",sans-serif;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+  opacity:.1;
 }
 .sponsor-panel h2{margin-top:.4rem}
 .sponsor-panel p{color:var(--muted)}
