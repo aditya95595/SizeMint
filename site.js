@@ -3,8 +3,10 @@
 const year = document.getElementById('year');
 if (year) year.textContent = String(new Date().getFullYear());
 
+
 const root = document.documentElement;
 const toggle = document.getElementById('themeToggle');
+
 
 function applyTheme(theme) {
   root.dataset.theme = theme;
@@ -19,6 +21,7 @@ function applyTheme(theme) {
   if (label) label.textContent = dark ? 'Light' : 'Dark';
 }
 
+
 if (toggle) {
   let current = 'dark';
   try { current = localStorage.getItem('sizemint-theme') === 'light' ? 'light' : 'dark'; } catch (e) {}
@@ -27,4 +30,17 @@ if (toggle) {
     applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark');
   });
 }
+})();
+/* Scroll reveals — premium entrance motion, zero dependencies */
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if(!els.length) return;
+  function show(el){ el.classList.add('is-visible'); }
+  if(!('IntersectionObserver' in window)){ els.forEach(show); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){ show(en.target); io.unobserve(en.target); }
+    });
+  }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(el){ io.observe(el); });
 })();
