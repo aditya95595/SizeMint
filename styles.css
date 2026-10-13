@@ -31,3 +31,6 @@
 @media(max-width:960px){.tools-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:700px){.format-pills{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.tools-grid{grid-template-columns:1fr}}
+/* 2026-10-13: keep result-row badge + download button inside the card on narrow screens */
+.result-row{flex-wrap:wrap}
+@media (max-width:700px){.result-actions{flex:1 1 100%;justify-content:flex-start}.result-actions .btn{flex:1}}
