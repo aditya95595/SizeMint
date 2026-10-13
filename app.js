@@ -6,6 +6,24 @@ const state={files:[],results:[],processing:false};
 const MAX_DIMENSION=16384,MIN_DIMENSION=16;
 const fmt=n=>n<1024?Math.round(n)+' B':n<1048576?(n/1024).toFixed(1)+' KB':(n/1048576).toFixed(2)+' MB';
 const ext=t=>t==='image/png'?'png':t==='image/jpeg'?'jpg':t==='image/avif'?'avif':'webp';
+async function detectFormat(file){
+ try{
+  const buf=new Uint8Array(await file.slice(0,12).arrayBuffer());
+  const sig=(...b)=>b.length<=buf.length&&b.every((v,i)=>buf[i]===v);
+  if(sig(0xFF,0xD8,0xFF))return{mime:'image/jpeg',label:'JPEG'};
+  if(sig(0x89,0x50,0x4E,0x47))return{mime:'image/png',label:'PNG'};
+  if(sig(0x47,0x49,0x46,0x38))return{mime:'image/gif',label:'GIF'};
+  if(sig(0x42,0x4D))return{mime:'image/bmp',label:'BMP'};
+  if(buf[0]===0x52&&buf[1]===0x49&&buf[2]===0x46&&buf[3]===0x46&&buf[8]===0x57&&buf[9]===0x45&&buf[10]===0x42&&buf[11]===0x50)return{mime:'image/webp',label:'WebP'};
+  if(buf[4]===0x66&&buf[5]===0x74&&buf[6]===0x79&&buf[7]===0x70&&buf[8]===0x61&&buf[9]===0x76&&buf[10]===0x69&&buf[11]===0x66)return{mime:'image/avif',label:'AVIF'};
+ }catch(err){}
+ const t=file.type||'';
+ if(t==='image/jpeg')return{mime:t,label:'JPEG'};if(t==='image/png')return{mime:t,label:'PNG'};
+ if(t==='image/webp')return{mime:t,label:'WebP'};if(t==='image/avif')return{mime:t,label:'AVIF'};
+ if(t==='image/gif')return{mime:t,label:'GIF'};if(t==='image/bmp')return{mime:t,label:'BMP'};
+ return{mime:t,label:'Image'};
+}
+const DEFAULT_NOTICE='Automatic uses WebP where supported. PNG is lossless, so its quality setting does not work like JPEG/WebP quality.';
 const target=()=>e.targetPreset.value==='custom'?Math.max(1024,Number(e.customTarget.value||1)*1024):Number(e.targetPreset.value);
 function progress(done,total,text){const p=total?Math.round(done/total*100):0;e.progressText.textContent=text;e.progressPercent.textContent=p+'%';e.progressBar.style.width=p+'%'}
 function renderFiles(){
@@ -17,21 +35,34 @@ function renderFiles(){
   const img=document.createElement('img');img.className='thumb';img.alt='';img.src=x.url;
   const meta=document.createElement('div');meta.className='file-meta';
   const strong=document.createElement('strong');strong.textContent=x.file.name;strong.title=x.file.name;
-  const span=document.createElement('span');span.textContent=fmt(x.file.size)+' · '+(x.file.type||'image');
+  const span=document.createElement('span');span.textContent=fmt(x.file.size)+' · '+((x.detected&&x.detected.label)||x.file.type||'image');
   meta.append(strong,span);
   const btn=document.createElement('button');btn.className='remove-btn';btn.type='button';btn.dataset.remove=String(i);btn.textContent='Remove';
   row.append(img,meta,btn);e.fileList.appendChild(row);
  });
  e.controls.hidden=!state.files.length;e.compressBtn.disabled=!state.files.length;
 }
-function addFiles(list){
+async function addFiles(list){
  const maxBytes=25*1024*1024;
  const incoming=Array.from(list).filter(f=>/^image\/(jpeg|png|webp|avif|gif|bmp)$/.test(f.type)&&f.size<=maxBytes);
  const seen=new Set(state.files.map(x=>x.file.name+'|'+x.file.size+'|'+x.file.lastModified));
- incoming.forEach(file=>{const k=file.name+'|'+file.size+'|'+file.lastModified;if(!seen.has(k)){state.files.push({file,url:URL.createObjectURL(file)});seen.add(k)}});
- if(incoming.length<list.length)e.settingsNotice.textContent='Some files were skipped. Use JPG, PNG, WebP, AVIF, GIF or BMP images up to 25 MB each.';
- const hasGif=state.files.some(x=>x.file.type==='image/gif');
- if(hasGif)e.settingsNotice.textContent='GIF files are imported as a still image (the first frame), then compressed to your chosen output format.';
+ let skipped='';
+ if(incoming.length<list.length)skipped='Some files were skipped. Use JPG, PNG, WebP, AVIF, GIF or BMP images up to 25 MB each. ';
+ for(const file of incoming){
+  const k=file.name+'|'+file.size+'|'+file.lastModified;
+  if(seen.has(k))continue;
+  const detected=await detectFormat(file);
+  state.files.push({file,url:URL.createObjectURL(file),detected});seen.add(k);
+ }
+ const types=new Set(state.files.map(x=>x.detected.mime));
+ let rec='';
+ if(types.has('image/png'))rec='PNG detected — WebP is usually much smaller for the same look; keep PNG if you need transparency. ';
+ else if(types.has('image/jpeg'))rec='Photo detected — WebP gives smaller files than JPG at the same quality. ';
+ else if(types.has('image/webp'))rec='WebP detected — already efficient; choose JPG for maximum compatibility. ';
+ else if(types.has('image/avif'))rec='AVIF detected — already very efficient. ';
+ if(types.has('image/gif'))rec+='GIF files are imported as a still image (the first frame), then compressed to your chosen output format. ';
+ else if(types.has('image/bmp'))rec+='BMP files are converted from their decoded image into your chosen output format. ';
+ e.settingsNotice.textContent=(skipped+rec+state.avifMsg)||DEFAULT_NOTICE;
  renderFiles();
 }
 function detectOptionalFormats(){
@@ -43,7 +74,7 @@ function detectOptionalFormats(){
   const supported=c.toDataURL('image/avif').startsWith('data:image/avif');
   avif.hidden=!supported;
   if(!supported&&e.format.value==='image/avif')e.format.value='auto';
-  if(supported&&!e.settingsNotice.textContent.includes('AVIF'))e.settingsNotice.textContent='AVIF output is available in this browser. GIF/BMP inputs are converted from their decoded image into your chosen output format.';
+  if(supported&&!state.avifMsg){state.avifMsg='AVIF output is available in this browser. ';e.settingsNotice.textContent=DEFAULT_NOTICE+' '+state.avifMsg.trim()}
  }catch(err){avif.hidden=true;if(e.format.value==='image/avif')e.format.value='auto';}
 }
 function clearResults(){state.results.forEach(x=>x.url&&URL.revokeObjectURL(x.url));state.results=[];e.results.hidden=true;e.resultList.replaceChildren();e.downloadAllBtn.disabled=true}
