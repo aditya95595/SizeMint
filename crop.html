@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Crop Image Online: Free Image Cropper | SizeMint</title>
+<meta name="description" content="Crop images online with a free drag-to-crop tool. Square, 4:3 and 16:9 presets, PNG or JPG download. Everything happens in your browser — no uploads.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://sizemint.tool-web.workers.dev/crop.html">
+<meta name="theme-color" content="#0b0b14" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f7f5ff" media="(prefers-color-scheme: light)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SizeMint">
+<meta property="og:title" content="Crop Image Online: Free Image Cropper | SizeMint">
+<meta property="og:description" content="Drag to crop exactly what you need — square, 4:3, 16:9 presets, PNG or JPG download, all in your browser.">
+<meta property="og:url" content="https://sizemint.tool-web.workers.dev/crop.html">
+<meta property="og:image" content="https://sizemint.tool-web.workers.dev/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SizeMint — Free Image Cropper. Your images never leave your device.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Crop Image Online: Free Image Cropper | SizeMint">
+<meta name="twitter:description" content="Crop images online with a free drag-to-crop tool. No uploads, no account.">
+<meta name="twitter:image" content="https://sizemint.tool-web.workers.dev/og-card.png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="site.webmanifest">
+<script src="theme-init.js"></script>
+<link rel="stylesheet" href="styles.css">
+<style>
+.pill-note{font-size:.82rem;color:var(--muted);margin:.45rem 0 0}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I crop an image to a square?","acceptedAnswer":{"@type":"Answer","text":"Choose the 1:1 preset, then drag on the image to draw a square region. Drag inside the box to reposition it before downloading."}},{"@type":"Question","name":"What formats can I download the cropped image in?","acceptedAnswer":{"@type":"Answer","text":"PNG for lossless quality, or JPG for smaller files. JPG fills transparent areas with white."}},{"@type":"Question","name":"Is there a minimum crop size?","acceptedAnswer":{"@type":"Answer","text":"Yes — 16×16 pixels. Smaller selections are rejected with a notice."}},{"@type":"Question","name":"Is cropping done locally or uploaded?","acceptedAnswer":{"@type":"Answer","text":"Entirely locally. The image is drawn to a canvas in your browser and the crop is cut from the full-resolution original."}}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="index.html" aria-label="SizeMint home"><img class="logo-mark" src="logo.svg" alt=""><span class="brand-name">SizeMint</span></a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="index.html">Compressor</a><a href="index.html#tools">Tools</a><a href="guides.html">Guides</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" aria-pressed="true"><span class="theme-icon">☀</span><span class="theme-label">Light</span></button>
+      <details class="mobile-nav"><summary>Menu</summary><div class="mobile-nav-panel"><a href="index.html">Compressor</a><a href="index.html#tools">Tools</a><a href="guides.html">Guides</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></details>
+    </div>
+  </div>
+</header>
+<main>
+<section class="tool-section" aria-label="Crop image">
+  <div class="container"><div class="tool-card">
+    <p class="eyebrow">SizeMint tools</p>
+    <h1>Crop <span class="grad-text">exactly what you need.</span></h1>
+    <p class="page-lead">Drag a box over your image, pick an aspect preset if you like, and download the cut at full resolution. One image at a time.</p>
+    <div class="drop-zone" id="dropZone" tabindex="0" role="button" aria-label="Choose an image to crop">
+      <input id="fileInput" type="file" accept="image/jpeg,image/png,image/webp,image/avif,image/gif,image/bmp" multiple hidden>
+      <div class="upload-icon" aria-hidden="true">◩</div>
+      <h2>Drop an image here</h2>
+      <p>or click to choose a file</p>
+      <small>JPG, PNG, WebP, AVIF, GIF or BMP · up to 25 MB</small>
+      <button class="btn primary" id="chooseBtn" type="button">Choose image</button>
+    </div>
+    <div class="notice" id="notice" role="status" hidden></div>
+    <div class="controls" id="cropUI" hidden>
+      <div class="selected-head"><strong id="fileLabel">image</strong><button class="text-btn" id="newImageBtn" type="button">New image</button></div>
+      <div class="crop-stage" id="cropStage">
+        <canvas id="cropCanvas"></canvas>
+        <div class="crop-rect" id="cropRect" style="display:none"></div>
+      </div>
+      <div class="preset-row" id="presetRow" role="group" aria-label="Crop aspect ratio">
+        <button class="preset-btn active" type="button" data-aspect="free">Free</button>
+        <button class="preset-btn" type="button" data-aspect="1">1:1</button>
+        <button class="preset-btn" type="button" data-aspect="1.3333">4:3</button>
+        <button class="preset-btn" type="button" data-aspect="0.75">3:4</button>
+        <button class="preset-btn" type="button" data-aspect="1.7778">16:9</button>
+      </div>
+      <p class="pill-note">Drag on the image to draw a crop box. Drag inside the box to move it. Skip drawing to use the whole image.</p>
+      <div class="action-row">
+        <button class="btn primary large" id="dlPng" type="button">Download PNG</button>
+        <button class="btn secondary large" id="dlJpg" type="button">Download JPG</button>
+      </div>
+    </div>
+  </div></div>
+</section>
+<section class="tools-section reveal" aria-label="More image tools">
+  <div class="container">
+    <p class="eyebrow">The suite</p>
+    <h2>More image tools, <span class="grad-text">same privacy.</span></h2>
+    <p class="section-lead">Every tool runs entirely in your browser.</p>
+    <div class="tools-grid">
+      <a class="tool-card-mini" href="index.html"><span class="tool-glyph" aria-hidden="true">◈</span><strong>Compress IMAGE</strong><span>Hit a target size — 20KB to 5MB.</span><em>Open tool →</em></a>
+      <a class="tool-card-mini" href="convert.html"><span class="tool-glyph" aria-hidden="true">⇄</span><strong>Convert Format</strong><span>PNG ↔ JPG ↔ WebP ↔ AVIF.</span><em>Open tool →</em></a>
+      <a class="tool-card-mini" href="resize.html"><span class="tool-glyph" aria-hidden="true">⤢</span><strong>Resize Image</strong><span>Change dimensions by pixels or percent.</span><em>Open tool →</em></a>
+      <a class="tool-card-mini is-here" href="crop.html"><span class="tool-glyph" aria-hidden="true">◩</span><strong>Crop Image</strong><span>Drag to cut exactly what you need.</span><em>You are here</em></a>
+    </div>
+  </div>
+</section>
+<section class="content-section reveal"><div class="container narrow">
+  <p class="eyebrow">How it works</p>
+  <h2>Drag, preset, download</h2>
+  <p>Draw a rectangle directly on your image — outside the box dims so you can see exactly what stays. Pick a preset like 1:1 or 16:9 to lock the shape while you drag, or leave it on Free for any shape. Dragging inside an existing box moves it.</p>
+  <h2>Full-resolution cuts</h2>
+  <p>The preview is scaled to fit your screen, but the download is cut from the original at full resolution — a 4000-pixel photo gives you a 4000-pixel-wide crop region, not the small preview.</p>
+  <h2>Private by design</h2>
+  <p>Cropping uses local canvas APIs only. Your images never leave your device — see the <a href="privacy.html">Privacy Policy</a> for the current disclosures.</p>
+</div></section>
+<section class="faq-section reveal"><div class="container narrow">
+  <p class="eyebrow">FAQ</p>
+  <h2>Questions about cropping images</h2>
+  <details><summary>How do I crop an image to a square?</summary><p>Choose the 1:1 preset, then drag on the image to draw a square region. Drag inside the box to reposition it before downloading.</p></details>
+  <details><summary>What formats can I download the cropped image in?</summary><p>PNG for lossless quality, or JPG for smaller files. JPG fills transparent areas with white.</p></details>
+  <details><summary>Is there a minimum crop size?</summary><p>Yes — 16×16 pixels. Smaller selections are rejected with a notice.</p></details>
+  <details><summary>Is cropping done locally or uploaded?</summary><p>Entirely locally. The image is drawn to a canvas in your browser and the crop is cut from the full-resolution original.</p></details>
+</div></section>
+</main>
+<footer><div class="container footer-wrap"><span>© <span id="year"></span> SizeMint</span><div><a href="guides.html">Guides</a><a href="about.html">About</a><a href="sponsor.html">Advertise</a><a href="mailto:idalinux08@gmail.com">Contact</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></div></footer>
+<div class="bottom-ad-banner" aria-label="Sponsor space"><div class="bottom-ad-inner"><div class="bottom-ad-art" aria-hidden="true"><i></i><i></i><i></i></div><div><small>SPONSOR SPACE</small><strong>Want your brand in front of SizeMint users?</strong><a href="sponsor.html">Want your ads to be placed on our web? Contact Us.</a></div></div></div>
+<script src="site.js" defer></script>
+<script src="tools.js" defer></script>
+<script src="crop-page.js" defer></script>
+</body>
+</html>
