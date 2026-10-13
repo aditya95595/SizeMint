@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Compress Images Without Uploading (Private) | SizeMint</title>
+<meta name="description" content="Compress images without uploading them anywhere: why browser-local compression matters for ID photos and documents, and how to verify it yourself.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://sizemint.tool-web.workers.dev/no-upload-compressor.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css">
+<script>
+(function(){try{var t=localStorage.getItem('sizemint-theme');document.documentElement.dataset.theme=(t==='light'||t==='dark')?t:'dark'}catch(e){document.documentElement.dataset.theme='dark'}})();
+</script>
+</head>
+<body>
+<header class="site-header"><div class="container nav-wrap">
+<a class="brand" href="index.html" aria-label="SizeMint home"><img class="wordmark" src="logo.svg" alt="SizeMint"></a>
+<nav class="desktop-nav" aria-label="Main navigation"><a href="index.html">Compressor</a><a class="active" aria-current="page" href="guides.html">Guides</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
+<div class="header-actions"><button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" aria-pressed="true"><span class="theme-icon">☀</span><span class="theme-label">Light</span></button><details class="mobile-nav"><summary>Menu</summary><div class="mobile-nav-panel"><a href="index.html">Compressor</a><a class="active" aria-current="page" href="guides.html">Guides</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></details></div>
+</div></header>
+<main class="page">
+<div class="container narrow">
+<p class="eyebrow">SIZEMINT GUIDES</p>
+<h1>Compress images without uploading them anywhere.</h1>
+<p class="page-lead">Most free compressors upload your file to their servers first. SizeMint compresses entirely in your browser — and you can prove it to yourself in under a minute.</p>
+
+<div class="ad-slot sponsor-placeholder" aria-label="Sponsor space"><span>SPONSOR SPACE</span></div>
+
+<article class="guide-article" id="why-matters">
+<h2>Why "where it processes" matters</h2>
+<p>Think about what people actually compress: passport photos, ID cards, signatures, medical documents, children's school photos, unreleased work. Uploading any of these to a free tool means a copy lands on someone else's server, under a retention policy you cannot verify and a jurisdiction you did not choose. "We delete files after 1 hour" is a promise; a file that never leaves your device needs no promises. For identity documents especially, the safest upload is the one that never happens.</p>
+</article>
+
+<article class="guide-article" id="how-it-works">
+<h2>How browser-local compression works</h2>
+<p>A web page is just code running on your machine. When you drop an image into SizeMint, your own browser decodes it, re-encodes it at the target size, and hands you the download — the same way a desktop app would, except there is nothing to install. The page itself is tiny (13KB of HTML, zero third-party scripts), so there is nowhere for your image to go even if it wanted to. No account exists to attach files to, and no server endpoint receives them.</p>
+</article>
+
+<article class="guide-article" id="verify">
+<h2>Verify the no-upload claim yourself</h2>
+<p>Do not take our word for it. Your browser can show you exactly what leaves your device:</p>
+<h3>1. Open DevTools</h3>
+<p>Press F12 (or Ctrl+Shift+I on Windows/Linux, Cmd+Option+I on Mac) and switch to the <strong>Network</strong> tab.</p>
+<h3>2. Compress an image</h3>
+<p>With the Network tab open, drop a photo into the <a href="index.html#compressor">SizeMint compressor</a> and run a compression. Watch the request list as it works.</p>
+<h3>3. Look for an upload</h3>
+<p>You will see the page's own small asset requests — and no image upload. No large POST request, no multipart form data carrying your photo. For contrast, run the same test on an upload-based compressor: you will see a multi-megabyte POST the moment you drop the file in. The difference is visible and unambiguous.</p>
+<h3>4. Try it offline (optional)</h3>
+<p>Once the page has loaded, you can even disconnect your network and compress — the core compression keeps working, because it never needed the network in the first place.</p>
+</article>
+
+<article class="guide-article" id="exif">
+<h2>A note on EXIF metadata</h2>
+<p>Phone photos carry EXIF data — sometimes including GPS coordinates of where the shot was taken. Re-encoding an image in the browser strips this metadata: the encoder writes fresh pixels, not the original file's headers. You can confirm it with any EXIF viewer by comparing the original against the compressed download. Stripping location data is a side effect here, not a feature to rely on exclusively — for sensitive uploads, still check the file yourself.</p>
+</article>
+
+<article class="guide-article" id="limits">
+<h2>What browser-local cannot do</h2>
+<p>Honesty matters here too. Browser-local compression cannot do server-side tricks like AI upscaling or huge batch queues that need datacenter GPUs. Very large images are bounded by your device's memory rather than a server's. What it does — compressing your images to exact target sizes privately — it does completely, with no account, no queue and no upload.</p>
+</article>
+
+<article class="guide-article" id="faq">
+<h2>Frequently asked questions</h2>
+<h3>How can a website compress without uploading?</h3>
+<p>The compression code runs in your browser, not on a server. Your browser already contains everything needed to decode and re-encode images — the website just orchestrates it locally.</p>
+<h3>Are my photos stored anywhere?</h3>
+<p>No. There is no account system and no storage — processed images exist only in your browser's memory until you download the result. Closing the tab discards them.</p>
+<h3>Does it work without an internet connection?</h3>
+<p>The page must load once (it is a website, after all), but compression itself needs no connection — you can verify this by going offline after the page loads and compressing anyway.</p>
+<h3>Is the compressed file really free of my location data?</h3>
+<p>Browser re-encoding drops EXIF headers including GPS. Verify with an EXIF viewer on the downloaded file — trust the check, not the claim.</p>
+</article>
+
+<article class="guide-article" id="related">
+<h2>Related guides</h2>
+<p>Compressing ID photos? Read <a href="reduce-photo-to-100kb.html">how to reduce photo size to 100KB</a> — written with document privacy in mind. Comparing tools on this exact criterion? See the <a href="tinypng-alternative.html">honest TinyPNG-alternatives comparison</a>.</p>
+</article>
+
+<h2>Use the compressor</h2>
+<p>Compress your next image the private way: <a href="index.html#compressor">open the SizeMint compressor</a> — no signup, no upload, nothing to trust but your own Network tab.</p>
+</div>
+</main>
+<footer><div class="container footer-wrap"><span>© <span id="year"></span> SizeMint</span><div><a href="index.html">Compressor</a><a href="about.html">About</a><a href="sponsor.html">Advertise</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></div></footer>
+<script src="site.js" defer></script>
+</body></html>
