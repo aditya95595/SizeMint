@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How to Compress PNG Without Losing Quality | SizeMint</title>
+<meta name="description" content="Compress PNG without losing quality: lossless vs quantization explained simply, when PNG is the right format, and steps that actually shrink PNGs.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://sizemint.tool-web.workers.dev/compress-png-quality.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css">
+<script>
+(function(){try{var t=localStorage.getItem('sizemint-theme');document.documentElement.dataset.theme=(t==='light'||t==='dark')?t:'dark'}catch(e){document.documentElement.dataset.theme='dark'}})();
+</script>
+</head>
+<body>
+<header class="site-header"><div class="container nav-wrap">
+<a class="brand" href="index.html" aria-label="SizeMint home"><img class="wordmark" src="logo.svg" alt="SizeMint"></a>
+<nav class="desktop-nav" aria-label="Main navigation"><a href="index.html">Compressor</a><a class="active" aria-current="page" href="guides.html">Guides</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
+<div class="header-actions"><button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" aria-pressed="true"><span class="theme-icon">☀</span><span class="theme-label">Light</span></button><details class="mobile-nav"><summary>Menu</summary><div class="mobile-nav-panel"><a href="index.html">Compressor</a><a class="active" aria-current="page" href="guides.html">Guides</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></details></div>
+</div></header>
+<main class="page">
+<div class="container narrow">
+<p class="eyebrow">SIZEMINT GUIDES</p>
+<h1>How to compress PNG without losing quality.</h1>
+<p class="page-lead">PNG has two ways to get smaller: lossless optimization that changes nothing, and palette quantization that looks identical on graphics. Here is how both work and when to use each.</p>
+
+<div class="ad-slot sponsor-placeholder" aria-label="Sponsor space"><span>SPONSOR SPACE</span></div>
+
+<article class="guide-article" id="why-big">
+<h2>Why PNG files are so big</h2>
+<p>PNG stores every pixel exactly — that is its job. For a logo with flat colors, "exactly" costs little. For a photograph with millions of subtly different pixels, "exactly" can cost 5–10MB where a JPG would need 300KB. Before optimizing a PNG, ask whether the image should be a PNG at all: photographs almost never should be. If it is a photo, convert it to <a href="webp-vs-jpg.html">WebP or JPG</a> first — that single decision dwarfs every optimization below.</p>
+</article>
+
+<article class="guide-article" id="lossless">
+<h2>Method 1: lossless optimization (changes nothing)</h2>
+<p>Lossless optimizers rewrite the PNG's internal encoding more efficiently — better filtering, better deflate settings, stripped metadata — without touching a single pixel. Think of it as zipping the file smarter. Typical savings are 10–40%, the image is bit-for-bit identical, and there is no reason not to do it. This is always the first step.</p>
+</article>
+
+<article class="guide-article" id="quantization">
+<h2>Method 2: palette quantization (looks identical on graphics)</h2>
+<p>Quantization reduces the color palette — say, from 16 million colors to 256. That sounds drastic, but a logo or UI screenshot rarely uses more than a few hundred distinct colors, so the result is visually identical while the file can shrink 60–80%. This is technically lossy, which is why the method matters: use it on graphics, icons, charts and screenshots — never on photographs or gradients, where the missing colors show up as visible banding.</p>
+</article>
+
+<article class="guide-article" id="when-png">
+<h2>When PNG is the right choice</h2>
+<p>Use PNG when you need transparency (logos, overlays, watermarks), pixel-perfect screenshots for documentation, or line art where JPG's smudging around sharp edges would show. For everything else, pick the format by content: photos go to JPG or WebP, simple graphics stay PNG and get quantized. Choosing the right format up front beats any amount of squeezing the wrong one.</p>
+</article>
+
+<article class="guide-article" id="steps">
+<h2>Shrink a PNG in SizeMint</h2>
+<h3>1. Upload the PNG</h3>
+<p>Open the <a href="index.html#compressor">SizeMint compressor</a> and drop in your PNG. Processing happens entirely in your browser — the file is never uploaded.</p>
+<h3>2. Set an exact target size</h3>
+<p>Enter the KB target you need. The compressor searches encodings automatically for the best result that fits, instead of making you guess a quality number.</p>
+<h3>3. Check edges and text at full size</h3>
+<p>Zoom to 100% and inspect sharp edges, small text and transparency boundaries — these are where over-compression shows first. If edges look dirty, the target is too aggressive for the image's complexity: raise it or reduce the image dimensions first.</p>
+<h3>4. Confirm transparency survived</h3>
+<p>If your PNG has a transparent background, check it against a dark backdrop after compression. A flattened or fringed edge means the transparency was mishandled — reconvert from the original.</p>
+</article>
+
+<article class="guide-article" id="expectations">
+<h2>What to realistically expect</h2>
+<p>A logo or icon: lossless optimization alone often cuts 20–40%; with quantization, 60–80% smaller at visually identical quality is normal. A full-screen screenshot: expect 40–70% with careful settings. A photograph saved as PNG: convert it to JPG or WebP instead — no PNG technique will beat simply using the right format, and you will typically land at one-tenth the size.</p>
+</article>
+
+<article class="guide-article" id="faq">
+<h2>Frequently asked questions</h2>
+<h3>Does compressing a PNG reduce its quality?</h3>
+<p>Lossless optimization never does — the pixels are identical. Quantization is technically lossy but visually lossless on graphics with limited colors. On photographs, both the wrong method and visible damage.</p>
+<h3>Why is my PNG still huge after compressing?</h3>
+<p>Almost always because it is a photograph (or a very large image) in a format built for exactness. Convert photos to JPG or WebP. If it is a graphic, check the dimensions — a 4000px-wide logo carries 16× the pixels of a 1000px one.</p>
+<h3>Should I use PNG or JPG for screenshots?</h3>
+<p>PNG for documentation and anything with text — JPG smudges sharp edges. If the screenshot is mostly a photograph (a video still, a game capture), JPG or WebP at high quality is fine and far smaller.</p>
+<h3>Does SizeMint keep PNG transparency?</h3>
+<p>Yes — transparent pixels stay transparent through compression. Verify against a dark background after downloading, as described above.</p>
+</article>
+
+<article class="guide-article" id="related">
+<h2>Related guides</h2>
+<p>Choosing between modern formats? Read <a href="webp-vs-jpg.html">WebP vs JPG: which is smaller</a>. For exact upload limits, see <a href="compress-to-20kb.html">how to compress an image to 20KB</a>.</p>
+</article>
+
+<h2>Use the compressor</h2>
+<p>Have a PNG to shrink? <a href="index.html#compressor">Open the SizeMint compressor</a>, set your exact target, and keep every pixel.</p>
+</div>
+</main>
+<footer><div class="container footer-wrap"><span>© <span id="year"></span> SizeMint</span><div><a href="index.html">Compressor</a><a href="about.html">About</a><a href="sponsor.html">Advertise</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></div></footer>
+<script src="site.js" defer></script>
+</body></html>
