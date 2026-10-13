@@ -34,3 +34,12 @@
 /* 2026-10-13: keep result-row badge + download button inside the card on narrow screens */
 .result-row{flex-wrap:wrap}
 @media (max-width:700px){.result-actions{flex:1 1 100%;justify-content:flex-start}.result-actions .btn{flex:1}}
+/* 2026-10-13: suite tool tab bar above each drop zone */
+.tool-tabs{display:flex;gap:.35rem;background:var(--card-strong);border:1px solid var(--line-soft);border-radius:16px;padding:.35rem;margin-bottom:1.4rem;overflow-x:auto;scrollbar-width:none}
+.tool-tabs::-webkit-scrollbar{display:none}
+.tool-tab{flex:1 1 0;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border-radius:11px;padding:.7rem .6rem;color:var(--muted);font:600 .92rem Inter,sans-serif;white-space:nowrap;transition:background .2s,color .2s,box-shadow .2s}
+.tool-tab:hover{color:var(--ink);text-decoration:none;background:var(--card)}
+.tool-tab.active{background:var(--grad);color:#fff;box-shadow:0 4px 14px rgba(139,92,246,.4)}
+.tool-tab.active:hover{color:#fff}
+.tool-tab .tool-glyph{font-size:1rem;margin:0}
+@media (max-width:560px){.tool-tab{font-size:.82rem;padding:.65rem .4rem;gap:.35rem}.tool-tab .tool-glyph{display:none}}
