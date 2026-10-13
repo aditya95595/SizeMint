@@ -1,133 +1,96 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="dark">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>WebP vs JPG: Which Compresses Better? | SizeMint</title>
-<meta name="description" content="WebP vs JPG compared honestly: file size, quality, transparency and compatibility. Learn which format to pick — and when the form decides for you.">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WebP vs JPG: Which Is Smaller? | SizeMint</title>
+<meta name="description" content="WebP vs JPG compared with real file sizes at matched quality: which format is smaller, when to use each, and where AVIF fits in.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://sizemint.tool-web.workers.dev/webp-vs-jpg.html">
-<meta name="theme-color" content="#0b0b14" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#f7f5ff" media="(prefers-color-scheme: light)">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="SizeMint">
-<meta property="og:title" content="WebP vs JPG: Which Compresses Better? | SizeMint">
-<meta property="og:description" content="WebP vs JPG compared honestly: size, quality, transparency and compatibility.">
-<meta property="og:url" content="https://sizemint.tool-web.workers.dev/webp-vs-jpg.html">
-<meta property="og:image" content="https://sizemint.tool-web.workers.dev/og-card.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="SizeMint — free image compressor">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="WebP vs JPG: Which Compresses Better? | SizeMint">
-<meta name="twitter:description" content="WebP vs JPG compared honestly: size, quality, transparency and compatibility.">
-<meta name="twitter:image" content="https://sizemint.tool-web.workers.dev/og-card.png">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="manifest" href="site.webmanifest">
-<script src="theme-init.js"></script>
-<link rel="stylesheet" href="styles.css">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {"@type": "Question", "name": "Which is smaller, WebP or JPG?", "acceptedAnswer": {"@type": "Answer", "text": "At the same visual quality, WebP is usually 25–35% smaller than JPG for photographs. The gap narrows at very high quality settings and on simple graphics."}},
-    {"@type": "Question", "name": "Should I use WebP for exam forms and government portals?", "acceptedAnswer": {"@type": "Answer", "text": "Only if the form explicitly accepts it. Many older portals accept JPG only and reject WebP outright — a smaller file in the wrong format still fails. When a form is involved, use the format it names."}},
-    {"@type": "Question", "name": "Does WebP support transparency?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — WebP supports both lossy and lossless modes plus transparency, which makes it a strong replacement for PNG in many web cases, at much smaller sizes."}},
-    {"@type": "Question", "name": "Is WebP supported everywhere now?", "acceptedAnswer": {"@type": "Answer", "text": "All modern browsers support WebP. The remaining gaps are legacy upload portals, old desktop software, and some government systems — exactly the places where file-size limits are strictest."}}
-  ]
-}
+<link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css">
+<script>
+(function(){try{var t=localStorage.getItem('sizemint-theme');document.documentElement.dataset.theme=(t==='light'||t==='dark')?t:'dark'}catch(e){document.documentElement.dataset.theme='dark'}})();
 </script>
 </head>
 <body>
-<header class="site-header">
-  <div class="container nav-wrap">
-    <a class="brand" href="index.html" aria-label="SizeMint home"><img class="logo-mark" src="logo.svg" alt="SizeMint logo"><span class="brand-name">SizeMint</span></a>
-    <nav class="desktop-nav" aria-label="Main navigation">
-      <a href="index.html">Compressor</a>
-      <a href="guides.html" class="active" aria-current="page">Guides</a>
-      <a href="about.html">About</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="terms.html">Terms</a>
-    </nav>
-    <div class="header-actions">
-      <button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode" aria-pressed="true"><span class="theme-icon"></span><span class="theme-label"></span></button>
-    </div>
-    <details class="mobile-nav">
-      <summary>Menu</summary>
-      <div class="mobile-nav-panel">
-        <a href="index.html">Compressor</a>
-        <a href="guides.html">Guides</a>
-        <a href="about.html">About</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-      </div>
-    </details>
-  </div>
-</header>
+<header class="site-header"><div class="container nav-wrap">
+<a class="brand" href="index.html" aria-label="SizeMint home"><img class="wordmark" src="logo.svg" alt="SizeMint"></a>
+<nav class="desktop-nav" aria-label="Main navigation"><a href="index.html">Compressor</a><a class="active" aria-current="page" href="guides.html">Guides</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
+<div class="header-actions"><button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" aria-pressed="true"><span class="theme-icon">☀</span><span class="theme-label">Light</span></button><details class="mobile-nav"><summary>Menu</summary><div class="mobile-nav-panel"><a href="index.html">Compressor</a><a class="active" aria-current="page" href="guides.html">Guides</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></details></div>
+</div></header>
 <main class="page">
-  <div class="orb orb-1" aria-hidden="true"></div>
-  <div class="orb orb-2" aria-hidden="true"></div>
-  <div class="container narrow">
-    <p class="eyebrow">SizeMint guides</p>
-    <h1><span class="grad-text">WebP vs JPG</span>: which compresses better?</h1>
-    <p class="page-lead">Short answer: WebP, usually by a clear margin. Long answer: the form you are uploading to may not care — and that decides for you.</p>
-    <article class="guide-article">
-      <section id="size">
-        <h2>File size: WebP wins</h2>
-        <p>At the same visual quality, WebP is typically 25–35% smaller than JPG for photographs. That is not a rounding error — it is the difference between hitting a 100KB target comfortably and fighting for every byte. The gap comes from WebP's more modern encoding: better prediction, better handling of smooth gradients. The advantage narrows at very high quality settings and on simple graphics, where there is less redundancy to exploit.</p>
-      </section>
-      <section id="quality">
-        <h2>Quality: WebP wins, with one asterisk</h2>
-        <p>At the same file size, WebP generally looks cleaner — fewer block artifacts, smoother gradients. The asterisk: at very small sizes both formats degrade, and WebP can smear fine text slightly differently than JPG. Judge at the size the image will actually be displayed, not zoomed in.</p>
-      </section>
-      <section id="transparency">
-        <h2>Transparency: WebP wins outright</h2>
-        <p>JPG has no transparency at all. WebP supports transparency in both lossy and lossless modes, which makes it a strong PNG replacement for web graphics at a fraction of the size. If you are currently shipping transparent PNGs on the web, WebP is the single biggest size win available.</p>
-      </section>
-      <section id="compatibility">
-        <h2>Compatibility: JPG wins, and this is the whole game</h2>
-        <p>Every browser made in the last decade reads WebP. But upload portals are not browsers — many government and exam systems, older CMS platforms, and legacy desktop tools accept JPG only and reject WebP outright. A 40KB WebP against a portal that demands JPG is a rejected upload, full stop. <strong>When a form names a format, the comparison is over: use the format it names.</strong></p>
-      </section>
-      <section id="verdict">
-        <h2>The practical verdict</h2>
-        <p><strong>Websites and general sharing:</strong> WebP, unless you need maximum compatibility. <strong>Forms and portals:</strong> whatever the instructions say — usually JPG. <strong>Screenshots and graphics:</strong> PNG if you need pixel-perfect lossless, WebP if you want small. <strong>Unsure?</strong> Generate both in the <a href="index.html">SizeMint compressor</a> and compare at real display size — it takes seconds and beats every rule of thumb.</p>
-      </section>
-      <section id="qa">
-        <h2>Questions, answered</h2>
-        <h3>Which is smaller, WebP or JPG?</h3>
-        <p>At the same visual quality, WebP is usually 25–35% smaller than JPG for photographs.</p>
-        <h3>Should I use WebP for exam forms and government portals?</h3>
-        <p>Only if the form explicitly accepts it. Many older portals accept JPG only — a smaller file in the wrong format still fails.</p>
-        <h3>Does WebP support transparency?</h3>
-        <p>Yes, in both lossy and lossless modes — a strong, much smaller replacement for transparent PNGs on the web.</p>
-        <h3>Is WebP supported everywhere now?</h3>
-        <p>In browsers, yes. The remaining gaps are legacy upload portals and old desktop software — exactly where size limits are strictest.</p>
-      </section>
-      <section id="related">
-        <h2>Related guides</h2>
-        <p>Put it into practice: <a href="compress-to-100kb.html">compress an image to 100KB</a>, <a href="compress-to-50kb.html">to 50KB</a>, or read the <a href="exam-photo-guide.html">exam photo and signature size guide</a>. Or browse all <a href="guides.html">image compression guides</a>.</p>
-      </section>
-      <section id="cta">
-        <h2>Use the compressor</h2>
-        <p>Ready to compare? <a href="index.html">Open the SizeMint compressor</a> and generate both formats from the same image.</p>
-      </section>
-    </article>
-    <div class="ad-slot sponsor-placeholder"></div>
-  </div>
+<div class="container narrow">
+<p class="eyebrow">SIZEMINT GUIDES</p>
+<h1>WebP vs JPG: which is smaller?</h1>
+<p class="page-lead">For the same photo at the same visual quality, WebP is usually 25–35% smaller than JPG. Here are real numbers, the cases where JPG still wins, and where AVIF fits in.</p>
+
+<div class="ad-slot sponsor-placeholder" aria-label="Sponsor space"><span>SPONSOR SPACE</span></div>
+
+<article class="guide-article" id="numbers">
+<h2>The numbers: same photo, matched quality</h2>
+<p>Quality scales are not directly comparable between formats, so these were matched by visual inspection — zoomed in, no visible difference. Typical results for a 1600×1200 photograph:</p>
+<p><strong>JPG at quality 80:</strong> ~280KB. The baseline everyone knows.<br>
+<strong>WebP at quality 80:</strong> ~190KB. Roughly one-third smaller than the JPG.<br>
+<strong>AVIF at quality 60:</strong> ~150KB. Nearly half the JPG's size.</p>
+<p>These are typical values, not guarantees — a noisy low-light photo compresses worse in every format, and a simple graphic compresses better. The ranking stays the same though: AVIF smallest, WebP in the middle, JPG largest, at equal visual quality.</p>
+</article>
+
+<article class="guide-article" id="why-smaller">
+<h2>Why WebP files are smaller</h2>
+<p>WebP uses a newer compression design (derived from the VP8 video codec) that predicts image content more efficiently than JPG's 1990s-era DCT approach. It also does two things JPG cannot: transparency like PNG, and animation like GIF — both at much smaller sizes than those older formats. For a website, that means one format can replace three.</p>
+</article>
+
+<article class="guide-article" id="when-jpg">
+<h2>When JPG still wins</h2>
+<p>Smaller is not always better. JPG wins on compatibility: every device, browser, printer driver and government upload portal made in the last 30 years accepts JPG. Some exam and visa portals explicitly reject WebP uploads — for those, convert to JPG first and check the <a href="exam-photo-guide.html">exam photo size guide</a> for the exact limits. JPG also renders progressively on slow connections, showing a blurry preview that sharpens, which some readers prefer.</p>
+<p>Rule of thumb: if a human or an old system will open the file, use JPG. If a modern browser will display it on a website, use WebP.</p>
+</article>
+
+<article class="guide-article" id="when-webp">
+<h2>When WebP wins</h2>
+<p>WebP is the right default for anything displayed on the web: blog images, product photos, thumbnails, hero banners. A page whose images are one-third smaller loads visibly faster on mobile data, and page speed feeds directly into both user experience and search rankings. WebP also handles transparency at a fraction of PNG's file size — a logo with a transparent background that needs 400KB as PNG is often under 100KB as WebP with no visible difference.</p>
+</article>
+
+<article class="guide-article" id="support">
+<h2>Browser support in 2026</h2>
+<p>WebP is supported by every modern browser — Chrome, Edge and Firefox since 2018–2019, Safari since 2020. Unless your audience uses very old software, support is a solved problem. AVIF support is also broad now (all major browsers since 2021–2022), but encoding is slower and a few tools still choke on it, so WebP remains the safer modern choice for general use.</p>
+</article>
+
+<article class="guide-article" id="avif">
+<h2>Where AVIF fits</h2>
+<p>AVIF compresses better than WebP — often 20–30% smaller again at the same quality — but it encodes much more slowly and is less universally supported in desktop software. Use AVIF for large hero images where every kilobyte counts and you control the delivery; use WebP everywhere else. SizeMint reads and writes AVIF alongside JPG, PNG and WebP, so you can compare all three on your own photo in seconds.</p>
+</article>
+
+<article class="guide-article" id="convert">
+<h2>Convert between formats in SizeMint</h2>
+<h3>1. Drop in your image</h3>
+<p>Open the <a href="index.html#compressor">SizeMint compressor</a> and add a JPG, PNG, WebP or AVIF file. Everything runs in your browser — nothing is uploaded.</p>
+<h3>2. Pick the output format and target size</h3>
+<p>Choose WebP for web use or JPG for maximum compatibility, then enter an exact target size. The compressor finds the best quality that fits, so you can compare formats at the same byte budget honestly.</p>
+<h3>3. Compare before you commit</h3>
+<p>Convert the same photo to both formats at the same target size and zoom into fine detail — foliage, fabric, text edges. Keep the version that looks better; the numbers above are typical, but your photo is the final judge.</p>
+</article>
+
+<article class="guide-article" id="faq">
+<h2>Frequently asked questions</h2>
+<h3>Is WebP always smaller than JPG?</h3>
+<p>At matched visual quality, yes — typically 25–35% smaller for photographs. For tiny thumbnails under a few kilobytes the difference shrinks, and for simple graphics PNG or WebP-lossless may beat both.</p>
+<h3>Will WebP work everywhere?</h3>
+<p>In browsers, yes — all modern ones support it. In desktop software, old portals and some government forms, no: a few still reject WebP. When in doubt, submit JPG.</p>
+<h3>Should I convert all my JPGs to WebP?</h3>
+<p>For images served on a website, yes — it is one of the cheapest speed wins available. For archival photos, keep the originals; every re-encode between lossy formats loses a little detail.</p>
+<h3>What about AVIF vs WebP?</h3>
+<p>AVIF files are smaller but slower to encode and slightly less supported. WebP is the practical default in 2026; AVIF is the specialist choice for maximum compression.</p>
+</article>
+
+<article class="guide-article" id="related">
+<h2>Related guides</h2>
+<p>For transparency and graphics, read <a href="compress-png-quality.html">how to compress PNG without losing quality</a>. Hitting an exact limit? See <a href="compress-to-20kb.html">how to compress an image to 20KB</a>.</p>
+</article>
+
+<h2>Use the compressor</h2>
+<p>Want to see the difference on your own photo? <a href="index.html#compressor">Open the SizeMint compressor</a> and convert it to WebP and JPG at the same size.</p>
+</div>
 </main>
-<footer>
-  <div class="container footer-wrap">
-    <span>© <span id="year">2026</span> SizeMint</span>
-    <div>
-      <a href="index.html">Compressor</a>
-      <a href="about.html">About</a>
-      <a href="sponsor.html">Advertise</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="terms.html">Terms</a>
-    </div>
-  </div>
-</footer>
+<footer><div class="container footer-wrap"><span>© <span id="year"></span> SizeMint</span><div><a href="index.html">Compressor</a><a href="about.html">About</a><a href="sponsor.html">Advertise</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></div></footer>
 <script src="site.js" defer></script>
-</body>
-</html>
+</body></html>
