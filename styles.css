@@ -43,3 +43,6 @@
 .tool-tab.active:hover{color:#fff}
 .tool-tab .tool-glyph{font-size:1rem;margin:0}
 @media (max-width:560px){.tool-tab{font-size:.82rem;padding:.65rem .4rem;gap:.35rem}.tool-tab .tool-glyph{display:none}}
+/* 2026-10-13: unmissable selected-tab indicator */
+.tool-tab.active{font-weight:700;box-shadow:0 4px 16px rgba(139,92,246,.55),inset 0 1px 0 rgba(255,255,255,.25)}
+.tool-tab.active::before{content:"";width:.5rem;height:.5rem;flex:none;border-radius:50%;background:#fff;box-shadow:0 0 8px rgba(255,255,255,.9)}
