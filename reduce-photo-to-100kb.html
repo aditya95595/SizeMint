@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How to Reduce Photo Size to 100KB | SizeMint</title>
+<meta name="description" content="Reduce any photo to 100KB in your browser — free, no upload, nothing leaves your device. Verify it yourself in the Network tab.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://sizemint.tool-web.workers.dev/reduce-photo-to-100kb.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css">
+<script>
+(function(){try{var t=localStorage.getItem('sizemint-theme');document.documentElement.dataset.theme=(t==='light'||t==='dark')?t:'dark'}catch(e){document.documentElement.dataset.theme='dark'}})();
+</script>
+</head>
+<body>
+<header class="site-header"><div class="container nav-wrap">
+<a class="brand" href="index.html" aria-label="SizeMint home"><img class="wordmark" src="logo.svg" alt="SizeMint"></a>
+<nav class="desktop-nav" aria-label="Main navigation"><a href="index.html">Compressor</a><a class="active" aria-current="page" href="guides.html">Guides</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
+<div class="header-actions"><button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" aria-pressed="true"><span class="theme-icon">☀</span><span class="theme-label">Light</span></button><details class="mobile-nav"><summary>Menu</summary><div class="mobile-nav-panel"><a href="index.html">Compressor</a><a class="active" aria-current="page" href="guides.html">Guides</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></details></div>
+</div></header>
+<main class="page">
+<div class="container narrow">
+<p class="eyebrow">SIZEMINT GUIDES</p>
+<h1>Reduce photo size to 100KB.</h1>
+<p class="page-lead">ID photos and documents should not travel to a stranger's server just to get smaller. Here is how to hit 100KB entirely on your own device.</p>
+
+<div class="ad-slot sponsor-placeholder" aria-label="Sponsor space"><span>SPONSOR SPACE</span></div>
+
+<article class="guide-article" id="when-100kb">
+<h2>When 100KB is the right target</h2>
+<p>One hundred kilobytes is the comfortable middle ground: job portals, ID document uploads, profile photos and blog images commonly land here. It is generous enough that a well-shot photo keeps visibly good quality, yet small enough to satisfy most upload limits and keep pages fast. If your form states a range ending at 100KB (Railway RRB's 50–100KB photo range, for example), target around 75KB to clear the ceiling with margin.</p>
+</article>
+
+<article class="guide-article" id="privacy">
+<h2>Your ID photo should not leave your device</h2>
+<p>Most online compressors work by uploading your photo to their server, processing it there, and sending it back. For a landscape that is harmless; for an ID photo, a signature or a document scan, it means your identity documents sit on hardware you do not control. SizeMint processes everything locally in your browser — and unlike most privacy claims, this one is verifiable:</p>
+<h3>Verify it in your Network tab</h3>
+<p>Open your browser's developer tools (F12), switch to the Network tab, then compress a photo. Watch the request list: you will see no image upload traffic, because the file never leaves your machine. Any tool that makes a privacy claim should survive this test — try it on others and compare. Read <a href="no-upload-compressor.html">why browser-local compression matters</a> for the full explanation, and the <a href="privacy.html">privacy policy</a> for the formal picture.</p>
+</article>
+
+<article class="guide-article" id="how-to">
+<h2>How to reduce to 100KB in SizeMint</h2>
+<h3>1. Upload your photo</h3>
+<p>Open the <a href="index.html#compressor">SizeMint compressor</a> and drop in a JPG, PNG, WebP or AVIF file. With the Network tab open you can confirm nothing uploads.</p>
+<h3>2. Enter 100 as the target</h3>
+<p>Type 100 KB as the target size. The compressor searches encodings automatically to find the best quality that fits under 100KB.</p>
+<h3>3. Judge it at display size</h3>
+<p>At 100KB most photos look clean, but check the result at the size it will actually be used — a profile thumbnail hides flaws a full-screen view reveals.</p>
+<h3>4. Download and verify</h3>
+<p>Confirm the file size in your file manager before uploading it to the portal. Keep your original as the archive copy.</p>
+</article>
+
+<article class="guide-article" id="exif">
+<h2>A note on EXIF data</h2>
+<p>Phone photos carry hidden EXIF metadata — camera model, timestamps, and sometimes GPS coordinates of where the photo was taken. Before uploading an ID photo anywhere, check what travels with it: on most systems you can right-click the file, open properties/details, and see the embedded data. Stripping EXIF is a separate step from compression, so verify your downloaded file the same way and remove location data before submitting identity documents.</p>
+</article>
+
+<article class="guide-article" id="troubleshooting">
+<h2>If the photo still looks soft</h2>
+<p>At 100KB the target is rarely the problem — the source usually is. Photos taken in dim light, heavy digital zoom, or aggressive phone "beauty" filters compress poorly because the encoder wastes bytes on noise. Retake in daylight with zoom at 1x. If the file is a PNG screenshot of a photo, converting to JPG first typically doubles the usable quality at the same size.</p>
+</article>
+
+<article class="guide-article" id="faq">
+<h2>100KB photo FAQs</h2>
+<h3>How do I reduce a photo to 100KB without losing quality?</h3>
+<p>Enter 100 KB as an exact target instead of lowering a quality slider blindly. At 100KB a good source photo keeps visibly clean quality for ID and web use.</p>
+<h3>How do I know my photo was not uploaded?</h3>
+<p>Open the Network tab in your browser's developer tools and compress a photo. If no image data leaves your machine, the claim holds. SizeMint passes this test.</p>
+<h3>Does compression remove location data from my photo?</h3>
+<p>Not automatically — EXIF metadata is separate from pixel compression. Check the downloaded file's properties and strip location data before uploading identity documents.</p>
+<h3>Is 100KB enough for a job portal photo?</h3>
+<p>Yes for the file-size check, as long as dimensions, background and format also match the portal's notification. Size is one check among several.</p>
+</article>
+
+<article class="guide-article" id="related">
+<h2>Related guides</h2>
+<p>Need a smaller file? See <a href="compress-to-50kb.html">how to compress an image to 50KB</a>. Need more room? Read <a href="compress-to-200kb.html">how to compress an image to 200KB</a>. For the privacy argument in full, see <a href="no-upload-compressor.html">why browser-local compression matters</a>.</p>
+</article>
+
+<h2>Use the compressor</h2>
+<p>Ready? <a href="index.html#compressor">Open the SizeMint compressor</a>, enter 100KB, and keep your photo on your device.</p>
+</div>
+</main>
+<footer><div class="container footer-wrap"><span>© <span id="year"></span> SizeMint</span><div><a href="index.html">Compressor</a><a href="about.html">About</a><a href="sponsor.html">Advertise</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></div></footer>
+<script src="site.js" defer></script>
+</body></html>
