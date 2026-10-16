@@ -5,17 +5,32 @@
 <title>Compress Images Without Uploading (Private) | SizeMint</title>
 <meta name="description" content="Compress images without uploading them anywhere: why browser-local compression matters for ID photos and documents, and how to verify it yourself.">
 <meta name="robots" content="index,follow">
-<link rel="canonical" href="https://sizemint.tool-web.workers.dev/no-upload-compressor.html">
+<link rel="canonical" href="https://sizemint.tool-web.workers.dev/no-upload-compressor">
 <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css">
 <script>
 (function(){try{var t=localStorage.getItem('sizemint-theme');document.documentElement.dataset.theme=(t==='light'||t==='dark')?t:'dark'}catch(e){document.documentElement.dataset.theme='dark'}})();
 </script>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SizeMint">
+<meta property="og:title" content="Compress Images Without Uploading (Private) | SizeMint">
+<meta property="og:description" content="Compress images without uploading them anywhere: why browser-local compression matters for ID photos and documents, and how to verify it yourself.">
+<meta property="og:url" content="https://sizemint.tool-web.workers.dev/no-upload-compressor">
+<meta property="og:image" content="https://sizemint.tool-web.workers.dev/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SizeMint — Free Image Compressor. Your images never leave your device.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Compress Images Without Uploading (Private) | SizeMint">
+<meta name="twitter:description" content="Compress images without uploading them anywhere: why browser-local compression matters for ID photos and documents, and how to verify it yourself.">
+<meta name="twitter:image" content="https://sizemint.tool-web.workers.dev/og-card.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How can a website compress without uploading?", "acceptedAnswer": {"@type": "Answer", "text": "The compression code runs in your browser, not on a server. Your browser already contains everything needed to decode and re-encode images — the website just orchestrates it locally."}}, {"@type": "Question", "name": "Are my photos stored anywhere?", "acceptedAnswer": {"@type": "Answer", "text": "No. There is no account system and no storage — processed images exist only in your browser's memory until you download the result. Closing the tab discards them."}}, {"@type": "Question", "name": "Does it work without an internet connection?", "acceptedAnswer": {"@type": "Answer", "text": "The page must load once (it is a website, after all), but compression itself needs no connection — you can verify this by going offline after the page loads and compressing anyway."}}, {"@type": "Question", "name": "Is the compressed file really free of my location data?", "acceptedAnswer": {"@type": "Answer", "text": "Browser re-encoding drops EXIF headers including GPS. Verify with an EXIF viewer on the downloaded file — trust the check, not the claim."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Compress images without uploading them anywhere.", "description": "Compress images without uploading them anywhere: why browser-local compression matters for ID photos and documents, and how to verify it yourself.", "author": {"@type": "Organization", "name": "SizeMint"}, "mainEntityOfPage": "https://sizemint.tool-web.workers.dev/no-upload-compressor"}</script>
 </head>
 <body>
 <header class="site-header"><div class="container nav-wrap">
-<a class="brand" href="index.html" aria-label="SizeMint home"><img class="wordmark" src="logo.svg" alt="SizeMint"></a>
-<nav class="desktop-nav" aria-label="Main navigation"><a href="index.html">Compressor</a><a class="active" aria-current="page" href="guides.html">Guides</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
-<div class="header-actions"><button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" aria-pressed="true"><span class="theme-icon">☀</span><span class="theme-label">Light</span></button><details class="mobile-nav"><summary>Menu</summary><div class="mobile-nav-panel"><a href="index.html">Compressor</a><a class="active" aria-current="page" href="guides.html">Guides</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></details></div>
+<a class="brand" href="/" aria-label="SizeMint home"><img class="wordmark" src="logo.svg" alt="SizeMint"></a>
+<nav class="desktop-nav" aria-label="Main navigation"><a href="/">Compressor</a><a class="active" aria-current="page" href="guides">Guides</a><a href="about">About</a><a href="privacy">Privacy</a><a href="terms">Terms</a></nav>
+<div class="header-actions"><button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" aria-pressed="true"><span class="theme-icon">☀</span><span class="theme-label">Light</span></button><details class="mobile-nav"><summary>Menu</summary><div class="mobile-nav-panel"><a href="/">Compressor</a><a class="active" aria-current="page" href="guides">Guides</a><a href="about">About</a><a href="privacy">Privacy</a><a href="terms">Terms</a></div></details></div>
 </div></header>
 <main class="page">
 <div class="container narrow">
@@ -41,7 +56,7 @@
 <h3>1. Open DevTools</h3>
 <p>Press F12 (or Ctrl+Shift+I on Windows/Linux, Cmd+Option+I on Mac) and switch to the <strong>Network</strong> tab.</p>
 <h3>2. Compress an image</h3>
-<p>With the Network tab open, drop a photo into the <a href="index.html#compressor">SizeMint compressor</a> and run a compression. Watch the request list as it works.</p>
+<p>With the Network tab open, drop a photo into the <a href="/#compressor">SizeMint compressor</a> and run a compression. Watch the request list as it works.</p>
 <h3>3. Look for an upload</h3>
 <p>You will see the page's own small asset requests — and no image upload. No large POST request, no multipart form data carrying your photo. For contrast, run the same test on an upload-based compressor: you will see a multi-megabyte POST the moment you drop the file in. The difference is visible and unambiguous.</p>
 <h3>4. Try it offline (optional)</h3>
@@ -72,13 +87,13 @@
 
 <article class="guide-article" id="related">
 <h2>Related guides</h2>
-<p>Compressing ID photos? Read <a href="reduce-photo-to-100kb.html">how to reduce photo size to 100KB</a> — written with document privacy in mind. Comparing tools on this exact criterion? See the <a href="tinypng-alternative.html">honest TinyPNG-alternatives comparison</a>.</p>
+<p>Compressing ID photos? Read <a href="reduce-photo-to-100kb">how to reduce photo size to 100KB</a> — written with document privacy in mind. Comparing tools on this exact criterion? See the <a href="tinypng-alternative">honest TinyPNG-alternatives comparison</a>.</p>
 </article>
 
 <h2>Use the compressor</h2>
-<p>Compress your next image the private way: <a href="index.html#compressor">open the SizeMint compressor</a> — no signup, no upload, nothing to trust but your own Network tab.</p>
+<p>Compress your next image the private way: <a href="/#compressor">open the SizeMint compressor</a> — no signup, no upload, nothing to trust but your own Network tab.</p>
 </div>
 </main>
-<footer><div class="container footer-wrap"><span>© <span id="year"></span> SizeMint</span><div><a href="index.html">Compressor</a><a href="about.html">About</a><a href="sponsor.html">Advertise</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></div></footer>
+<footer><div class="container footer-wrap"><span>© <span id="year"></span> SizeMint</span><div><a href="/">Compressor</a><a href="about">About</a><a href="sponsor">Advertise</a><a href="privacy">Privacy</a><a href="terms">Terms</a></div></div></footer>
 <script src="site.js" defer></script>
 </body></html>

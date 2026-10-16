@@ -5,17 +5,32 @@
 <title>How to Reduce Photo Size to 100KB | SizeMint</title>
 <meta name="description" content="Reduce any photo to 100KB in your browser — free, no upload, nothing leaves your device. Verify it yourself in the Network tab.">
 <meta name="robots" content="index,follow">
-<link rel="canonical" href="https://sizemint.tool-web.workers.dev/reduce-photo-to-100kb.html">
+<link rel="canonical" href="https://sizemint.tool-web.workers.dev/reduce-photo-to-100kb">
 <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css">
 <script>
 (function(){try{var t=localStorage.getItem('sizemint-theme');document.documentElement.dataset.theme=(t==='light'||t==='dark')?t:'dark'}catch(e){document.documentElement.dataset.theme='dark'}})();
 </script>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SizeMint">
+<meta property="og:title" content="How to Reduce Photo Size to 100KB | SizeMint">
+<meta property="og:description" content="Reduce any photo to 100KB in your browser — free, no upload, nothing leaves your device. Verify it yourself in the Network tab.">
+<meta property="og:url" content="https://sizemint.tool-web.workers.dev/reduce-photo-to-100kb">
+<meta property="og:image" content="https://sizemint.tool-web.workers.dev/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SizeMint — Free Image Compressor. Your images never leave your device.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Reduce Photo Size to 100KB | SizeMint">
+<meta name="twitter:description" content="Reduce any photo to 100KB in your browser — free, no upload, nothing leaves your device. Verify it yourself in the Network tab.">
+<meta name="twitter:image" content="https://sizemint.tool-web.workers.dev/og-card.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "Reduce photo size to 100KB.", "description": "Reduce any photo to 100KB in your browser — free, no upload, nothing leaves your device. Verify it yourself in the Network tab.", "step": [{"@type": "HowToStep", "name": "Upload your photo", "text": "Open the SizeMint compressor and drop in a JPG, PNG, WebP or AVIF file. With the Network tab open you can confirm nothing uploads."}, {"@type": "HowToStep", "name": "Enter 100 as the target", "text": "Type 100 KB as the target size. The compressor searches encodings automatically to find the best quality that fits under 100KB."}, {"@type": "HowToStep", "name": "Judge it at display size", "text": "At 100KB most photos look clean, but check the result at the size it will actually be used — a profile thumbnail hides flaws a full-screen view reveals."}, {"@type": "HowToStep", "name": "Download and verify", "text": "Confirm the file size in your file manager before uploading it to the portal. Keep your original as the archive copy."}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I reduce a photo to 100KB without losing quality?", "acceptedAnswer": {"@type": "Answer", "text": "Enter 100 KB as an exact target instead of lowering a quality slider blindly. At 100KB a good source photo keeps visibly clean quality for ID and web use."}}, {"@type": "Question", "name": "How do I know my photo was not uploaded?", "acceptedAnswer": {"@type": "Answer", "text": "Open the Network tab in your browser's developer tools and compress a photo. If no image data leaves your machine, the claim holds. SizeMint passes this test."}}, {"@type": "Question", "name": "Does compression remove location data from my photo?", "acceptedAnswer": {"@type": "Answer", "text": "Not automatically — EXIF metadata is separate from pixel compression. Check the downloaded file's properties and strip location data before uploading identity documents."}}, {"@type": "Question", "name": "Is 100KB enough for a job portal photo?", "acceptedAnswer": {"@type": "Answer", "text": "Yes for the file-size check, as long as dimensions, background and format also match the portal's notification. Size is one check among several."}}]}</script>
 </head>
 <body>
 <header class="site-header"><div class="container nav-wrap">
-<a class="brand" href="index.html" aria-label="SizeMint home"><img class="wordmark" src="logo.svg" alt="SizeMint"></a>
-<nav class="desktop-nav" aria-label="Main navigation"><a href="index.html">Compressor</a><a class="active" aria-current="page" href="guides.html">Guides</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
-<div class="header-actions"><button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" aria-pressed="true"><span class="theme-icon">☀</span><span class="theme-label">Light</span></button><details class="mobile-nav"><summary>Menu</summary><div class="mobile-nav-panel"><a href="index.html">Compressor</a><a class="active" aria-current="page" href="guides.html">Guides</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></details></div>
+<a class="brand" href="/" aria-label="SizeMint home"><img class="wordmark" src="logo.svg" alt="SizeMint"></a>
+<nav class="desktop-nav" aria-label="Main navigation"><a href="/">Compressor</a><a class="active" aria-current="page" href="guides">Guides</a><a href="about">About</a><a href="privacy">Privacy</a><a href="terms">Terms</a></nav>
+<div class="header-actions"><button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" aria-pressed="true"><span class="theme-icon">☀</span><span class="theme-label">Light</span></button><details class="mobile-nav"><summary>Menu</summary><div class="mobile-nav-panel"><a href="/">Compressor</a><a class="active" aria-current="page" href="guides">Guides</a><a href="about">About</a><a href="privacy">Privacy</a><a href="terms">Terms</a></div></details></div>
 </div></header>
 <main class="page">
 <div class="container narrow">
@@ -34,13 +49,13 @@
 <h2>Your ID photo should not leave your device</h2>
 <p>Most online compressors work by uploading your photo to their server, processing it there, and sending it back. For a landscape that is harmless; for an ID photo, a signature or a document scan, it means your identity documents sit on hardware you do not control. SizeMint processes everything locally in your browser — and unlike most privacy claims, this one is verifiable:</p>
 <h3>Verify it in your Network tab</h3>
-<p>Open your browser's developer tools (F12), switch to the Network tab, then compress a photo. Watch the request list: you will see no image upload traffic, because the file never leaves your machine. Any tool that makes a privacy claim should survive this test — try it on others and compare. Read <a href="no-upload-compressor.html">why browser-local compression matters</a> for the full explanation, and the <a href="privacy.html">privacy policy</a> for the formal picture.</p>
+<p>Open your browser's developer tools (F12), switch to the Network tab, then compress a photo. Watch the request list: you will see no image upload traffic, because the file never leaves your machine. Any tool that makes a privacy claim should survive this test — try it on others and compare. Read <a href="no-upload-compressor">why browser-local compression matters</a> for the full explanation, and the <a href="privacy">privacy policy</a> for the formal picture.</p>
 </article>
 
 <article class="guide-article" id="how-to">
 <h2>How to reduce to 100KB in SizeMint</h2>
 <h3>1. Upload your photo</h3>
-<p>Open the <a href="index.html#compressor">SizeMint compressor</a> and drop in a JPG, PNG, WebP or AVIF file. With the Network tab open you can confirm nothing uploads.</p>
+<p>Open the <a href="/#compressor">SizeMint compressor</a> and drop in a JPG, PNG, WebP or AVIF file. With the Network tab open you can confirm nothing uploads.</p>
 <h3>2. Enter 100 as the target</h3>
 <p>Type 100 KB as the target size. The compressor searches encodings automatically to find the best quality that fits under 100KB.</p>
 <h3>3. Judge it at display size</h3>
@@ -73,13 +88,13 @@
 
 <article class="guide-article" id="related">
 <h2>Related guides</h2>
-<p>Need a smaller file? See <a href="compress-to-50kb.html">how to compress an image to 50KB</a>. Need more room? Read <a href="compress-to-200kb.html">how to compress an image to 200KB</a>. For the privacy argument in full, see <a href="no-upload-compressor.html">why browser-local compression matters</a>.</p>
+<p>Need a smaller file? See <a href="compress-to-50kb">how to compress an image to 50KB</a>. Need more room? Read <a href="compress-to-200kb">how to compress an image to 200KB</a>. For the privacy argument in full, see <a href="no-upload-compressor">why browser-local compression matters</a>.</p>
 </article>
 
 <h2>Use the compressor</h2>
-<p>Ready? <a href="index.html#compressor">Open the SizeMint compressor</a>, enter 100KB, and keep your photo on your device.</p>
+<p>Ready? <a href="/#compressor">Open the SizeMint compressor</a>, enter 100KB, and keep your photo on your device.</p>
 </div>
 </main>
-<footer><div class="container footer-wrap"><span>© <span id="year"></span> SizeMint</span><div><a href="index.html">Compressor</a><a href="about.html">About</a><a href="sponsor.html">Advertise</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></div></footer>
+<footer><div class="container footer-wrap"><span>© <span id="year"></span> SizeMint</span><div><a href="/">Compressor</a><a href="about">About</a><a href="sponsor">Advertise</a><a href="privacy">Privacy</a><a href="terms">Terms</a></div></div></footer>
 <script src="site.js" defer></script>
 </body></html>

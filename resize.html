@@ -6,14 +6,14 @@
 <title>Resize Image Online: Change Pixels or Percent | SizeMint</title>
 <meta name="description" content="Resize images online by pixels or percent. Lock aspect ratio, avoid unwanted enlargement, keep the original format. Free, in your browser, no uploads.">
 <meta name="robots" content="index,follow">
-<link rel="canonical" href="https://sizemint.tool-web.workers.dev/resize.html">
+<link rel="canonical" href="https://sizemint.tool-web.workers.dev/resize">
 <meta name="theme-color" content="#0b0b14" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#f7f5ff" media="(prefers-color-scheme: light)">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="SizeMint">
 <meta property="og:title" content="Resize Image Online: Change Pixels or Percent | SizeMint">
 <meta property="og:description" content="Change image dimensions by pixels or percent — entirely in your browser, with aspect-ratio lock and no unwanted enlargement.">
-<meta property="og:url" content="https://sizemint.tool-web.workers.dev/resize.html">
+<meta property="og:url" content="https://sizemint.tool-web.workers.dev/resize">
 <meta property="og:image" content="https://sizemint.tool-web.workers.dev/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -32,17 +32,18 @@
 .pill-note{font-size:.82rem;color:var(--muted);margin:.45rem 0 0}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I resize an image by percentage?","acceptedAnswer":{"@type":"Answer","text":"Choose Percent as the unit and enter a number in the Width field — 50 halves the dimensions, 200 doubles them (only when enlargement is allowed)."}},{"@type":"Question","name":"Will resizing keep my image's aspect ratio?","acceptedAnswer":{"@type":"Answer","text":"Yes, as long as Lock aspect ratio is checked. Enter one dimension and the other is derived automatically; enter both and the image fits inside that box."}},{"@type":"Question","name":"Can I make an image larger than the original?","acceptedAnswer":{"@type":"Answer","text":"Only when Allow enlargement is checked. Enlarging cannot add detail, so it is off by default."}},{"@type":"Question","name":"What format will the resized image be?","acceptedAnswer":{"@type":"Answer","text":"The original format is kept when it is JPG, PNG, WebP or AVIF; other inputs fall back to PNG. Lossy outputs are encoded at high quality."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "SizeMint Image Resizer", "url": "https://sizemint.tool-web.workers.dev/resize", "applicationCategory": "MultimediaApplication", "operatingSystem": "Any", "description": "Resize images online by pixels or percent. Lock aspect ratio, avoid unwanted enlargement, keep the original format. Free, in your browser, no uploads.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
 </head>
 <body>
 <header class="site-header">
   <div class="container nav-wrap">
-    <a class="brand" href="index.html" aria-label="SizeMint home"><img class="logo-mark" src="logo.svg" alt=""><span class="brand-name">SizeMint</span></a>
+    <a class="brand" href="/" aria-label="SizeMint home"><img class="logo-mark" src="logo.svg" alt=""><span class="brand-name">SizeMint</span></a>
     <nav class="desktop-nav" aria-label="Main navigation">
-      <a href="index.html">Compressor</a><a href="index.html#tools">Tools</a><a href="guides.html">Guides</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a>
+      <a href="/">Compressor</a><a href="index.html#tools">Tools</a><a href="guides">Guides</a><a href="about">About</a><a href="privacy">Privacy</a><a href="terms">Terms</a>
     </nav>
     <div class="header-actions">
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" aria-pressed="true"><span class="theme-icon">☀</span><span class="theme-label">Light</span></button>
-      <details class="mobile-nav"><summary>Menu</summary><div class="mobile-nav-panel"><a href="index.html">Compressor</a><a href="index.html#tools">Tools</a><a href="guides.html">Guides</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></details>
+      <details class="mobile-nav"><summary>Menu</summary><div class="mobile-nav-panel"><a href="/">Compressor</a><a href="index.html#tools">Tools</a><a href="guides">Guides</a><a href="about">About</a><a href="privacy">Privacy</a><a href="terms">Terms</a></div></details>
     </div>
   </div>
 </header>
@@ -53,10 +54,10 @@
     <h1>Resize images by <span class="grad-text">pixels or percent.</span></h1>
     <p class="page-lead">Set exact dimensions or scale by percentage. Aspect ratio stays locked unless you say otherwise — and nothing is ever enlarged without your permission.</p>
     <nav class="tool-tabs" aria-label="Choose an image tool">
-      <a class="tool-tab" href="index.html"><span class="tool-glyph" aria-hidden="true">◈</span>Compress</a>
-      <a class="tool-tab" href="convert.html"><span class="tool-glyph" aria-hidden="true">⇄</span>Convert</a>
-      <a class="tool-tab active" aria-current="page" href="resize.html"><span class="tool-glyph" aria-hidden="true">⤢</span>Resize</a>
-      <a class="tool-tab" href="crop.html"><span class="tool-glyph" aria-hidden="true">◩</span>Crop</a>
+      <a class="tool-tab" href="/"><span class="tool-glyph" aria-hidden="true">◈</span>Compress</a>
+      <a class="tool-tab" href="convert"><span class="tool-glyph" aria-hidden="true">⇄</span>Convert</a>
+      <a class="tool-tab active" aria-current="page" href="resize"><span class="tool-glyph" aria-hidden="true">⤢</span>Resize</a>
+      <a class="tool-tab" href="crop"><span class="tool-glyph" aria-hidden="true">◩</span>Crop</a>
     </nav>
     <div class="drop-zone" id="dropZone" tabindex="0" role="button" aria-label="Choose images to resize">
       <input id="fileInput" type="file" accept="image/jpeg,image/png,image/webp,image/avif,image/gif,image/bmp" multiple hidden>
@@ -92,10 +93,10 @@
     <h2>More image tools, <span class="grad-text">same privacy.</span></h2>
     <p class="section-lead">Every tool runs entirely in your browser.</p>
     <div class="tools-grid">
-      <a class="tool-card-mini" href="index.html"><span class="tool-glyph" aria-hidden="true">◈</span><strong>Compress IMAGE</strong><span>Hit a target size — 20KB to 5MB.</span><em>Open tool →</em></a>
-      <a class="tool-card-mini" href="convert.html"><span class="tool-glyph" aria-hidden="true">⇄</span><strong>Convert Format</strong><span>PNG ↔ JPG ↔ WebP ↔ AVIF.</span><em>Open tool →</em></a>
-      <a class="tool-card-mini is-here" href="resize.html"><span class="tool-glyph" aria-hidden="true">⤢</span><strong>Resize Image</strong><span>Change dimensions by pixels or percent.</span><em>You are here</em></a>
-      <a class="tool-card-mini" href="crop.html"><span class="tool-glyph" aria-hidden="true">◩</span><strong>Crop Image</strong><span>Drag to cut exactly what you need.</span><em>Open tool →</em></a>
+      <a class="tool-card-mini" href="/"><span class="tool-glyph" aria-hidden="true">◈</span><strong>Compress IMAGE</strong><span>Hit a target size — 20KB to 5MB.</span><em>Open tool →</em></a>
+      <a class="tool-card-mini" href="convert"><span class="tool-glyph" aria-hidden="true">⇄</span><strong>Convert Format</strong><span>PNG ↔ JPG ↔ WebP ↔ AVIF.</span><em>Open tool →</em></a>
+      <a class="tool-card-mini is-here" href="resize"><span class="tool-glyph" aria-hidden="true">⤢</span><strong>Resize Image</strong><span>Change dimensions by pixels or percent.</span><em>You are here</em></a>
+      <a class="tool-card-mini" href="crop"><span class="tool-glyph" aria-hidden="true">◩</span><strong>Crop Image</strong><span>Drag to cut exactly what you need.</span><em>Open tool →</em></a>
     </div>
   </div>
 </section>
@@ -106,7 +107,7 @@
   <h2>No accidental upscaling</h2>
   <p>Enlarging a photo cannot add detail — it only makes a bigger, softer file. So enlargement stays off unless you explicitly allow it. Dimensions are also clamped to a sane range (16 to 16384 pixels) to protect your browser's memory.</p>
   <h2>Private by design</h2>
-  <p>Resizing uses local canvas APIs only. Your images never leave your device — see the <a href="privacy.html">Privacy Policy</a> for the current disclosures.</p>
+  <p>Resizing uses local canvas APIs only. Your images never leave your device — see the <a href="privacy">Privacy Policy</a> for the current disclosures.</p>
 </div></section>
 <section class="faq-section reveal"><div class="container narrow">
   <p class="eyebrow">FAQ</p>
@@ -117,8 +118,8 @@
   <details><summary>What format will the resized image be?</summary><p>The original format is kept when it is JPG, PNG, WebP or AVIF; other inputs fall back to PNG. Lossy outputs are encoded at high quality.</p></details>
 </div></section>
 </main>
-<footer><div class="container footer-wrap"><span>© <span id="year"></span> SizeMint</span><div><a href="guides.html">Guides</a><a href="about.html">About</a><a href="sponsor.html">Advertise</a><a href="mailto:idalinux08@gmail.com">Contact</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></div></footer>
-<div class="bottom-ad-banner" aria-label="Sponsor space"><div class="bottom-ad-inner"><div class="bottom-ad-art" aria-hidden="true"><i></i><i></i><i></i></div><div><small>SPONSOR SPACE</small><strong>Want your brand in front of SizeMint users?</strong><a href="sponsor.html">Want your ads to be placed on our web? Contact Us.</a></div></div></div>
+<footer><div class="container footer-wrap"><span>© <span id="year"></span> SizeMint</span><div><a href="guides">Guides</a><a href="about">About</a><a href="sponsor">Advertise</a><a href="mailto:idalinux08@gmail.com">Contact</a><a href="privacy">Privacy</a><a href="terms">Terms</a></div></div></footer>
+<div class="bottom-ad-banner" aria-label="Sponsor space"><div class="bottom-ad-inner"><div class="bottom-ad-art" aria-hidden="true"><i></i><i></i><i></i></div><div><small>SPONSOR SPACE</small><strong>Want your brand in front of SizeMint users?</strong><a href="sponsor">Want your ads to be placed on our web? Contact Us.</a></div></div></div>
 <script src="site.js" defer></script>
 <script src="tools.js" defer></script>
 <script src="resize-page.js" defer></script>

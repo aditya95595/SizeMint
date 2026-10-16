@@ -5,17 +5,32 @@
 <title>How to Compress PNG Without Losing Quality | SizeMint</title>
 <meta name="description" content="Compress PNG without losing quality: lossless vs quantization explained simply, when PNG is the right format, and steps that actually shrink PNGs.">
 <meta name="robots" content="index,follow">
-<link rel="canonical" href="https://sizemint.tool-web.workers.dev/compress-png-quality.html">
+<link rel="canonical" href="https://sizemint.tool-web.workers.dev/compress-png-quality">
 <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css">
 <script>
 (function(){try{var t=localStorage.getItem('sizemint-theme');document.documentElement.dataset.theme=(t==='light'||t==='dark')?t:'dark'}catch(e){document.documentElement.dataset.theme='dark'}})();
 </script>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SizeMint">
+<meta property="og:title" content="How to Compress PNG Without Losing Quality | SizeMint">
+<meta property="og:description" content="Compress PNG without losing quality: lossless vs quantization explained simply, when PNG is the right format, and steps that actually shrink PNGs.">
+<meta property="og:url" content="https://sizemint.tool-web.workers.dev/compress-png-quality">
+<meta property="og:image" content="https://sizemint.tool-web.workers.dev/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SizeMint — Free Image Compressor. Your images never leave your device.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Compress PNG Without Losing Quality | SizeMint">
+<meta name="twitter:description" content="Compress PNG without losing quality: lossless vs quantization explained simply, when PNG is the right format, and steps that actually shrink PNGs.">
+<meta name="twitter:image" content="https://sizemint.tool-web.workers.dev/og-card.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does compressing a PNG reduce its quality?", "acceptedAnswer": {"@type": "Answer", "text": "Lossless optimization never does — the pixels are identical. Quantization is technically lossy but visually lossless on graphics with limited colors. On photographs, both the wrong method and visible damage."}}, {"@type": "Question", "name": "Why is my PNG still huge after compressing?", "acceptedAnswer": {"@type": "Answer", "text": "Almost always because it is a photograph (or a very large image) in a format built for exactness. Convert photos to JPG or WebP. If it is a graphic, check the dimensions — a 4000px-wide logo carries 16× the pixels of a 1000px one."}}, {"@type": "Question", "name": "Should I use PNG or JPG for screenshots?", "acceptedAnswer": {"@type": "Answer", "text": "PNG for documentation and anything with text — JPG smudges sharp edges. If the screenshot is mostly a photograph (a video still, a game capture), JPG or WebP at high quality is fine and far smaller."}}, {"@type": "Question", "name": "Does SizeMint keep PNG transparency?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — transparent pixels stay transparent through compression. Verify against a dark background after downloading, as described above."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How to compress PNG without losing quality.", "description": "Compress PNG without losing quality: lossless vs quantization explained simply, when PNG is the right format, and steps that actually shrink PNGs.", "author": {"@type": "Organization", "name": "SizeMint"}, "mainEntityOfPage": "https://sizemint.tool-web.workers.dev/compress-png-quality"}</script>
 </head>
 <body>
 <header class="site-header"><div class="container nav-wrap">
-<a class="brand" href="index.html" aria-label="SizeMint home"><img class="wordmark" src="logo.svg" alt="SizeMint"></a>
-<nav class="desktop-nav" aria-label="Main navigation"><a href="index.html">Compressor</a><a class="active" aria-current="page" href="guides.html">Guides</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
-<div class="header-actions"><button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" aria-pressed="true"><span class="theme-icon">☀</span><span class="theme-label">Light</span></button><details class="mobile-nav"><summary>Menu</summary><div class="mobile-nav-panel"><a href="index.html">Compressor</a><a class="active" aria-current="page" href="guides.html">Guides</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></details></div>
+<a class="brand" href="/" aria-label="SizeMint home"><img class="wordmark" src="logo.svg" alt="SizeMint"></a>
+<nav class="desktop-nav" aria-label="Main navigation"><a href="/">Compressor</a><a class="active" aria-current="page" href="guides">Guides</a><a href="about">About</a><a href="privacy">Privacy</a><a href="terms">Terms</a></nav>
+<div class="header-actions"><button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" aria-pressed="true"><span class="theme-icon">☀</span><span class="theme-label">Light</span></button><details class="mobile-nav"><summary>Menu</summary><div class="mobile-nav-panel"><a href="/">Compressor</a><a class="active" aria-current="page" href="guides">Guides</a><a href="about">About</a><a href="privacy">Privacy</a><a href="terms">Terms</a></div></details></div>
 </div></header>
 <main class="page">
 <div class="container narrow">
@@ -27,7 +42,7 @@
 
 <article class="guide-article" id="why-big">
 <h2>Why PNG files are so big</h2>
-<p>PNG stores every pixel exactly — that is its job. For a logo with flat colors, "exactly" costs little. For a photograph with millions of subtly different pixels, "exactly" can cost 5–10MB where a JPG would need 300KB. Before optimizing a PNG, ask whether the image should be a PNG at all: photographs almost never should be. If it is a photo, convert it to <a href="webp-vs-jpg.html">WebP or JPG</a> first — that single decision dwarfs every optimization below.</p>
+<p>PNG stores every pixel exactly — that is its job. For a logo with flat colors, "exactly" costs little. For a photograph with millions of subtly different pixels, "exactly" can cost 5–10MB where a JPG would need 300KB. Before optimizing a PNG, ask whether the image should be a PNG at all: photographs almost never should be. If it is a photo, convert it to <a href="webp-vs-jpg">WebP or JPG</a> first — that single decision dwarfs every optimization below.</p>
 </article>
 
 <article class="guide-article" id="lossless">
@@ -48,7 +63,7 @@
 <article class="guide-article" id="steps">
 <h2>Shrink a PNG in SizeMint</h2>
 <h3>1. Upload the PNG</h3>
-<p>Open the <a href="index.html#compressor">SizeMint compressor</a> and drop in your PNG. Processing happens entirely in your browser — the file is never uploaded.</p>
+<p>Open the <a href="/#compressor">SizeMint compressor</a> and drop in your PNG. Processing happens entirely in your browser — the file is never uploaded.</p>
 <h3>2. Set an exact target size</h3>
 <p>Enter the KB target you need. The compressor searches encodings automatically for the best result that fits, instead of making you guess a quality number.</p>
 <h3>3. Check edges and text at full size</h3>
@@ -76,13 +91,13 @@
 
 <article class="guide-article" id="related">
 <h2>Related guides</h2>
-<p>Choosing between modern formats? Read <a href="webp-vs-jpg.html">WebP vs JPG: which is smaller</a>. For exact upload limits, see <a href="compress-to-20kb.html">how to compress an image to 20KB</a>.</p>
+<p>Choosing between modern formats? Read <a href="webp-vs-jpg">WebP vs JPG: which is smaller</a>. For exact upload limits, see <a href="compress-to-20kb">how to compress an image to 20KB</a>.</p>
 </article>
 
 <h2>Use the compressor</h2>
-<p>Have a PNG to shrink? <a href="index.html#compressor">Open the SizeMint compressor</a>, set your exact target, and keep every pixel.</p>
+<p>Have a PNG to shrink? <a href="/#compressor">Open the SizeMint compressor</a>, set your exact target, and keep every pixel.</p>
 </div>
 </main>
-<footer><div class="container footer-wrap"><span>© <span id="year"></span> SizeMint</span><div><a href="index.html">Compressor</a><a href="about.html">About</a><a href="sponsor.html">Advertise</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></div></footer>
+<footer><div class="container footer-wrap"><span>© <span id="year"></span> SizeMint</span><div><a href="/">Compressor</a><a href="about">About</a><a href="sponsor">Advertise</a><a href="privacy">Privacy</a><a href="terms">Terms</a></div></div></footer>
 <script src="site.js" defer></script>
 </body></html>

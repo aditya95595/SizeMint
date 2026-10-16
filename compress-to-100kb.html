@@ -6,14 +6,14 @@
 <title>Compress Image to 100KB Online — Free, No Upload | SizeMint</title>
 <meta name="description" content="Compress JPG, PNG or WebP images to exactly 100KB in your browser. Free, no upload, no signup — hit the target size for portal uploads and documents.">
 <meta name="robots" content="index,follow">
-<link rel="canonical" href="https://sizemint.tool-web.workers.dev/compress-to-100kb.html">
+<link rel="canonical" href="https://sizemint.tool-web.workers.dev/compress-to-100kb">
 <meta name="theme-color" content="#0b0b14" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#f7f5ff" media="(prefers-color-scheme: light)">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="SizeMint">
 <meta property="og:title" content="Compress Image to 100KB Online — Free, No Upload | SizeMint">
 <meta property="og:description" content="Hit an exact 100KB target in your browser. Free, no upload, no signup.">
-<meta property="og:url" content="https://sizemint.tool-web.workers.dev/compress-to-100kb.html">
+<meta property="og:url" content="https://sizemint.tool-web.workers.dev/compress-to-100kb">
 <meta property="og:image" content="https://sizemint.tool-web.workers.dev/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -40,17 +40,19 @@
   ]
 }
 </script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "Compress image to 100KB, exactly.", "description": "Compress JPG, PNG or WebP images to exactly 100KB in your browser. Free, no upload, no signup — hit the target size for portal uploads and documents.", "step": [{"@type": "HowToStep", "name": "Upload your image", "text": "Open the SizeMint compressor and drop in a JPG, PNG, WebP or AVIF file. Processing happens entirely in your browser — the image is never uploaded anywhere."}, {"@type": "HowToStep", "name": "Enter 100 as the target", "text": "Type 100 KB as the target size. The compressor searches encodings automatically to find the best quality that fits under 100KB."}, {"@type": "HowToStep", "name": "Inspect the result honestly", "text": "Check faces, text, thin lines and high-contrast edges at the size they will be displayed. A file can meet 100KB while looking worse than necessary if the dimensions or quality were pushed too far."}, {"@type": "HowToStep", "name": "Download and verify", "text": "Download the result and confirm the file size in your file manager before uploading it to the form. Keep your original — the 100KB file is a submission copy, not an archive."}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is 100KB enough for a clear photo?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. At sensible display dimensions, 100KB holds a clean, detailed photograph. This is the most forgiving of the common upload limits."}}, {"@type": "Question", "name": "JPG or WebP for 100KB?", "acceptedAnswer": {"@type": "Answer", "text": "Use whichever the destination accepts. WebP usually looks slightly better at the same size; JPG is the safer choice for older portals. Our format comparison walks through the trade-offs."}}, {"@type": "Question", "name": "My file is 102KB — will the form accept it?", "acceptedAnswer": {"@type": "Answer", "text": "Usually not — byte counts are checked mechanically. Target slightly under, around 98–99KB, so measurement differences do not push you over."}}, {"@type": "Question", "name": "Should I resize before compressing?", "acceptedAnswer": {"@type": "Answer", "text": "If the source is much larger than the display size, yes. Removing pixels the destination cannot show is the single biggest quality win at any fixed byte budget."}}]}</script>
 </head>
 <body>
 <header class="site-header">
   <div class="container nav-wrap">
-    <a class="brand" href="index.html" aria-label="SizeMint home"><img class="logo-mark" src="logo.svg" alt="SizeMint logo"><span class="brand-name">SizeMint</span></a>
+    <a class="brand" href="/" aria-label="SizeMint home"><img class="logo-mark" src="logo.svg" alt="SizeMint logo"><span class="brand-name">SizeMint</span></a>
     <nav class="desktop-nav" aria-label="Main navigation">
-      <a href="index.html">Compressor</a>
-      <a href="guides.html" class="active" aria-current="page">Guides</a>
-      <a href="about.html">About</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="terms.html">Terms</a>
+      <a href="/">Compressor</a>
+      <a href="guides" class="active" aria-current="page">Guides</a>
+      <a href="about">About</a>
+      <a href="privacy">Privacy</a>
+      <a href="terms">Terms</a>
     </nav>
     <div class="header-actions">
       <button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode" aria-pressed="true"><span class="theme-icon"></span><span class="theme-label"></span></button>
@@ -58,11 +60,11 @@
     <details class="mobile-nav">
       <summary>Menu</summary>
       <div class="mobile-nav-panel">
-        <a href="index.html">Compressor</a>
-        <a href="guides.html">Guides</a>
-        <a href="about.html">About</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
+        <a href="/">Compressor</a>
+        <a href="guides">Guides</a>
+        <a href="about">About</a>
+        <a href="privacy">Privacy</a>
+        <a href="terms">Terms</a>
       </div>
     </details>
   </div>
@@ -79,7 +81,7 @@
         <h2>Worth knowing before you start</h2>
         <p><strong>Start from the destination.</strong> A 100KB limit is a concrete constraint, so start with the constraint rather than a generic quality number. Name the target first; let the tool search for the encoding.</p>
         <p><strong>Dimensions are half the battle.</strong> A modern phone photo is thousands of pixels wide. If the portal displays it at a fraction of that, keeping every source pixel is wasteful — set a sensible maximum width and a higher quality setting becomes possible within the same 100KB.</p>
-        <p><strong>Pick the format that matches the image.</strong> Photographs usually benefit from JPG or WebP; screenshots and graphics may need PNG. If the destination accepts WebP, it stretches 100KB further for photos. See our <a href="webp-vs-jpg.html">WebP vs JPG comparison</a>.</p>
+        <p><strong>Pick the format that matches the image.</strong> Photographs usually benefit from JPG or WebP; screenshots and graphics may need PNG. If the destination accepts WebP, it stretches 100KB further for photos. See our <a href="webp-vs-jpg">WebP vs JPG comparison</a>.</p>
       </section>
       <section id="when-100kb">
         <h2>When you need exactly 100KB</h2>
@@ -88,7 +90,7 @@
       <section id="how-to">
         <h2>Hit 100KB in four steps</h2>
         <h3>1. Upload your image</h3>
-        <p>Open the <a href="index.html">SizeMint compressor</a> and drop in a JPG, PNG, WebP or AVIF file. Processing happens entirely in your browser — the image is never uploaded anywhere.</p>
+        <p>Open the <a href="/">SizeMint compressor</a> and drop in a JPG, PNG, WebP or AVIF file. Processing happens entirely in your browser — the image is never uploaded anywhere.</p>
         <h3>2. Enter 100 as the target</h3>
         <p>Type 100 KB as the target size. The compressor searches encodings automatically to find the best quality that fits under 100KB.</p>
         <h3>3. Inspect the result honestly</h3>
@@ -109,7 +111,7 @@
         <h3>Is 100KB enough for a clear photo?</h3>
         <p>Yes. At sensible display dimensions, 100KB holds a clean, detailed photograph. This is the most forgiving of the common upload limits.</p>
         <h3>JPG or WebP for 100KB?</h3>
-        <p>Use whichever the destination accepts. WebP usually looks slightly better at the same size; JPG is the safer choice for older portals. Our <a href="webp-vs-jpg.html">format comparison</a> walks through the trade-offs.</p>
+        <p>Use whichever the destination accepts. WebP usually looks slightly better at the same size; JPG is the safer choice for older portals. Our <a href="webp-vs-jpg">format comparison</a> walks through the trade-offs.</p>
         <h3>My file is 102KB — will the form accept it?</h3>
         <p>Usually not — byte counts are checked mechanically. Target slightly under, around 98–99KB, so measurement differences do not push you over.</p>
         <h3>Should I resize before compressing?</h3>
@@ -117,11 +119,11 @@
       </section>
       <section id="related">
         <h2>Related guides</h2>
-        <p>Tighter budget? Read <a href="compress-to-50kb.html">how to compress an image to 50KB</a> or <a href="compress-to-20kb.html">to 20KB</a>. Roomier target? See <a href="compress-to-200kb.html">how to compress an image to 200KB</a>. Or browse all <a href="guides.html">image compression guides</a>.</p>
+        <p>Tighter budget? Read <a href="compress-to-50kb">how to compress an image to 50KB</a> or <a href="compress-to-20kb">to 20KB</a>. Roomier target? See <a href="compress-to-200kb">how to compress an image to 200KB</a>. Or browse all <a href="guides">image compression guides</a>.</p>
       </section>
       <section id="cta">
         <h2>Use the compressor</h2>
-        <p>Ready? <a href="index.html">Open the SizeMint compressor</a>, enter 100KB, and download your file.</p>
+        <p>Ready? <a href="/">Open the SizeMint compressor</a>, enter 100KB, and download your file.</p>
       </section>
     </article>
     <div class="ad-slot sponsor-placeholder"></div>
@@ -131,11 +133,11 @@
   <div class="container footer-wrap">
     <span>© <span id="year">2026</span> SizeMint</span>
     <div>
-      <a href="index.html">Compressor</a>
-      <a href="about.html">About</a>
-      <a href="sponsor.html">Advertise</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="terms.html">Terms</a>
+      <a href="/">Compressor</a>
+      <a href="about">About</a>
+      <a href="sponsor">Advertise</a>
+      <a href="privacy">Privacy</a>
+      <a href="terms">Terms</a>
     </div>
   </div>
 </footer>

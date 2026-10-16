@@ -1,35 +1,75 @@
 # SizeMint
 
-> SizeMint is a free browser-based image compressor. Shrink JPG, PNG, WebP, and AVIF images down to a target file size — 20KB, 100KB, 1MB, or any custom size — entirely in your browser. Images are never uploaded to a server; all processing happens locally on the user's device.
+> SizeMint is a free browser-based image toolkit. Compress JPG, PNG, WebP, and AVIF images
+> down to a target file size — 20KB, 50KB, 100KB, 200KB, 1MB, or any custom size — convert
+> between formats, resize by pixels or percent, and crop images. Everything runs entirely in
+> the user's browser. Images are never uploaded to a server; no account needed.
 
-## How it works
+## Tools
 
-- The user selects an image file in the browser.
-- They pick a target file size (e.g. 20KB for exam forms, 100KB for uploads, 1MB for general use) and an output format (JPG, PNG, WebP, AVIF).
-- The tool encodes candidate versions locally and returns the best result under the target size as a download.
-- No accounts, no uploads, no server-side image storage. The site ships zero third-party analytics or tracking scripts.
+- [Image Compressor](https://sizemint.tool-web.workers.dev/): shrink images to an exact target
+  file size (20KB–5MB presets or custom). Reports the real final size, dimensions, and whether
+  the target was reached.
+- [Image Format Converter](https://sizemint.tool-web.workers.dev/convert): convert between JPG,
+  PNG, WebP, and AVIF with automatic format detection of the uploaded file.
+- [Image Resizer](https://sizemint.tool-web.workers.dev/resize): resize by exact pixels or by
+  percent, with aspect-ratio lock.
+- [Image Cropper](https://sizemint.tool-web.workers.dev/crop): drag-to-crop with square, 4:3,
+  and 16:9 presets; PNG or JPG output.
 
-## Key pages
+## Guides
 
-- [SizeMint — Free Image Compressor](https://sizemint.tool-web.workers.dev/): the main compression tool.
-- [Image Compression Guides](https://sizemint.tool-web.workers.dev/guides.html): practical guides — compressing to 100KB and other limits, JPG vs WebP vs PNG, resizing before compression, diagnosing difficult size targets.
-- [About SizeMint](https://sizemint.tool-web.workers.dev/about.html): how the tool works and why it targets file size instead of a quality number.
-- [Privacy Policy](https://sizemint.tool-web.workers.dev/privacy.html): browser-local image processing, hosting information, cookies, advertising, and privacy choices.
-- [Terms of Use](https://sizemint.tool-web.workers.dev/terms.html): terms for the compressor, guides, and related website features.
-- [Advertise on SizeMint](https://sizemint.tool-web.workers.dev/sponsor.html): sponsor placements and how to request advertising space.
+- [Compress image to 20KB](https://sizemint.tool-web.workers.dev/compress-to-20kb): hit an exact
+  20KB target for exam forms and uploads, step by step.
+- [Compress image to 50KB](https://sizemint.tool-web.workers.dev/compress-to-50kb): 50KB targets
+  for passport photos, email attachments, and form uploads.
+- [Compress image to 100KB](https://sizemint.tool-web.workers.dev/compress-to-100kb): four steps
+  to exactly 100KB.
+- [Reduce photo to 100KB](https://sizemint.tool-web.workers.dev/reduce-photo-to-100kb): ID and
+  portrait photos at 100KB, including an EXIF note.
+- [Compress image to 200KB](https://sizemint.tool-web.workers.dev/compress-to-200kb): 200KB
+  targets and what quality to expect.
+- [Compress signature to 20KB](https://sizemint.tool-web.workers.dev/compress-signature-20kb):
+  scan, crop to ~140x60 px, and compress signatures for SSC/IBPS/bank exam forms.
+- [Signature guide](https://sizemint.tool-web.workers.dev/signature-guide): make a compliant
+  exam-form signature; JPG vs PNG for signatures; common failures.
+- [Exam photo guide](https://sizemint.tool-web.workers.dev/exam-photo-guide): photo and signature
+  sizes for SSC, UPSC, IBPS, NEET, and Railway forms.
+- [WebP vs JPG](https://sizemint.tool-web.workers.dev/webp-vs-jpg): which format is smaller, with
+  real file sizes at matched quality; where AVIF fits.
+- [Compress PNG without losing quality](https://sizemint.tool-web.workers.dev/compress-png-quality):
+  lossless optimization vs palette quantization.
+- [Compress without uploading](https://sizemint.tool-web.workers.dev/no-upload-compressor): how
+  browser-local compression works and how to verify the no-upload claim.
+- [TinyPNG alternative](https://sizemint.tool-web.workers.dev/tinypng-alternative): honest
+  comparison of free image compressors.
+- [All guides](https://sizemint.tool-web.workers.dev/guides): the full guide index.
 
-## Formats and targets
+## Common questions (short answers)
 
-- Input/output formats: JPG, PNG, WebP, AVIF.
-- Common targets: 20KB (exam/government form photos), 100KB (portal uploads), 1MB (general sharing). Custom targets supported.
-- Compression is lossy where needed to hit the target; users should keep originals of important files.
+- Does SizeMint upload my images? No. The tools process images locally in the browser.
+- Can it hit an exact file size like 20KB? It targets the size and reports the real result;
+  exact sizes depend on image content, dimensions, and format.
+- Is it free? Yes. No account, no signup, no watermarks.
+- Which formats are supported? JPG, PNG, WebP, and AVIF input; JPG, PNG, WebP output.
+- Why target file size instead of quality? Upload forms enforce byte limits, so a target size
+  maps directly to what the form accepts.
+
+## About and policies
+
+- [About SizeMint](https://sizemint.tool-web.workers.dev/about): how the tools work and why
+  they target file size instead of a quality number.
+- [Privacy Policy](https://sizemint.tool-web.workers.dev/privacy): browser-local processing,
+  hosting, cookies, and advertising disclosures.
+- [Terms of Use](https://sizemint.tool-web.workers.dev/terms): terms for the tools and guides.
+- [Advertise on SizeMint](https://sizemint.tool-web.workers.dev/sponsor): sponsor placements.
 
 ## Privacy
 
 - Images are processed locally in the browser and never sent to a SizeMint server.
-- No user accounts. No first-party cookies for the core tool.
+- No user accounts. No first-party cookies for the core tools.
 - Contact for privacy questions: idalinux08@gmail.com.
 
 ## Contact
 
-- Email: idalinux08@gmail.com
+- Email: idalinux08@gmail.com.

@@ -33,13 +33,13 @@
 <body>
 <header class="site-header">
   <div class="container nav-wrap">
-    <a class="brand" href="index.html" aria-label="SizeMint home"><img class="logo-mark" src="logo.svg" alt=""><span class="brand-name">SizeMint</span></a>
+    <a class="brand" href="/" aria-label="SizeMint home"><img class="logo-mark" src="logo.svg" alt=""><span class="brand-name">SizeMint</span></a>
     <nav class="desktop-nav" aria-label="Main navigation">
-      <a class="active" aria-current="page" href="index.html">Compressor</a><a href="#tools">Tools</a><a href="guides.html">Guides</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a>
+      <a class="active" aria-current="page" href="/">Compressor</a><a href="#tools">Tools</a><a href="guides">Guides</a><a href="about">About</a><a href="privacy">Privacy</a><a href="terms">Terms</a>
     </nav>
     <div class="header-actions">
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" aria-pressed="true"><span class="theme-icon">☀</span><span class="theme-label">Light</span></button>
-      <details class="mobile-nav"><summary>Menu</summary><div class="mobile-nav-panel"><a href="index.html">Compressor</a><a href="#tools">Tools</a><a href="guides.html">Guides</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></details>
+      <details class="mobile-nav"><summary>Menu</summary><div class="mobile-nav-panel"><a href="/">Compressor</a><a href="#tools">Tools</a><a href="guides">Guides</a><a href="about">About</a><a href="privacy">Privacy</a><a href="terms">Terms</a></div></details>
     </div>
   </div>
 </header>
@@ -71,9 +71,9 @@
   <div class="workspace-shell"><div class="container workspace-grid"><div class="tool-card">
     <nav class="tool-tabs" aria-label="Choose an image tool">
       <a class="tool-tab active" aria-current="page" href="#compressor"><span class="tool-glyph" aria-hidden="true">◈</span>Compress</a>
-      <a class="tool-tab" href="convert.html"><span class="tool-glyph" aria-hidden="true">⇄</span>Convert</a>
-      <a class="tool-tab" href="resize.html"><span class="tool-glyph" aria-hidden="true">⤢</span>Resize</a>
-      <a class="tool-tab" href="crop.html"><span class="tool-glyph" aria-hidden="true">◩</span>Crop</a>
+      <a class="tool-tab" href="convert"><span class="tool-glyph" aria-hidden="true">⇄</span>Convert</a>
+      <a class="tool-tab" href="resize"><span class="tool-glyph" aria-hidden="true">⤢</span>Resize</a>
+      <a class="tool-tab" href="crop"><span class="tool-glyph" aria-hidden="true">◩</span>Crop</a>
     </nav>
     <div class="drop-zone" id="dropZone" tabindex="0" role="button" aria-label="Choose images to compress">
       <input id="fileInput" type="file" accept="image/jpeg,image/png,image/webp,image/avif,image/gif,image/bmp" multiple hidden>
@@ -124,9 +124,9 @@
     <p class="section-lead">No uploads, no accounts. Pick a tool and start.</p>
     <div class="tools-grid">
       <a class="tool-card-mini is-here" href="#compressor"><span class="tool-glyph" aria-hidden="true">◈</span><strong>Compress IMAGE</strong><span>Hit a target size — 20KB to 5MB.</span><em>You are here</em></a>
-      <a class="tool-card-mini" href="convert.html"><span class="tool-glyph" aria-hidden="true">⇄</span><strong>Convert Format</strong><span>PNG ↔ JPG ↔ WebP ↔ AVIF.</span><em>Open tool →</em></a>
-      <a class="tool-card-mini" href="resize.html"><span class="tool-glyph" aria-hidden="true">⤢</span><strong>Resize Image</strong><span>Change dimensions by pixels or percent.</span><em>Open tool →</em></a>
-      <a class="tool-card-mini" href="crop.html"><span class="tool-glyph" aria-hidden="true">◩</span><strong>Crop Image</strong><span>Drag to cut exactly what you need.</span><em>Open tool →</em></a>
+      <a class="tool-card-mini" href="convert"><span class="tool-glyph" aria-hidden="true">⇄</span><strong>Convert Format</strong><span>PNG ↔ JPG ↔ WebP ↔ AVIF.</span><em>Open tool →</em></a>
+      <a class="tool-card-mini" href="resize"><span class="tool-glyph" aria-hidden="true">⤢</span><strong>Resize Image</strong><span>Change dimensions by pixels or percent.</span><em>Open tool →</em></a>
+      <a class="tool-card-mini" href="crop"><span class="tool-glyph" aria-hidden="true">◩</span><strong>Crop Image</strong><span>Drag to cut exactly what you need.</span><em>Open tool →</em></a>
     </div>
   </div>
 </section>
@@ -137,7 +137,7 @@
       <p class="eyebrow">Advertise on SizeMint</p>
       <h2>Want your ads to be placed on our web?</h2>
       <p>Contact us about placing your brand beside the SizeMint image compressor.</p>
-      <a class="sponsor-link" href="sponsor.html">Contact Us <span>→</span></a>
+      <a class="sponsor-link" href="sponsor">Contact Us <span>→</span></a>
     </div>
     <div class="rail-ad ad-slot mock-ad mock-ad-rail" aria-label="Sponsor space"><div class="mock-ad-copy"><small>SPONSOR SPACE</small><strong>YOUR BRAND<br>COULD BE HERE</strong><span>Reach SizeMint visitors.</span></div><div class="mock-ad-art" aria-hidden="true"><i></i><i></i><i></i><i></i></div></div>
   </div></div>
@@ -162,9 +162,9 @@
   <h2>What happens inside your browser?</h2>
   <p>The compressor uses standard browser image APIs to decode, resize and encode candidate results. The resulting Blob is offered directly for download.</p>
   <h2>Privacy by design</h2>
-  <p>The core compressor processes selected images in your browser. See the <a href="privacy.html">Privacy Policy</a> for current disclosures.</p>
+  <p>The core compressor processes selected images in your browser. See the <a href="privacy">Privacy Policy</a> for current disclosures.</p>
   <h2>More practical guides</h2>
-  <p>Read the <a href="guides.html">SizeMint image compression guides</a> or visit the <a href="about.html">About page</a>.</p>
+  <p>Read the <a href="guides">SizeMint image compression guides</a> or visit the <a href="about">About page</a>.</p>
 </div></section>
 <section class="faq-section reveal"><div class="container narrow">
   <p class="eyebrow">FAQ</p>
@@ -178,8 +178,8 @@
 </div></section>
 <section class="ad-band-section"><div class="container"><div class="ad-slot ad-slot-wide mock-ad mock-ad-bottom" aria-label="Sponsor space"><div class="mock-ad-copy"><small>SPONSOR SPACE</small><strong>Need visibility for your product?</strong><span>Advertise on SizeMint.</span></div><div class="mock-ad-art" aria-hidden="true"><i></i><i></i><i></i></div></div></div></section>
 </main>
-<footer><div class="container footer-wrap"><span>© <span id="year"></span> SizeMint</span><div><a href="guides.html">Guides</a><a href="about.html">About</a><a href="sponsor.html">Advertise</a><a href="mailto:idalinux08@gmail.com">Contact</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></div></footer>
-<div class="bottom-ad-banner" aria-label="Sponsor space"><div class="bottom-ad-inner"><div class="bottom-ad-art" aria-hidden="true"><i></i><i></i><i></i></div><div><small>SPONSOR SPACE</small><strong>Want your brand in front of SizeMint users?</strong><a href="sponsor.html">Want your ads to be placed on our web? Contact Us.</a></div></div></div>
+<footer><div class="container footer-wrap"><span>© <span id="year"></span> SizeMint</span><div><a href="guides">Guides</a><a href="about">About</a><a href="sponsor">Advertise</a><a href="mailto:idalinux08@gmail.com">Contact</a><a href="privacy">Privacy</a><a href="terms">Terms</a></div></div></footer>
+<div class="bottom-ad-banner" aria-label="Sponsor space"><div class="bottom-ad-inner"><div class="bottom-ad-art" aria-hidden="true"><i></i><i></i><i></i></div><div><small>SPONSOR SPACE</small><strong>Want your brand in front of SizeMint users?</strong><a href="sponsor">Want your ads to be placed on our web? Contact Us.</a></div></div></div>
 <script src="site.js" defer></script>
 <script src="app.js" defer></script>
 </body>
